@@ -47,7 +47,6 @@ import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
  * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list.
  *
- * IMPORTANT: In order to use this OpMode, you need to obtain your own Vuforia license key as
  * is explained below.
  */
 @TeleOp(name = "Concept: TensorFlow Object Detection Switchable Cameras", group = "Concept")
@@ -57,7 +56,8 @@ public class ConceptTensorFlowObjectDetectionSwitchableCameras extends LinearOpM
     private static final String LABEL_FIRST_ELEMENT = "Quad";
     private static final String LABEL_SECOND_ELEMENT = "Single";
 
-    /*
+    /* * IMPORTANT: In order to use this OpMode, you need to obtain your own Vuforia license key as
+
      * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
      * 'parameters.vuforiaLicenseKey' is initialized is for illustration only, and will not function.
      * A Vuforia 'Development' license key, can be obtained free of charge from the Vuforia developer

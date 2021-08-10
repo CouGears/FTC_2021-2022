@@ -12,13 +12,13 @@
 12
 13    <uses-sdk
 14        android:minSdkVersion="23"
-14-->/Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/TeamCode/src/main/AndroidManifest.xml
+14-->/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/src/main/AndroidManifest.xml
 15        android:targetSdkVersion="28" />
-15-->/Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/TeamCode/src/main/AndroidManifest.xml
+15-->/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/src/main/AndroidManifest.xml
 16
 17    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-17-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-81
-17-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:22-78
+17-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-81
+17-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:22-78
 18    <uses-permission
 18-->[org.firstinspires.ftc:Blocks:6.2.1] /Users/aarongoldgewert/.gradle/caches/transforms-2/files-2.1/25971fc2ded31b194b52bb73d956799e/jetified-Blocks-6.2.1/AndroidManifest.xml:11:5-13:35
 19        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -141,96 +141,96 @@
 83-->[org.firstinspires.ftc:RobotCore:6.2.1] /Users/aarongoldgewert/.gradle/caches/transforms-2/files-2.1/4cb1bbabe3b502f259cc816162fc09cd/jetified-RobotCore-6.2.1/AndroidManifest.xml:84:19-57
 84
 85    <application
-85-->/Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/TeamCode/src/main/AndroidManifest.xml:11:5-19
+85-->/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/src/main/AndroidManifest.xml:11:5-19
 86        android:name="org.firstinspires.ftc.robotcore.internal.system.RobotApplication"
 86-->[org.firstinspires.ftc:RobotCore:6.2.1] /Users/aarongoldgewert/.gradle/caches/transforms-2/files-2.1/4cb1bbabe3b502f259cc816162fc09cd/jetified-RobotCore-6.2.1/AndroidManifest.xml:86:18-97
 87        android:allowBackup="true"
-87-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:9-35
+87-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:9-35
 88        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 88-->[androidx.core:core:1.3.0] /Users/aarongoldgewert/.gradle/caches/transforms-2/files-2.1/7fb28d3aeba4d1d26d2ae9c4c51c3e4b/core-1.3.0/AndroidManifest.xml:24:18-86
 89        android:debuggable="true"
 90        android:extractNativeLibs="true"
-90-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-41
+90-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-41
 91        android:icon="@drawable/ic_launcher"
-91-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:9-45
+91-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:9-45
 92        android:label="@string/app_name"
-92-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:9-41
+92-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:9-41
 93        android:largeHeap="true"
-93-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-33
+93-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-33
 94        android:testOnly="true"
 95        android:theme="@style/AppThemeRedRC"
-95-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:9-45
+95-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:9-45
 96        android:usesCleartextTraffic="true" > <!-- Indicates to the ControlHubUpdater what the latest version of the Control Hub is that this app supports -->
-96-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:21:9-44
+96-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:21:9-44
 97        <meta-data
-97-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:9-26:33
+97-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:9-26:33
 98            android:name="org.firstinspires.latestSupportedControlHubVersion"
-98-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-78
+98-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-78
 99            android:value="1" /> <!-- The main robot controller activity -->
-99-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-30
+99-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-30
 100        <activity
-100-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:9-40:20
+100-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:9-40:20
 101            android:name="org.firstinspires.ftc.robotcontroller.internal.PermissionValidatorWrapper"
-101-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:13-101
+101-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:13-101
 102            android:configChanges="orientation|screenSize"
-102-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:13-59
+102-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:13-59
 103            android:label="@string/app_name"
-103-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:13-45
+103-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:13-45
 104            android:launchMode="singleTask"
-104-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:33:13-44
+104-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:33:13-44
 105            android:screenOrientation="fullUser" >
-105-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:34:13-49
+105-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:34:13-49
 106            <intent-filter>
-106-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:35:13-39:29
+106-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:35:13-39:29
 107                <category android:name="android.intent.category.LAUNCHER" />
-107-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:36:17-77
-107-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:36:27-74
+107-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:36:17-77
+107-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:36:27-74
 108
 109                <action android:name="android.intent.action.MAIN" />
-109-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:38:17-69
-109-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:38:25-66
+109-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:38:17-69
+109-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:38:25-66
 110            </intent-filter>
 111        </activity>
 112        <activity
-112-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:41:9-59:20
+112-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:41:9-59:20
 113            android:name="org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity"
-113-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:42:13-101
+113-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:42:13-101
 114            android:configChanges="orientation|screenSize"
-114-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:43:13-59
+114-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:43:13-59
 115            android:label="@string/app_name"
-115-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:44:13-45
+115-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:44:13-45
 116            android:launchMode="singleTask"
-116-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:45:13-44
+116-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:45:13-44
 117            android:screenOrientation="fullUser" >
-117-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:46:13-49
+117-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:46:13-49
 118            <intent-filter>
-118-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:47:13-49:29
+118-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:47:13-49:29
 119                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-119-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:48:17-90
-119-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:48:25-87
+119-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:48:17-90
+119-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:48:25-87
 120            </intent-filter>
 121
 122            <meta-data
-122-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:51:13-53:57
+122-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:51:13-53:57
 123                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
-123-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:52:17-79
+123-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:52:17-79
 124                android:resource="@xml/device_filter" />
-124-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:53:17-54
+124-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:53:17-54
 125
 126            <!-- org.firstinspires.main.entry indicates that this app is compatible with the Dragonboard Control Hub -->
 127            <meta-data
-127-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:56:13-58:40
+127-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:56:13-58:40
 128                android:name="org.firstinspires.main.entry"
-128-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:57:17-60
+128-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:57:17-60
 129                android:value="true" />
-129-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:58:17-37
+129-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:58:17-37
 130        </activity> <!-- The robot controller service in which most of the robot functionality is managed -->
 131        <service
-131-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:62:9-64:38
+131-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:62:9-64:38
 132            android:name="com.qualcomm.ftccommon.FtcRobotControllerService"
-132-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:63:13-76
+132-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:63:13-76
 133            android:enabled="true" />
-133-->[:FtcRobotController] /Users/aarongoldgewert/Desktop/FtcRobotController-master 9.39.42 PM/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:64:13-35
+133-->[:FtcRobotController] /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:64:13-35
 134
 135        <activity
 135-->[org.firstinspires.ftc:Blocks:6.2.1] /Users/aarongoldgewert/.gradle/caches/transforms-2/files-2.1/25971fc2ded31b194b52bb73d956799e/jetified-Blocks-6.2.1/AndroidManifest.xml:19:9-23:20
