@@ -3,26 +3,18 @@ manifest
 ADDED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:2:1-66:12
 INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:2:1-66:12
 INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:2:1-66:12
 	package
 		ADDED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:4:11-52
 		INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml
 		INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml
 	android:versionName
 		ADDED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:6:11-36
-		INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml
-		INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:3:11-57
 	xmlns:android
 		ADDED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:2:11-69
 	android:versionCode
 		ADDED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:5:11-35
-		INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml
-		INJECTED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
 ADDED from /Users/aarongoldgewert/Documents/FTC_2021-2022/FtcRobotController/src/main/AndroidManifest.xml:8:3-79
 	android:name

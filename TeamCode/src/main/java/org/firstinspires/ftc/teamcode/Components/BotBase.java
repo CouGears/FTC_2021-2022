@@ -40,7 +40,7 @@ public class BotBase {
     //Initialization
 
     public BotBase(HardwareMap hardwareMap, Telemetry tele) {
-        frontLeftDrive = hardwareMap.get(DcMotor.class, "motorFL");
+        /*frontLeftDrive = hardwareMap.get(DcMotor.class, "motorFL");
         frontLeftDrive.setDirection(DcMotorSimple.Direction.FORWARD);
         frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
@@ -110,7 +110,7 @@ public class BotBase {
         {
         }
         gyro.resetZAxisIntegrator();
-        odometry = new Odometry(frontLeftDrive,rearRightDrive,gyro,verticalEncoderRadiusFromCenter,HorizontalEncoderRadiusFromCenter);
+        odometry = new Odometry(frontLeftDrive,rearRightDrive,gyro,verticalEncoderRadiusFromCenter,HorizontalEncoderRadiusFromCenter);*/
 
     }
     public void stop() {

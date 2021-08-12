@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
@@ -69,7 +70,7 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
+            "ATBElIb/////AAABmdBflZpXzEjWp9vxGNOI5gsIWPrpNwkTz8XkIITXkWpaBHLUQ8knog9g58ktfDqFHMkeFsZ33BYJLT/3RgjFcuzNUAoAXcC1uYHfQR1Fj4LBAvOC/Zx5L7fZ4bkN91yj7tArRccNYUh6rsnhzBfRFlWa3kBmAyyxr222I3Nd8jJ/9jaOB7jkWXHXTg5spyroTRZxKc6g3XrZ1y1TR8xp5yzYAl71XQ78Ca1KdvqpM50UrZadmjTV5qOJYgYCKw3dB7WsO4yffgK5a6A2pRifB1PvvPivOqhkP/xhKo+ApmSdY7U4fJImM401L29YoVvsx9puTT4nxkCreVmHpNPFkJNKyfwi4aR4DRYDwTrd0J7A";
 
     /**
      * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
@@ -103,7 +104,7 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
             // to artificially zoom in to the center of image.  For best results, the "aspectRatio" argument
             // should be set to the value of the images used to create the TensorFlow Object Detection model
             // (typically 16/9).
-            tfod.setZoom(2.5, 16.0/9.0);
+            tfod.setZoom(1, 16.0/9.0);
         }
 
         /** Wait for the game to begin */
@@ -127,6 +128,11 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
                                 recognition.getLeft(), recognition.getTop());
                         telemetry.addData(String.format("  right,bottom (%d)", i), "%.03f , %.03f",
                                 recognition.getRight(), recognition.getBottom());
+                        telemetry.addData("height:", recognition.getHeight());
+                        telemetry.addData("width", recognition.getWidth());
+                        telemetry.addData("angle:", recognition.estimateAngleToObject(AngleUnit.DEGREES));
+
+                        
                       }
                       telemetry.update();
                     }
@@ -164,7 +170,7 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
             "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
-       tfodParameters.minResultConfidence = 0.8f;
+       tfodParameters.minResultConfidence = 0.6f;
        tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABEL_FIRST_ELEMENT, LABEL_SECOND_ELEMENT);
     }
