@@ -42,7 +42,7 @@ public class TestCode extends LinearOpMode{
                 motorFR.setPower(gamepad1.right_trigger);
 
             } else if (gamepad1.left_trigger > 0){
-                motorFR.setPower(gamepad1.left_trigger);
+                motorFR.setPower(-gamepad1.left_trigger);
             } else{
                 motorFR.setPower(0);
             }
