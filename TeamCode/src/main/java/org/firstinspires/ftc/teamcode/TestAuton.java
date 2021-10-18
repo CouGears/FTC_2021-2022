@@ -200,6 +200,11 @@ public class TestAuton extends OpMode
                 }
                 tie++;
                 break;
+            case 5:
+                robot.drive(0, -1*feet, 1);
+                robot.drive(2.5*feet, 0,1); //drive to drop zone
+                tie++;
+                break;
         }
     }
 

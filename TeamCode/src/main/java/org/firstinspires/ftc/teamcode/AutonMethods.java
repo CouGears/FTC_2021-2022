@@ -53,7 +53,7 @@ public class AutonMethods {
     double inch = rev / (3.78 * 3.14);
     double feet = inch * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, shooter, arm;
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, shooter, arm, rum;
 
     private static Servo shooterServo, armServo, marker, frontScissor, backScissor;
     public static Servo carousel;
@@ -80,6 +80,7 @@ public class AutonMethods {
         motorFR = map.get(DcMotor.class, "motorFR");
         intakeFL = map.get(DcMotor.class, "intake");
         arm = map.get(DcMotor.class, "arm");
+        rum = map.get(DcMotor.class, "rum");
         shooter = map.get(DcMotor.class, "shooter");
 
 
@@ -219,6 +220,12 @@ public class AutonMethods {
 
     }
 
+    public void alcohol(double tequila){
+        rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rum.setTargetPosition((int)tequila);
+        rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+}//moves the 4 bar/arm
    /* public int distance() {
         int rings = 0;
         if (bottomSensor.getDistance(DistanceUnit.CM) < 14 && topSensor.getDistance(DistanceUnit.CM) > 20) {
@@ -313,11 +320,6 @@ public class AutonMethods {
         motorBR.setPower(spee);
     }
 
-    public void alcohol(double tequila){
-        rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rum.setTargetPosition((int)tequila);
-        rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-    }//moves the 4 bar/arm
 
     public void newSleep(double timeinSeconds) {
         runtime.reset();
