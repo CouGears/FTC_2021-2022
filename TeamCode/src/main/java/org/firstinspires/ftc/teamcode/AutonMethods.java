@@ -28,7 +28,6 @@ import android.view.View;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import java.lang.annotation.Target;
-import java.util.Arrays;
 import java.util.Timer;
 
 import com.qualcomm.robotcore.hardware.Blinker;
@@ -54,11 +53,11 @@ public class AutonMethods {
     double inch = rev / (3.78 * 3.14);
     double feet = inch * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, shooter, arm, scissorMotor;
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, shooter, arm;
 
     private static Servo shooterServo, armServo, marker, frontScissor, backScissor;
-    public static Servo armBlock;
-    public static DistanceSensor topSensor, bottomSensor, sensorDistance;
+    public static Servo carousel;
+    public static DistanceSensor distanceSensor;
     public TouchSensor armTouch, scissorTouch;
     private ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
@@ -88,26 +87,20 @@ public class AutonMethods {
         shooterServo = map.get(Servo.class, "shooterServo");
         //note - this is according to front orientation - front is in the front and back is in the back
         //also these should be configured accordingly
-        scissorMotor = map.get(DcMotor.class, "scissorMotor");
-        armBlock = map.get(Servo.class, "armBlock");
-        bottomSensor = map.get(DistanceSensor.class, "bottomSensor");
-        topSensor = map.get(DistanceSensor.class, "sensor_color_distance");
+        carousel = map.get(Servo.class, "carousel");
+        distanceSensor = map.get(DistanceSensor.class, "distanceSensor");
         motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         intakeFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        scissorMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        scissorMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         intakeFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -115,15 +108,13 @@ public class AutonMethods {
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        scissorMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
         intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
-        arm.setDirection(DcMotorSimple.Direction.FORWARD);
 
 
         motorFL.setTargetPosition(0);
@@ -131,7 +122,6 @@ public class AutonMethods {
         motorFR.setTargetPosition(0);
         motorBR.setTargetPosition(0);
 
-        scissorMotor.setTargetPosition(0);
         int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
 
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
@@ -176,6 +166,23 @@ public class AutonMethods {
 
 
     }
+    public void setCarousel(double degrees){
+        carousel.setPosition(degrees);
+    }
+
+    public int distance(){
+        int stuff = 0;
+        if(distanceSensor.getDistance(DistanceUnit.CM) < 5){
+            stuff = 1;
+        }
+        else if(distanceSensor.getDistance(DistanceUnit.CM) > 10 && distanceSensor.getDistance(DistanceUnit.CM) < 15){
+            stuff = 2;
+        }
+        else if(distanceSensor.getDistance(DistanceUnit.CM) > 15){
+            stuff = 3;
+        }
+        return stuff;
+    }
     //circumscibed robot has a diameter of 21 inches
     public void turn(double deg) {
         while (motorFR.isBusy() || motorFL.isBusy()) {
@@ -201,32 +208,6 @@ public class AutonMethods {
 
     }
 
-    public void armTime(Double time, int dir) {
-        arm.setPower(dir);
-        runtime.reset();
-        while (runtime.seconds() < time) ;
-        arm.setPower(0);
-    }
-
-    public void scissorServUp() {
-
-        sleep(150);
-        scissorMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        scissorMotor.setTargetPosition(-3150);
-        scissorMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        scissorMotor.setPower(1);
-        sleep(500);
-
-    }
-
-    public void scissorServDown() {
-        scissorMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        scissorMotor.setTargetPosition(0);
-        scissorMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        scissorMotor.setPower(1);
-
-        sleep(500);
-    }
 
 
     public void shootServ(double pos) {
@@ -238,33 +219,7 @@ public class AutonMethods {
 
     }
 
-    public void armServ(double pos) {
-        while (motorFR.isBusy() || motorFL.isBusy()) {
-            if (runtime.seconds() > 3) break;
-        }
-        armServo.setPosition(pos);
-
-    }
-
-    public void arm(int pos) {
-        while (motorFR.isBusy() || motorFL.isBusy()) {
-            if (runtime.seconds() > 3) break;
-        }
-        arm.setTargetPosition(pos);
-        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        arm.setPower(1);
-
-    }
-
-    public void shoot(double power) {
-        while (motorFR.isBusy() || motorFL.isBusy()) {
-            if (runtime.seconds() > 3) break;
-        }
-        shooter.setPower(power);
-
-    }
-
-    public int distance() {
+   /* public int distance() {
         int rings = 0;
         if (bottomSensor.getDistance(DistanceUnit.CM) < 14 && topSensor.getDistance(DistanceUnit.CM) > 20) {
             // tele.addData("One ring", bottomSensor.getDistance(DistanceUnit.CM));
@@ -357,6 +312,12 @@ public class AutonMethods {
         motorFR.setPower(spee);
         motorBR.setPower(spee);
     }
+
+    public void alcohol(double tequila){
+        rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rum.setTargetPosition((int)tequila);
+        rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }//moves the 4 bar/arm
 
     public void newSleep(double timeinSeconds) {
         runtime.reset();

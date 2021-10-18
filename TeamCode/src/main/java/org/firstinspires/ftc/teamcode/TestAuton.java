@@ -30,23 +30,118 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.util.Hardware;
+import com.qualcomm.robotcore.hardware.HardwareDevice;
+import com.qualcomm.robotcore.hardware.TouchSensor;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import com.qualcomm.hardware.bosch.BNO055IMU;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
+import android.graphics.Color;
+import android.app.Activity;
+import android.view.View;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import java.lang.annotation.Target;
+import java.util.Timer;
+
+import com.qualcomm.robotcore.hardware.Blinker;
+import com.qualcomm.robotcore.hardware.CRServo;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import com.qualcomm.robotcore.hardware.Gyroscope;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
+import java.util.Locale;
+
+import android.app.Activity;
+
 
 @Autonomous
 
 public class TestAuton extends OpMode
 {
-    private ElapsedTime runtime = new ElapsedTime();
 
     //TensorFlowVision vision = new TensorFlowVision();
-
+    double rev = 383.6;
+    double inch = rev / (3.78 * 3.14);
+    double feet = inch * 12;
     AutonomousOdometryBase bot = new AutonomousOdometryBase();
+    double FRtpos, BRtpos, FLtpos, BLtpos;
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, carousel, rum;
+    public static DistanceSensor sensorDistance;
+    private ElapsedTime runtime = new ElapsedTime();
+    AutonMethods robot = new AutonMethods();
+    HardwareMap map;
+    Telemetry tele;
     @Override
     public void init() {
         // Tell the driver that initialization is complete.
         bot.initAutonomous();
        // vision.init();
+        motorFL = map.get(DcMotor.class, "motorFL");
+        motorBL = map.get(DcMotor.class, "motorBL");
+        motorBR = map.get(DcMotor.class, "motorBR");
+        motorFR = map.get(DcMotor.class, "motorFR");
+        intakeFL = map.get(DcMotor.class, "intake");
+
+
+
+
+        //note - this is according to front orientation - front is in the front and back is in the back
+        //also these should be configured accordingly
+        carousel = map.get(DcMotor.class, "carousel");
+        rum = map.get(DcMotor.class, "rum");
+        motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        intakeFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+
+        motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);;
+        motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        intakeFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
+        motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+
+        motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
+        motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
+        motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
+        motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
+        intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
+
+
+        motorFL.setTargetPosition(0);
+        motorBL.setTargetPosition(0);
+        motorFR.setTargetPosition(0);
+        motorBR.setTargetPosition(0);
+
+        int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
+
+        // tele.addData(">", "Gyro Calibrating. Do Not Move!");
 
         telemetry.addData("Status", "Initialized");
 
@@ -75,6 +170,37 @@ public class TestAuton extends OpMode
     public void loop() {
         //bot.autonomousIdleTasks();
         //vision.check();
+        int tie = 0;
+        switch (tie){
+            case 0:
+                robot.drive(1 * feet,1 * feet,1 * feet); //drives to carousel
+                tie++;
+                break;
+            case 1:
+                robot.setCarousel(270);
+                tie++;
+                break;
+            case 2:
+                robot.drive(1 * feet,1 * feet,1 * feet); //drives to scan point
+                tie++;
+                break;
+            case 3:
+                robot.drive(4 * feet, 2 * feet, 1); //drive to drop point
+                tie++;
+                break;
+            case 4:
+                if(robot.distance() == 1){
+                    robot.alcohol(400);//Top of the tower
+                }
+                else if(robot.distance() == 2){
+                    robot.alcohol(200);//Middle
+                }
+                else if(robot.distance() == 3){
+                    robot.alcohol(0);//Bottom of the tower
+                }
+                tie++;
+                break;
+        }
     }
 
     /*

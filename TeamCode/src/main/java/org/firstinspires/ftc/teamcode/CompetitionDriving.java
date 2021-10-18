@@ -139,6 +139,7 @@ public class CompetitionDriving extends LinearOpMode{
                 telemetry.update();
                 competition.sleep(500);
                 armBlock.setPosition(0.5);
+
                 lift = !lift;
             }
             if(gamepad1.dpad_down && lift == true){
