@@ -28,6 +28,7 @@ import android.view.View;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import java.lang.annotation.Target;
+import java.util.Arrays;
 import java.util.Timer;
 
 import com.qualcomm.robotcore.hardware.Blinker;
@@ -54,6 +55,7 @@ public class AutonMethods {
     double feet = inch * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
     public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, shooter, arm, scissorMotor;
+
     private static Servo shooterServo, armServo, marker, frontScissor, backScissor;
     public static Servo armBlock;
     public static DistanceSensor topSensor, bottomSensor, sensorDistance;
@@ -134,6 +136,14 @@ public class AutonMethods {
 
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
         // tele.update();
+    }
+
+    public double[] getLocation()
+    {
+        double[] location = new double[2];
+       location[0] =  Forwards.currentLocation();
+        location[1] = Sideways.currentLocation();
+        return location;
     }
 
     //Function to move the robot in any direction

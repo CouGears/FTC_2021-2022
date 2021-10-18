@@ -52,11 +52,13 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @Autonomous
-public class TestAuton2 extends LinearOpMode {
+public class TestAuton2 extends LinearOpMode
+ {
 
     // Declare OpMode members.
     //TensorFlowVision vision = new TensorFlowVision();
     ConceptTensorFlowObjectDetectionWebcam test = new ConceptTensorFlowObjectDetectionWebcam();
+    AutonMethods robot = new AutonMethods();
     @Override
     public void runOpMode() {
         //vision.init();
@@ -66,6 +68,7 @@ public class TestAuton2 extends LinearOpMode {
         while (opModeIsActive()) {
            telemetry.addData("status:", "you made it");
            telemetry.update();
+            double[] location = robot.getLocation();
 
         }
     }
