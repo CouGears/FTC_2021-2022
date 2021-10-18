@@ -68,7 +68,7 @@ public class TestAuton2 extends LinearOpMode
         while (opModeIsActive()) {
            telemetry.addData("status:", "you made it");
            telemetry.update();
-            double[] location = robot.getLocation();
+           // double[] location = robot.getLocation();
 
         }
     }

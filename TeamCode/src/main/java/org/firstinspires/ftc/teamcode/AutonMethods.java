@@ -129,13 +129,13 @@ public class AutonMethods {
         // tele.update();
     }
 
-    public double[] getLocation()
+    /*public double[] getLocation()
     {
         double[] location = new double[2];
        location[0] =  Forwards.currentLocation();
         location[1] = Sideways.currentLocation();
         return location;
-    }
+    }*/
 
     //Function to move the robot in any direction
     public void drive(double forward, double sideways, double spee) {
@@ -219,7 +219,26 @@ public class AutonMethods {
 
 
     }
+    public void speed(double spee) {
+        motorFL.setPower(spee);
+        motorBL.setPower(spee);
+        motorFR.setPower(spee);
+        motorBR.setPower(spee);
+    }
+    public void newSleep(double timeinSeconds) {
+        runtime.reset();
+        while (runtime.seconds() < timeinSeconds) ;
+    }
 
+    //Function to have the robot sleep
+    public void sleep(long sleep) {
+        try {
+            Thread.sleep(sleep);
+        } catch (InterruptedException e) {
+            tele.addLine("Failed Sleep");
+            tele.update();
+        }
+    }
     public void alcohol(double tequila){
         rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rum.setTargetPosition((int)tequila);
@@ -264,14 +283,6 @@ public class AutonMethods {
     }
 
 
-    //Function to have the robot sleep
-    public void sleep(long sleep) {
-        try {
-            Thread.sleep(sleep);
-        } catch (InterruptedException e) {
-            tele.addLine("Failed Sleep");
-            tele.update();
-        }
 
 
     }
@@ -313,17 +324,9 @@ public class AutonMethods {
 
     }
 
-    public void speed(double spee) {
-        motorFL.setPower(spee);
-        motorBL.setPower(spee);
-        motorFR.setPower(spee);
-        motorBR.setPower(spee);
-    }
 
 
-    public void newSleep(double timeinSeconds) {
-        runtime.reset();
-        while (runtime.seconds() < timeinSeconds) ;
-    }
 
-}
+
+
+}*/
