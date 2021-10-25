@@ -52,6 +52,9 @@ public class AutonMethods {
     double rev = 383.6;
     double inch = rev / (3.78 * 3.14);
     double feet = inch * 12;
+    double rev2 = 2048;
+    double inch2 = rev2 / (2 * 3.14);
+    double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
     public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, shooter, arm, rum;
 
@@ -74,6 +77,8 @@ public class AutonMethods {
 
     //Initialization
     public void init(HardwareMap map, Telemetry tele, boolean auton) {
+        location[0] = 0;
+        location[1] = 0;
         motorFL = map.get(DcMotor.class, "motorFL");
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
