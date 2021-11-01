@@ -244,12 +244,12 @@ public class AutonMethods {
             tele.update();
         }
     }
-    public void alcohol(double tequila){
+    public void alcohol(double tequila){ //moves the 4 bar/arm
         rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rum.setTargetPosition((int)tequila);
         rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
-}//moves the 4 bar/arm
+}
    /* public int distance() {
         int rings = 0;
         if (bottomSensor.getDistance(DistanceUnit.CM) < 14 && topSensor.getDistance(DistanceUnit.CM) > 20) {
@@ -291,7 +291,7 @@ public class AutonMethods {
 
 
     }
-
+*/
     public void driveWithDecel(double forward, double sideways) {
         double dist = 8 * feet;
         runtime.reset();
@@ -334,4 +334,4 @@ public class AutonMethods {
 
 
 
-}*/
+}
