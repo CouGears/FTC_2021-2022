@@ -77,8 +77,8 @@ public class AutonMethods {
 
     //Initialization
     public void init(HardwareMap map, Telemetry tele, boolean auton) {
-        location[0] = 0;
-        location[1] = 0;
+       // location[0] = 0;
+        //location[1] = 0;
         motorFL = map.get(DcMotor.class, "motorFL");
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
@@ -249,7 +249,7 @@ public class AutonMethods {
         rum.setTargetPosition((int)tequila);
         rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
-}
+
    /* public int distance() {
         int rings = 0;
         if (bottomSensor.getDistance(DistanceUnit.CM) < 14 && topSensor.getDistance(DistanceUnit.CM) > 20) {
