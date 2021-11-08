@@ -83,44 +83,44 @@ public class AutonMethods {
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
         motorFR = map.get(DcMotor.class, "motorFR");
-        intakeFL = map.get(DcMotor.class, "intake");
-        arm = map.get(DcMotor.class, "arm");
-        rum = map.get(DcMotor.class, "rum");
-        shooter = map.get(DcMotor.class, "shooter");
+   //     intakeFL = map.get(DcMotor.class, "intake");
+      //  arm = map.get(DcMotor.class, "arm");
+       // rum = map.get(DcMotor.class, "rum");
+   //     shooter = map.get(DcMotor.class, "shooter");
 
 
-        armServo = map.get(Servo.class, "armServo");
-        shooterServo = map.get(Servo.class, "shooterServo");
+     //   armServo = map.get(Servo.class, "armServo");
+       // shooterServo = map.get(Servo.class, "shooterServo");
         //note - this is according to front orientation - front is in the front and back is in the back
         //also these should be configured accordingly
-        carousel = map.get(Servo.class, "carousel");
-        distanceSensor = map.get(DistanceSensor.class, "distanceSensor");
+       // carousel = map.get(Servo.class, "carousel");
+       // distanceSensor = map.get(DistanceSensor.class, "distanceSensor");
         motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        intakeFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+       // intakeFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
         motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        intakeFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+      //  intakeFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+       // intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
-        intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
+       // intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
 
 
         motorFL.setTargetPosition(0);
@@ -172,9 +172,9 @@ public class AutonMethods {
 
 
     }
-    public void setCarousel(double degrees){
-        carousel.setPosition(degrees);
-    }
+//    public void setCarousel(double degrees){
+//        carousel.setPosition(degrees);
+//    }
 
     public int distance(){
         int stuff = 0;
@@ -245,9 +245,9 @@ public class AutonMethods {
         }
     }
     public void alcohol(double tequila){ //moves the 4 bar/arm
-        rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rum.setTargetPosition((int)tequila);
-        rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      //  rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        rum.setTargetPosition((int)tequila);
+//        rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
    /* public int distance() {

@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.old;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -63,53 +63,14 @@ public class TestAuton extends OpMode
     @Override
     public void init() {
         // Tell the driver that initialization is complete.
-        bot.initAutonomous();
+       // bot.initAutonomous();
        // vision.init();
-        motorFL = map.get(DcMotor.class, "motorFL");
-        motorBL = map.get(DcMotor.class, "motorBL");
-        motorBR = map.get(DcMotor.class, "motorBR");
-        motorFR = map.get(DcMotor.class, "motorFR");
-        intakeFL = map.get(DcMotor.class, "intake");
+
+        robot.init(hardwareMap, telemetry, false);
 
 
 
 
-        //note - this is according to front orientation - front is in the front and back is in the back
-        //also these should be configured accordingly
-        carousel = map.get(DcMotor.class, "carousel");
-        rum = map.get(DcMotor.class, "rum");
-        motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        intakeFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-
-        motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);;
-        motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        intakeFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-
-        motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-
-        motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
-        motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
-        motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
-        motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
-        intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
-
-
-        motorFL.setTargetPosition(0);
-        motorBL.setTargetPosition(0);
-        motorFR.setTargetPosition(0);
-        motorBR.setTargetPosition(0);
 
         int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
 
@@ -145,11 +106,12 @@ public class TestAuton extends OpMode
         int tie = 0;
         switch (tie){
             case 0:
-                robot.drive(1 * feet,1 * feet,1 * feet); //drives to carousel
+                robot.drive(1*feet, 0 ,1);
+//                robot.drive(5 * feet,0 * feet,1 * feet); //drives to carousel
                 tie++;
                 break;
-            case 1:
-                robot.setCarousel(270);
+         /*   case 1:
+//                robot.setCarousel(270);
                 tie++;
                 break;
             case 2:
@@ -176,7 +138,7 @@ public class TestAuton extends OpMode
                 robot.drive(0, -1*feet, 1);
                 robot.drive(2.5*feet, 0,1); //drive to drop zone
                 tie++;
-                break;
+                break;*/
         }
     }
 

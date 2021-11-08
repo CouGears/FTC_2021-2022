@@ -39,13 +39,13 @@ public class CompetitionDriving2021 extends LinearOpMode{
         motorBL = hardwareMap.get(DcMotor.class, "motorBL");
         motorBR = hardwareMap.get(DcMotor.class, "motorBR");
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
-        intakeFL = hardwareMap.get(DcMotor.class, "intake");
-        arm = hardwareMap.get(DcMotor.class, "arm");
-        shooter = hardwareMap.get(DcMotor.class, "shooter");
-        scissorMotor = hardwareMap.get(DcMotor.class, "scissorMotor");
-        armServo = hardwareMap.get(Servo.class, "armServo");
-        shooterServo = hardwareMap.get(Servo.class, "shooterServo");
-        armBlock = hardwareMap.get(Servo.class, "armBlock");
+       // intakeFL = hardwareMap.get(DcMotor.class, "intake");
+        //arm = hardwareMap.get(DcMotor.class, "arm");
+//        shooter = hardwareMap.get(DcMotor.class, "shooter");
+//        scissorMotor = hardwareMap.get(DcMotor.class, "scissorMotor");
+//        armServo = hardwareMap.get(Servo.class, "armServo");
+//        shooterServo = hardwareMap.get(Servo.class, "shooterServo");
+//        armBlock = hardwareMap.get(Servo.class, "armBlock");
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
