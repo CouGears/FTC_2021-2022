@@ -135,11 +135,10 @@ public class AutonMethods {
         // tele.update();
     }
 
-    public void getLocation()
+    public void getLocation(){
 
        locationy =  Forwards.currentLocation()/feet2;
         locationx = Sideways.currentLocation()/feet2;
-
     }
 
     //Function to move the robot in any direction
