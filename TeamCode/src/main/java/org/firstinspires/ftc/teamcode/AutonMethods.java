@@ -137,8 +137,8 @@ public class AutonMethods {
 
     public void getLocation()
 
-       locationy =  Forwards.currentLocation();
-    locationx = Sideways.currentLocation();
+       locationy =  Forwards.currentLocation()/feet2;
+        locationx = Sideways.currentLocation()/feet2;
 
     }
 
