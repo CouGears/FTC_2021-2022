@@ -65,7 +65,8 @@ public class AutonMethods {
     private ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
     Telemetry tele;
-
+    int locationx = 0;
+    int locationy = 0;
     private double speed;
 
     public int counter = 0;
@@ -134,13 +135,12 @@ public class AutonMethods {
         // tele.update();
     }
 
-    /*public double[] getLocation()
-    {
-        double[] location = new double[2];
-       location[0] =  Forwards.currentLocation();
-        location[1] = Sideways.currentLocation();
-        return location;
-    }*/
+    public void getLocation()
+
+       locationy =  Forwards.currentLocation();
+    locationx = Sideways.currentLocation();
+
+    }
 
     //Function to move the robot in any direction
     public void drive(double forward, double sideways, double spee) {
