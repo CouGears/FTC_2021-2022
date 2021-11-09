@@ -68,17 +68,39 @@ public class Auton2021 extends LinearOpMode
            robot.getLocation();
             public void movefb(public int movefbfeet)
             {
-                if (robot.locationy < movefbfeet)
+                robot.getLocation();
+                if (movefbfeet > 0)
                 {
-                    //drive until robot.locationy>movefb
+                    if (robot.locationy < movefbfeet) {
+                        robot.getLocation();
+                        //drive until robot.locationy>movefb
+                    }
+                }
+                if (movefbfeet < 0)
+                {
+                    if (robot.locationy > movefbfeet) {
+                        robot.getLocation();
+                        //drive until robot.locationy<movefb
+                    }
                 }
             }
 
             public void moverl(public int moverlfeet)
             {
-                if (robot.locationy < moverlfeet)
+                robot.getLocation();
+                if (moverlfeet > 0)
                 {
-                    //drive until robot.locationx>moverl
+                    if (robot.locationx < moverlfeet) {
+                        robot.getLocation();
+                        //drive until robot.locationx>moverl
+                    }
+                }
+                if (moverlfeet < 0)
+                {
+                    if (robot.locationx > moverlfeet) {
+                        robot.getLocation();
+                        //drive until robot.locationx<moverl
+                    }
                 }
             }
         }
