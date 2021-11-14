@@ -277,23 +277,7 @@ public class AutonMethods {
 //        rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
-   /* public int distance() {
-        int rings = 0;
-        if (bottomSensor.getDistance(DistanceUnit.CM) < 14 && topSensor.getDistance(DistanceUnit.CM) > 20) {
-            // tele.addData("One ring", bottomSensor.getDistance(DistanceUnit.CM));
-            // tele.update();
-            rings = 1;
-        } else if (bottomSensor.getDistance(DistanceUnit.CM) < 14 && topSensor.getDistance(DistanceUnit.CM) < 20) {
-            // tele.addData("Four rings", topSensor.getDistance(DistanceUnit.CM));
-            // tele.update();
-            rings = 4;
-        } else {
-            // tele.addData("No rings", bottomSensor.getDistance(DistanceUnit.CM));
-            // tele.update();
-            rings = 0;
-        }
-        return rings;
-    }
+   /*
 
 
     public void intake(int time) {
@@ -303,16 +287,7 @@ public class AutonMethods {
 
     }
 
-    public void topGoal() {
-        runtime.reset();
-        while (runtime.seconds() < 3) ;
-        shootServ(.2);
-        runtime.reset();
-        while (runtime.seconds() < 0.5) ;
-        shootServ(0);
-        // runtime.reset();
-        // while (runtime.seconds() < 1) ;
-    }
+
 
 
 
