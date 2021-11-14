@@ -12,7 +12,7 @@ public class CompetitionDriving2021 extends LinearOpMode{
 
     private DcMotor motorBR, motorBL, motorFL, motorFR;
     private Servo claw1, claw2;
-
+    private boolean claw = false;
 
     int x = 0;
 
@@ -58,19 +58,24 @@ public class CompetitionDriving2021 extends LinearOpMode{
                 motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x))*.75);
             }
 
-            else if(x == 1){
-                motorFL.setPower(-((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x))*.25);
-                motorBL.setPower(-((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x))*.25);
-                motorBR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x))*.25);
-                motorFR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x))*.25);
+            else if(x == 1) {
+                motorFL.setPower(-((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
+                motorBL.setPower(-((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
+                motorBR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
+                motorFR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
             }
-            if(gamepad1.a) {
-                claw1.setPosition(.5);
-                claw2.setPosition(.5);
-            } if (gamepad1.b){
-                claw1.setPosition(1);
-                claw2.setPosition((1));
-            }
+            if(gamepad1.a){
+                if (claw == false){
+                    claw1.setPosition(.5);
+                    claw2.setPosition(.5);
+                    claw = !claw;
+                }
+                else {
+                    claw1.setPosition(1);
+                    claw2.setPosition(1);
+                    claw = !claw;
+                }
             }
         }
     }
+}
