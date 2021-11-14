@@ -56,12 +56,10 @@ public class AutonMethods {
     double inch2 = rev2 / (2 * 3.14);
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, shooter, arm, rum;
-
-    private static Servo shooterServo, armServo, marker, frontScissor, backScissor;
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum;
     public static Servo carousel;
     public static DistanceSensor distanceSensor;
-    public TouchSensor armTouch, scissorTouch;
+    public TouchSensor armTouch;
     private ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
     Telemetry tele;
@@ -84,18 +82,18 @@ public class AutonMethods {
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
         motorFR = map.get(DcMotor.class, "motorFR");
-   //     intakeFL = map.get(DcMotor.class, "intake");
-      //  arm = map.get(DcMotor.class, "arm");
-       // rum = map.get(DcMotor.class, "rum");
-   //     shooter = map.get(DcMotor.class, "shooter");
+        /*intakeFL = map.get(DcMotor.class, "intake");
+        arm = map.get(DcMotor.class, "arm");
+        rum = map.get(DcMotor.class, "rum");
+        shooter = map.get(DcMotor.class, "shooter");
 
 
-     //   armServo = map.get(Servo.class, "armServo");
-       // shooterServo = map.get(Servo.class, "shooterServo");
-        //note - this is according to front orientation - front is in the front and back is in the back
-        //also these should be configured accordingly
-       // carousel = map.get(Servo.class, "carousel");
-       // distanceSensor = map.get(DistanceSensor.class, "distanceSensor");
+        armServo = map.get(Servo.class, "armServo");
+        shooterServo = map.get(Servo.class, "shooterServo");
+        note - this is according to front orientation - front is in the front and back is in the back
+        also these should be configured accordingly
+        carousel = map.get(Servo.class, "carousel");
+        distanceSensor = map.get(DistanceSensor.class, "distanceSensor");*/
         motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -134,12 +132,49 @@ public class AutonMethods {
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
         // tele.update();
     }
-
     public void getLocation(){
 
         locationy =  Forwards.currentLocation()/feet2;
         locationx = Sideways.currentLocation()/feet2;
     }
+    public void movefb(int movefbfeet)
+    {
+        getLocation();
+        if (movefbfeet > 0)
+        {
+            if (locationy < movefbfeet) {
+                getLocation();
+                //drive until robot.locationy>movefb
+            }
+        }
+        if (movefbfeet < 0)
+        {
+            if (locationy > movefbfeet) {
+                getLocation();
+                //drive until robot.locationy<movefb
+            }
+        }
+    }
+
+    public void moverl(int moverlfeet)
+    {
+        getLocation();
+        if (moverlfeet > 0)
+        {
+            if (locationx < moverlfeet) {
+                getLocation();
+                //drive until robot.locationx>moverl
+            }
+        }
+        if (moverlfeet < 0)
+        {
+            if (locationx > moverlfeet) {
+                getLocation();
+                //drive until robot.locationx<moverl
+            }
+        }
+    }
+
 
     //Function to move the robot in any direction
     public void drive(double forward, double sideways, double spee) {
@@ -215,14 +250,7 @@ public class AutonMethods {
 
 
 
-    public void shootServ(double pos) {
-        while (motorFR.isBusy() || motorFL.isBusy()) {
-            if (runtime.seconds() > 2) break;
-        }
-        shooterServo.setPosition(pos);
 
-
-    }
     public void speed(double spee) {
         motorFL.setPower(spee);
         motorBL.setPower(spee);
