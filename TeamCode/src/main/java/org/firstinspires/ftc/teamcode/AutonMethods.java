@@ -57,6 +57,7 @@ public class AutonMethods {
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
     public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel;
+    public static DcMotor forwards=intake, sideways=carousel;
     public static DistanceSensor distanceSensor;
     public TouchSensor armTouch;
     private ElapsedTime runtime = new ElapsedTime();
