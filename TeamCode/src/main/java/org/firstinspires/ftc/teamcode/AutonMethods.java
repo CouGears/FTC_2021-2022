@@ -56,8 +56,7 @@ public class AutonMethods {
     double inch2 = rev2 / (2 * 3.14);
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum;
-    public static Servo carousel;
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel;
     public static DistanceSensor distanceSensor;
     public TouchSensor armTouch;
     private ElapsedTime runtime = new ElapsedTime();
@@ -142,14 +141,14 @@ public class AutonMethods {
         getLocation();
         if (movefbfeet > 0)
         {
-            if (locationy < movefbfeet) {
+            while (locationy < movefbfeet) {
                 getLocation();
                 //drive until robot.locationy>movefb
             }
         }
         if (movefbfeet < 0)
         {
-            if (locationy > movefbfeet) {
+            while (locationy > movefbfeet) {
                 getLocation();
                 //drive until robot.locationy<movefb
             }
