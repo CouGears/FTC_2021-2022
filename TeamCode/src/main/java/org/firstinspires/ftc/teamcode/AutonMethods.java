@@ -63,8 +63,8 @@ public class AutonMethods {
     private ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
     Telemetry tele;
-    int locationy = 00000;
-    int locationx = 00000000000000000;
+    int locationx = 0;
+    int locationy = 0;
     private double speed;
 
     public int counter = 0;
@@ -134,8 +134,8 @@ public class AutonMethods {
     }
     public void getLocation(){
 
-        locationy =  Forwards.getCurrentPosition()/feet2;
-        locationx = Sideways.getCurrentPosition()/feet2;
+        locationy = (int) (Forwards.getCurrentPosition()/feet2);
+        locationx = (int) (Sideways.getCurrentPosition()/feet2);
     }
     public void movefb(int movefbfeet)
     {
@@ -145,6 +145,7 @@ public class AutonMethods {
             while (locationy < movefbfeet) {
                 getLocation();
                 //drive until robot.locationy>movefb
+                System.out.println("move forwards");
             }
         }
         if (movefbfeet < 0)
@@ -152,6 +153,7 @@ public class AutonMethods {
             while (locationy > movefbfeet) {
                 getLocation();
                 //drive until robot.locationy<movefb
+                System.out.println("move backwards");
             }
         }
     }
@@ -164,6 +166,7 @@ public class AutonMethods {
             if (locationx < moverlfeet) {
                 getLocation();
                 //drive until robot.locationx>moverl
+                System.out.println("move right");
             }
         }
         if (moverlfeet < 0)
@@ -171,6 +174,7 @@ public class AutonMethods {
             if (locationx > moverlfeet) {
                 getLocation();
                 //drive until robot.locationx<moverl
+                System.out.println("move left");
             }
         }
     }
