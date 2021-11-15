@@ -57,14 +57,14 @@ public class AutonMethods {
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
     public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel;
-    public static DcMotor forwards=intake, sideways=carousel;
+    public static DcMotor Forwards=intake, Sideways=carousel;
     public static DistanceSensor distanceSensor;
     public TouchSensor armTouch;
     private ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
     Telemetry tele;
-    int locationx = 0;
-    int locationy = 0;
+    int locationy = 00000;
+    int locationx = 00000000000000000;
     private double speed;
 
     public int counter = 0;
@@ -134,8 +134,8 @@ public class AutonMethods {
     }
     public void getLocation(){
 
-        locationy =  Forwards.currentLocation()/feet2;
-        locationx = Sideways.currentLocation()/feet2;
+        locationy =  Forwards.getCurrentPosition()/feet2;
+        locationx = Sideways.getCurrentPosition()/feet2;
     }
     public void movefb(int movefbfeet)
     {
