@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class CompetitionDriving2021 extends LinearOpMode{
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR;
+    private DcMotor motorBR, motorBL, motorFL, motorFR;x
     private Servo claw1, claw2;
     private boolean claw = false;
 
