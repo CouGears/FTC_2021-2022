@@ -12,7 +12,7 @@ public class CompetitionDriving2021 extends LinearOpMode{
 
     private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, lifter;
     //private Servo claw1, claw2,
-     private Servo bucket;
+    private Servo bucket;
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
@@ -25,9 +25,9 @@ public class CompetitionDriving2021 extends LinearOpMode{
         motorBR = hardwareMap.get(DcMotor.class, "motorBR");
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
         intakeFL = hardwareMap.get(DcMotor.class, "intake");
-       lifter = hardwareMap.get(DcMotor.class, "lifter");
-     //   claw1 = hardwareMap.get(Servo.class, "claw1");
-       // claw2 = hardwareMap.get(Servo.class, "claw2");
+        lifter = hardwareMap.get(DcMotor.class, "lifter");
+        //   claw1 = hardwareMap.get(Servo.class, "claw1");
+        // claw2 = hardwareMap.get(Servo.class, "claw2");
         bucket = hardwareMap.get(Servo.class, "bucket");
 
 
@@ -82,27 +82,27 @@ public class CompetitionDriving2021 extends LinearOpMode{
             }*/
             if (gamepad1.b){
 
-                    bucket.setPosition(.5);
-                    robot.sleep(1000);
-                    bucket.setPosition(1);
-                    bucketButton = !bucketButton;
-                }
+                bucket.setPosition(.5);
+                robot.sleep(1000);
+                bucket.setPosition(1);
+                bucketButton = !bucketButton;
+            }
 
 
-                if(gamepad1.right_trigger > 0) {
-                    intakeFL.setPower(gamepad1.right_trigger);
-                } else if(gamepad1.left_bumper){
-                    intakeFL.setPower(-1);
-                } else {
-                    intakeFL.setPower(0);
-                }
-                if(gamepad1.dpad_up){
-                    lifter.setPower(.5);
-                } else if (gamepad1.dpad_down){
-                    lifter.setPower(-.5);
-                } else {
-                    lifter.setPower(0);
-                }
+            if(gamepad1.right_trigger > 0) {
+                intakeFL.setPower(gamepad1.right_trigger);
+            } else if(gamepad1.left_bumper){
+                intakeFL.setPower(-1);
+            } else {
+                intakeFL.setPower(0);
+            }
+            if(gamepad1.dpad_up){
+                lifter.setPower(.5);
+            } else if (gamepad1.dpad_down){
+                lifter.setPower(-.5);
+            } else {
+                lifter.setPower(0);
+            }
 
 
         }
