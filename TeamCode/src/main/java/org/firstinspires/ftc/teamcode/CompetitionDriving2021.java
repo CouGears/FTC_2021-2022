@@ -103,7 +103,7 @@ public class CompetitionDriving2021 extends LinearOpMode{
             } else {
                 lifter.setPower(0);
             }
-
+//hello there this is an easter egg
 
         }
     }
