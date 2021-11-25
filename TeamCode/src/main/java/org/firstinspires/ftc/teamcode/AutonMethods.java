@@ -177,17 +177,27 @@ public class AutonMethods {
         getLocation();
         if (movefbfeet > 0) {
             while (motorFR.isBusy() || motorFL.isBusy()) {
-                if (runtime.seconds() > 3) break;
+                if (runtime.seconds() > 3) break;//do i need to runtime reset?
             }
-            while (locationy < movefbfeet) {
-                getLocation();
+            while (!(movefbfeet - locationy <= 1)) {
+                getLocation();//do i need to runtime reset?
                 motorFL.setPower(.5);
                 motorBL.setPower(.5);
                 motorBR.setPower(.5);
                 motorFR.setPower(.5);
                 //drive until robot.locationy>movefb
                 tele.addData("move forwards", .5);
-                tele.update();
+                tele.update();//do i need to runtime reset?
+            }
+            while (!(movefbfeet - locationy > 1)) {
+                getLocation();//do i need to runtime reset?
+                motorFL.setPower(.1);//do i need to runtime reset?
+                motorBL.setPower(.1);//do i need to runtime reset?
+                motorBR.setPower(.1);
+                motorFR.setPower(.1);
+                //drive until robot.locationy>movefb
+                tele.addData("move forwards", .5);
+                tele.update();//do i need to runtime reset?
             }
         }
         if (movefbfeet < 0) {
