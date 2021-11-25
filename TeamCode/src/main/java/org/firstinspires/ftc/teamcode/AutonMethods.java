@@ -142,7 +142,7 @@ public class AutonMethods {
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
         // tele.update();
     }
-
+/*
     public void odospeed() {
         double dist = 8 * feet;
         runtime.reset();
@@ -166,7 +166,7 @@ public class AutonMethods {
             motorBR.setPower((((int) BRtpos + motorBR.getCurrentPosition()) / dist) + .2);
         }
     }
-
+*/
     public void getLocation() {
 
         locationy = (int) (Forwards.getCurrentPosition() / feet2);
