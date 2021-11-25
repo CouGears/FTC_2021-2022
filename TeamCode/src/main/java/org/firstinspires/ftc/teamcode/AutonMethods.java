@@ -179,7 +179,7 @@ public class AutonMethods {
             while (motorFR.isBusy() || motorFL.isBusy()) {
                 if (runtime.seconds() > 3) break;//do i need to runtime reset?
             }
-            while (!(movefbfeet - locationy <= 1)) {
+            while (movefbfeet - locationy >=1) {
                 getLocation();//do i need to runtime reset?
                 motorFL.setPower(.5);
                 motorBL.setPower(.5);
@@ -189,7 +189,7 @@ public class AutonMethods {
                 tele.addData("move forwards", .5);
                 tele.update();//do i need to runtime reset?
             }
-            while (!(movefbfeet - locationy > 1)) {
+            while (movefbfeet - locationy < 1) {
                 getLocation();//do i need to runtime reset?
                 motorFL.setPower(.1);//do i need to runtime reset?
                 motorBL.setPower(.1);//do i need to runtime reset?
