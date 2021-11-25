@@ -4,14 +4,20 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.Hardware;
 import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.TouchSensor;
+
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+
 import com.qualcomm.hardware.bosch.BNO055IMU;
+
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -22,9 +28,11 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+
 import android.graphics.Color;
 import android.app.Activity;
 import android.view.View;
+
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import java.lang.annotation.Target;
@@ -32,7 +40,9 @@ import java.util.Timer;
 
 import com.qualcomm.robotcore.hardware.Blinker;
 import com.qualcomm.robotcore.hardware.CRServo;
+
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+
 import com.qualcomm.robotcore.hardware.Gyroscope;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -57,7 +67,7 @@ public class AutonMethods {
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
     public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel;
-    public static DcMotor Forwards=intake, Sideways=carousel;
+    public static DcMotor Forwards = intake, Sideways = carousel;
     public static DistanceSensor distanceSensor;
     public TouchSensor armTouch;
     private ElapsedTime runtime = new ElapsedTime();
@@ -76,7 +86,7 @@ public class AutonMethods {
 
     //Initialization
     public void init(HardwareMap map, Telemetry tele, boolean auton) {
-       // location[0] = 0;
+        // location[0] = 0;
         //location[1] = 0;
         motorFL = map.get(DcMotor.class, "motorFL");
         motorBL = map.get(DcMotor.class, "motorBL");
@@ -98,28 +108,28 @@ public class AutonMethods {
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-       // intakeFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        // intakeFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
         motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-      //  intakeFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //  intakeFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-       // intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        // intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
-       // intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
+        // intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
 
 
         motorFL.setTargetPosition(0);
@@ -132,49 +142,101 @@ public class AutonMethods {
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
         // tele.update();
     }
-    public void getLocation(){
 
-        locationy = (int) (Forwards.getCurrentPosition()/feet2);
-        locationx = (int) (Sideways.getCurrentPosition()/feet2);
+    public void odospeed() {
+        double dist = 8 * feet;
+        runtime.reset();
+
+        FRtpos = forward - sideways;
+        BRtpos = forward + sideways;
+        FLtpos = forward + sideways;
+        BLtpos = forward - sideways;
+
+        motorFL.setTargetPosition((int) FLtpos);
+        motorBL.setTargetPosition((int) BLtpos);
+        motorFR.setTargetPosition(-(int) FRtpos);
+        motorBR.setTargetPosition(-(int) BRtpos);
+
+        speed(1);
+        runtime.reset();
+        while ((motorFR.isBusy() || motorFL.isBusy()) && runtime.seconds() < 3) {
+            motorFL.setPower((((int) FLtpos - motorFL.getCurrentPosition()) / dist) + .2);
+            motorBL.setPower((((int) BLtpos - motorBL.getCurrentPosition()) / dist) + .2);
+            motorFR.setPower((((int) FRtpos + motorFR.getCurrentPosition()) / dist) + .2);
+            motorBR.setPower((((int) BRtpos + motorBR.getCurrentPosition()) / dist) + .2);
+        }
     }
-    public void movefb(int movefbfeet)
-    {
+
+    public void getLocation() {
+
+        locationy = (int) (Forwards.getCurrentPosition() / feet2);
+        locationx = (int) (Sideways.getCurrentPosition() / feet2);
+    }
+
+    public void movefb(int movefbfeet) {
         getLocation();
-        if (movefbfeet > 0)
-        {
+        if (movefbfeet > 0) {
+            while (motorFR.isBusy() || motorFL.isBusy()) {
+                if (runtime.seconds() > 3) break;
+            }
             while (locationy < movefbfeet) {
                 getLocation();
+                motorFL.setPower(.5);
+                motorBL.setPower(.5);
+                motorBR.setPower(.5);
+                motorFR.setPower(.5);
                 //drive until robot.locationy>movefb
-                System.out.println("move forwards");
+                tele.addData("move forwards", .5);
+                tele.update();
             }
         }
-        if (movefbfeet < 0)
-        {
+        if (movefbfeet < 0) {
+            while (motorFR.isBusy() || motorFL.isBusy()) {
+                if (runtime.seconds() > 3) break;
+            }
             while (locationy > movefbfeet) {
                 getLocation();
+                motorFL.setPower(-.5);
+                motorBL.setPower(-.5);
+                motorBR.setPower(-.5);
+                motorFR.setPower(-.5);
                 //drive until robot.locationy<movefb
-                System.out.println("move backwards");
+                tele.addData("move backwqards", .5);
+                tele.update();
             }
         }
     }
 
-    public void moverl(int moverlfeet)
-    {
+    public void moverl(int moverlfeet) {
         getLocation();
-        if (moverlfeet > 0)
-        {
+        if (moverlfeet > 0) {
             if (locationx < moverlfeet) {
+                while (motorFR.isBusy() || motorFL.isBusy()) {
+                    if (runtime.seconds() > 3) break;
+                }
                 getLocation();
+                motorFL.setPower(.5);
+                motorBL.setPower(-.5);
+                motorBR.setPower(.5);
+                motorFR.setPower(-.5);
                 //drive until robot.locationx>moverl
-                System.out.println("move right");
+                tele.addData("move right", .5);
+                tele.update();
             }
         }
-        if (moverlfeet < 0)
-        {
+        if (moverlfeet < 0) {
             if (locationx > moverlfeet) {
+                while (motorFR.isBusy() || motorFL.isBusy()) {
+                    if (runtime.seconds() > 3) break;
+                }
                 getLocation();
+                motorFL.setPower(-.5);
+                motorBL.setPower(.5);
+                motorBR.setPower(-.5);
+                motorFR.setPower(.5);
                 //drive until robot.locationx<moverl
-                System.out.println("move left");
+                tele.addData("move left", .5);
+                tele.update();
             }
         }
     }
@@ -214,19 +276,18 @@ public class AutonMethods {
 //        carousel.setPosition(degrees);
 //    }
 
-    public int distance(){
+    public int distance() {
         int stuff = 0;
-        if(distanceSensor.getDistance(DistanceUnit.CM) < 5){
+        if (distanceSensor.getDistance(DistanceUnit.CM) < 5) {
             stuff = 1;
-        }
-        else if(distanceSensor.getDistance(DistanceUnit.CM) > 10 && distanceSensor.getDistance(DistanceUnit.CM) < 15){
+        } else if (distanceSensor.getDistance(DistanceUnit.CM) > 10 && distanceSensor.getDistance(DistanceUnit.CM) < 15) {
             stuff = 2;
-        }
-        else if(distanceSensor.getDistance(DistanceUnit.CM) > 15){
+        } else if (distanceSensor.getDistance(DistanceUnit.CM) > 15) {
             stuff = 3;
         }
         return stuff;
     }
+
     //circumscibed robot has a diameter of 21 inches
     public void turn(double deg) {
         while (motorFR.isBusy() || motorFL.isBusy()) {
@@ -236,11 +297,11 @@ public class AutonMethods {
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        double deltaturn = (deg/360.0)*21.654*3.14*inch*1.5;
-        motorFL.setTargetPosition((int)  deltaturn);
-        motorBL.setTargetPosition((int)  deltaturn);
-        motorFR.setTargetPosition((int)  deltaturn);
-        motorBR.setTargetPosition((int)  deltaturn);
+        double deltaturn = (deg / 360.0) * 21.654 * 3.14 * inch * 1.5;
+        motorFL.setTargetPosition((int) deltaturn);
+        motorBL.setTargetPosition((int) deltaturn);
+        motorFR.setTargetPosition((int) deltaturn);
+        motorBR.setTargetPosition((int) deltaturn);
         motorFR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorFL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -253,14 +314,13 @@ public class AutonMethods {
     }
 
 
-
-
     public void speed(double spee) {
         motorFL.setPower(spee);
         motorBL.setPower(spee);
         motorFR.setPower(spee);
         motorBR.setPower(spee);
     }
+
     public void newSleep(double timeinSeconds) {
         runtime.reset();
         while (runtime.seconds() < timeinSeconds) ;
@@ -275,29 +335,30 @@ public class AutonMethods {
             tele.update();
         }
     }
-    public void alcohol(double tequila){ //moves the 4 bar/arm
-      //  rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+    public void alcohol(double tequila) { //moves the 4 bar/arm
+        //  rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 //        rum.setTargetPosition((int)tequila);
 //        rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
-   /*
+    /*
 
 
-    public void intake(int time) {
-        intakeFL.setPower(1);
-        sleep(time);
-        intakeFL.setPower(0);
+     public void intake(int time) {
+         intakeFL.setPower(1);
+         sleep(time);
+         intakeFL.setPower(0);
 
-    }
-
-
-
+     }
 
 
 
-    }
-*/
+
+
+
+     }
+ */
     public void driveWithDecel(double forward, double sideways) {
         double dist = 8 * feet;
         runtime.reset();
@@ -334,10 +395,6 @@ public class AutonMethods {
 
 
     }
-
-
-
-
 
 
 }
