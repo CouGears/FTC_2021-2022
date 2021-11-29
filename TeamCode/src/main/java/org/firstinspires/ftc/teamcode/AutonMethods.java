@@ -66,8 +66,9 @@ public class AutonMethods {
     double inch2 = rev2 / (2 * 3.14);
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel;
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel; //rum refers to the 4-bar
     public static DcMotor Forwards = intake, Sideways = carousel;
+    public static Servo bucket;
     public static DistanceSensor distanceSensor;
     public TouchSensor armTouch;
     private ElapsedTime runtime = new ElapsedTime();
@@ -92,9 +93,12 @@ public class AutonMethods {
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
         motorFR = map.get(DcMotor.class, "motorFR");
+        carousel = map.get(DcMotor.class, "carousel");
+        rum = map.get(DcMotor.class, "4-bar");
+        bucket = map.get(Servo.class, "bucket");
         /*intakeFL = map.get(DcMotor.class, "intake");
         arm = map.get(DcMotor.class, "arm");
-        rum = map.get(DcMotor.class, "rum");
+
         shooter = map.get(DcMotor.class, "shooter");
 
 
@@ -102,7 +106,7 @@ public class AutonMethods {
         shooterServo = map.get(Servo.class, "shooterServo");
         note - this is according to front orientation - front is in the front and back is in the back
         also these should be configured accordingly
-        carousel = map.get(Servo.class, "carousel");
+
         distanceSensor = map.get(DistanceSensor.class, "distanceSensor");*/
         motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -142,31 +146,32 @@ public class AutonMethods {
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
         // tele.update();
     }
-/*
-    public void odospeed() {
-        double dist = 8 * feet;
-        runtime.reset();
 
-        FRtpos = forward - sideways;
-        BRtpos = forward + sideways;
-        FLtpos = forward + sideways;
-        BLtpos = forward - sideways;
+    /*
+        public void odospeed() {
+            double dist = 8 * feet;
+            runtime.reset();
 
-        motorFL.setTargetPosition((int) FLtpos);
-        motorBL.setTargetPosition((int) BLtpos);
-        motorFR.setTargetPosition(-(int) FRtpos);
-        motorBR.setTargetPosition(-(int) BRtpos);
+            FRtpos = forward - sideways;
+            BRtpos = forward + sideways;
+            FLtpos = forward + sideways;
+            BLtpos = forward - sideways;
 
-        speed(1);
-        runtime.reset();
-        while ((motorFR.isBusy() || motorFL.isBusy()) && runtime.seconds() < 3) {
-            motorFL.setPower((((int) FLtpos - motorFL.getCurrentPosition()) / dist) + .2);
-            motorBL.setPower((((int) BLtpos - motorBL.getCurrentPosition()) / dist) + .2);
-            motorFR.setPower((((int) FRtpos + motorFR.getCurrentPosition()) / dist) + .2);
-            motorBR.setPower((((int) BRtpos + motorBR.getCurrentPosition()) / dist) + .2);
+            motorFL.setTargetPosition((int) FLtpos);
+            motorBL.setTargetPosition((int) BLtpos);
+            motorFR.setTargetPosition(-(int) FRtpos);
+            motorBR.setTargetPosition(-(int) BRtpos);
+
+            speed(1);
+            runtime.reset();
+            while ((motorFR.isBusy() || motorFL.isBusy()) && runtime.seconds() < 3) {
+                motorFL.setPower((((int) FLtpos - motorFL.getCurrentPosition()) / dist) + .2);
+                motorBL.setPower((((int) BLtpos - motorBL.getCurrentPosition()) / dist) + .2);
+                motorFR.setPower((((int) FRtpos + motorFR.getCurrentPosition()) / dist) + .2);
+                motorBR.setPower((((int) BRtpos + motorBR.getCurrentPosition()) / dist) + .2);
+            }
         }
-    }
-*/
+    */
     public void getLocation() {
 
         locationy = (int) (Forwards.getCurrentPosition() / feet2);
@@ -179,7 +184,7 @@ public class AutonMethods {
             while (motorFR.isBusy() || motorFL.isBusy()) {
                 if (runtime.seconds() > 3) break;//do i need to runtime reset?
             }
-            while (movefbfeet - locationy >=1) {
+            while (movefbfeet - locationy >= 1) {
                 getLocation();//do i need to runtime reset?
                 motorFL.setPower(.5);
                 motorBL.setPower(.5);
@@ -253,7 +258,7 @@ public class AutonMethods {
 
 
     //Function to move the robot in any direction
-    public void drive(double forward, double sideways, double spee) {
+    public void drive(double forward, double sideways, double speed) {
         runtime.reset();
         while (motorFR.isBusy() || motorFL.isBusy()) {
             if (runtime.seconds() > 2) break;
@@ -278,13 +283,16 @@ public class AutonMethods {
         motorFR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        speed(spee);
+        speed(speed);
 
 
     }
-//    public void setCarousel(double degrees){
-//        carousel.setPosition(degrees);
-//    }
+
+    public void setCarousel() {
+        carousel.setPower(1);
+        newSleep(4);
+        carousel.setPower(0);
+    }
 
     public int distance() {
         int stuff = 0;
@@ -347,9 +355,14 @@ public class AutonMethods {
     }
 
     public void alcohol(double tequila) { //moves the 4 bar/arm
-        //  rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//        rum.setTargetPosition((int)tequila);
-//        rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rum.setTargetPosition((int) tequila);
+        rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+    public void lift (){
+        bucket.setPosition(.5);
+        sleep(1000);
+        bucket.setPosition(1);
     }
 
     /*

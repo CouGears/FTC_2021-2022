@@ -106,39 +106,44 @@ public class TestAuton extends OpMode
         int tie = 0;
         switch (tie){
             case 0:
-                robot.drive(1*feet, 0 ,1);
-//                robot.drive(5 * feet,0 * feet,1 * feet); //drives to carousel
+//                robot.drive(1*feet, 0 ,1);
+                robot.drive(-2 * feet,0 * feet,1 * feet); //drives to carousel
                 tie++;
                 break;
-         /*   case 1:
-//                robot.setCarousel(270);
+            case 1:
+                robot.setCarousel();
                 tie++;
                 break;
             case 2:
-                robot.drive(1 * feet,1 * feet,1 * feet); //drives to scan point
+                robot.drive(0,1.5* feet,1); //drives to scan point
                 tie++;
                 break;
             case 3:
-                robot.drive(4 * feet, 2 * feet, 1); //drive to drop point
+                robot.drive(2.3 * feet, .5 * feet, 1); //drive to drop point
                 tie++;
                 break;
             case 4:
                 if(robot.distance() == 1){
                     robot.alcohol(400);//Top of the tower
+                    robot.lift();
                 }
                 else if(robot.distance() == 2){
                     robot.alcohol(200);//Middle
+                    robot.lift();
                 }
                 else if(robot.distance() == 3){
                     robot.alcohol(0);//Bottom of the tower
+                    robot.lift();
                 }
                 tie++;
                 break;
             case 5:
-                robot.drive(0, -1*feet, 1);
-                robot.drive(2.5*feet, 0,1); //drive to drop zone
+                robot.drive(0, .5 * feet, 1);
+                robot.drive(5 * feet, 0,1 );
+                robot.turn(90);
+                robot.drive(2 * feet, 0, 1);
                 tie++;
-                break;*/
+                break;
         }
     }
 
