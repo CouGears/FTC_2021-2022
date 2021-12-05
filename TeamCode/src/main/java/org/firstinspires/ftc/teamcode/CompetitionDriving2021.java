@@ -103,6 +103,7 @@ public class CompetitionDriving2021 extends LinearOpMode{
             } else {
                 lifter.setPower(0);
             }
+            if (gamepad1.x) robot.setCarousel();
 //hello there this is an easter egg
 
         }
