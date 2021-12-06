@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/danielsarasohn/Documents/GitHub/FTC_2021-2022/TeamCode/build/intermediates/res/merged/debug/xml_teamwebcamcalibrations.xml.flat",
-        "source": "/Users/danielsarasohn/Documents/GitHub/FTC_2021-2022/TeamCode/src/main/res/xml/teamwebcamcalibrations.xml"
+        "merged": "C:\\Users\\izzyb\\OneDrive\\Documents\\GitHub\\FTC_2021-2022\\TeamCode\\build\\intermediates\\res\\merged\\debug\\raw_readme.md.flat",
+        "source": "C:\\Users\\izzyb\\OneDrive\\Documents\\GitHub\\FTC_2021-2022\\TeamCode\\src\\main\\res\\raw\\readme.md"
     },
     {
-        "merged": "/Users/danielsarasohn/Documents/GitHub/FTC_2021-2022/TeamCode/build/intermediates/res/merged/debug/raw_readme.md.flat",
-        "source": "/Users/danielsarasohn/Documents/GitHub/FTC_2021-2022/TeamCode/src/main/res/raw/readme.md"
+        "merged": "C:\\Users\\izzyb\\OneDrive\\Documents\\GitHub\\FTC_2021-2022\\TeamCode\\build\\intermediates\\res\\merged\\debug\\xml_teamwebcamcalibrations.xml.flat",
+        "source": "C:\\Users\\izzyb\\OneDrive\\Documents\\GitHub\\FTC_2021-2022\\TeamCode\\src\\main\\res\\xml\\teamwebcamcalibrations.xml"
     }
 ]
