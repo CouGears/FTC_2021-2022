@@ -148,31 +148,7 @@ public class AutonMethods {
         // tele.update();
     }
 
-    /*
-        public void odospeed() {
-            double dist = 8 * feet;
-            runtime.reset();
-
-            FRtpos = forward - sideways;
-            BRtpos = forward + sideways;
-            FLtpos = forward + sideways;
-            BLtpos = forward - sideways;
-
-            motorFL.setTargetPosition((int) FLtpos);
-            motorBL.setTargetPosition((int) BLtpos);
-            motorFR.setTargetPosition(-(int) FRtpos);
-            motorBR.setTargetPosition(-(int) BRtpos);
-
-            speed(1);
-            runtime.reset();
-            while ((motorFR.isBusy() || motorFL.isBusy()) && runtime.seconds() < 3) {
-                motorFL.setPower((((int) FLtpos - motorFL.getCurrentPosition()) / dist) + .2);
-                motorBL.setPower((((int) BLtpos - motorBL.getCurrentPosition()) / dist) + .2);
-                motorFR.setPower((((int) FRtpos + motorFR.getCurrentPosition()) / dist) + .2);
-                motorBR.setPower((((int) BRtpos + motorBR.getCurrentPosition()) / dist) + .2);
-            }
-        }
-    */
+    
     public void getLocation() {
 
         locationy = (int) (Forwards.getCurrentPosition() / feet2);
