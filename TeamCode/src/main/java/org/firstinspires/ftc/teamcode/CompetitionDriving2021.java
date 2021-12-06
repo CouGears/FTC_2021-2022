@@ -88,7 +88,7 @@ public class CompetitionDriving2021 extends LinearOpMode{
                 bucketButton = !bucketButton;
             }
 
-
+/*
             if(gamepad1.right_bumper) {
                 intakeFL.setPower(1);
             } else if(gamepad1.left_bumper){
@@ -96,17 +96,19 @@ public class CompetitionDriving2021 extends LinearOpMode{
             } else {
                 intakeFL.setPower(0);
             }
-/*
+*/
+ public int FLIntakePowerR = gamepad1.right_trigger;
+  public int FLIntakePowerL = gamepad1.left_bumper;
 
  if(gamepad1.right_trigger > 0) {
-                intakeFL.setPower(gamepad1.right_trigger);
+                intakeFL.setPower(FLIntakePower);
             } else if(gamepad1.left_bumper){
                 intakeFL.setPower(-1);
             } else {
                 intakeFL.setPower(0);
             }
 
- */
+
 
             if(gamepad1.dpad_up){
                 lifter.setPower(.5);
