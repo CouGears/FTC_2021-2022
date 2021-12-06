@@ -89,8 +89,8 @@ public class CompetitionDriving2021 extends LinearOpMode{
             }
 
 
-            if(gamepad1.right_trigger > 0) {
-                intakeFL.setPower(gamepad1.right_trigger);
+            if(gamepad1.right_bumper) {
+                intakeFL.setPower(1);
             } else if(gamepad1.left_bumper){
                 intakeFL.setPower(-1);
             } else {

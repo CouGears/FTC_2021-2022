@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\izzyb\\OneDrive\\Documents\\GitHub\\FTC_2021-2022\\TeamCode\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+            "outputFile": "/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\izzyb\\.gradle\\caches\\transforms-2\\files-2.1\\43b341aad46cd7bd9a9afacbfe632888\\jetified-RobotCore-7.0.0\\res\\values-v11\\values-v11.xml",
+                    "source": "/Users/aarongoldgewert/.gradle/caches/transforms-2/files-2.1/43b341aad46cd7bd9a9afacbfe632888/jetified-RobotCore-7.0.0/res/values-v11/values-v11.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

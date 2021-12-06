@@ -89,7 +89,8 @@ public class AutonMethods {
     public void init(HardwareMap map, Telemetry tele, boolean auton) {
         // location[0] = 0;
         //location[1] = 0;
-        motorFL = map.get(DcMotor.class, "motorFL");
+
+        distanceSensor = map.get(DistanceSensor.class, "distanceSensor");        motorFL = map.get(DcMotor.class, "motorFL");
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
         motorFR = map.get(DcMotor.class, "motorFR");
