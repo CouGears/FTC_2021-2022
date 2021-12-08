@@ -91,7 +91,8 @@ public class CompetitionDriving2021 extends LinearOpMode{
 
                 bucket.setPosition(.5);
                 robot.sleep(1000);
-                bucket.setPosition(1);
+               // bucket.setPosition(1);
+                bucket.setPosition(-.5);//to turn the servo backwards
                 bucketButton = !bucketButton;
             }
 
@@ -129,12 +130,9 @@ public class CompetitionDriving2021 extends LinearOpMode{
             }
             if (gamepad1.x) {
                 carousel.setPower(1);
-                robot.sleep(2000);
-                carousel.setPower(0);
+                //robot.sleep(2000);
+                //carousel.setPower(0);
             }
-
-//hello there this is an easter egg
-
         }
     }
 }
