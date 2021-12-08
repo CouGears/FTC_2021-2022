@@ -69,7 +69,7 @@ public class CompetitionDriving2021 extends LinearOpMode{
                 motorBR.setPower(-((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
                 motorFR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
             }
-           /* if(gamepad1.a) {
+            /*if(gamepad1.a) {
                 if (claw == false) {
                     claw1.setPosition(.5);
                     claw2.setPosition(.5);
@@ -97,10 +97,10 @@ public class CompetitionDriving2021 extends LinearOpMode{
                 intakeFL.setPower(0);
             }
 */
- public int FLIntakePowerR = gamepad1.right_trigger;
-  public int FLIntakePowerL = gamepad1.left_bumper;
+ int FLIntakePowerR = (int) gamepad1.right_trigger;
+ boolean FLIntakePowerL = gamepad1.left_bumper;
 
- if(gamepad1.right_trigger > 0) {
+            if(gamepad1.right_trigger > 0) {
                 intakeFL.setPower(FLIntakePowerR);
             } else if(FLIntakePowerL){
                 intakeFL.setPower(-1);
