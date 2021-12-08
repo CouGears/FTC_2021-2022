@@ -105,7 +105,8 @@ public class CompetitionDriving2021 extends LinearOpMode{
                 intakeFL.setPower(0);
             }
 */
- /*public int FLIntakePowerR = gamepad1.right_trigger;
+ /*
+  public int FLIntakePowerR = gamepad1.right_trigger;
   public int FLIntakePowerL = gamepad1.left_bumper;
 */
             int FLIntakePowerR = (int) gamepad1.right_trigger;
