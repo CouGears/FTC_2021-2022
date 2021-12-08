@@ -87,15 +87,21 @@ public class CompetitionDriving2021 extends LinearOpMode{
                     claw = !claw;
                 }
             }*/
-            if (gamepad1.b){
+          /*  while (gamepad1.b){
 
                 bucket.setPosition(.5);
                 robot.sleep(1000);
                // bucket.setPosition(1);
                 bucket.setPosition(-.5);//to turn the servo backwards
-                bucketButton = !bucketButton;
+                //bucketButton = !bucketButton;
+            }*/
+            if (gamepad1.b)
+            {
+                bucket.setPosition(.5);
+                robot.sleep(500);
+                bucket.setPosition(0);
+                System.out.println("stuck");
             }
-
 /*
             if(gamepad1.right_bumper) {
                 intakeFL.setPower(1);
