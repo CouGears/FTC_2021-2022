@@ -90,51 +90,52 @@ public class AutonMethods {
         // location[0] = 0;
         //location[1] = 0;
 
-        distanceSensor = map.get(DistanceSensor.class, "distanceSensor");        motorFL = map.get(DcMotor.class, "motorFL");
+        distanceSensor = map.get(DistanceSensor.class, "distanceSensor");
+        motorFL = map.get(DcMotor.class, "motorFL");
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
         motorFR = map.get(DcMotor.class, "motorFR");
         carousel = map.get(DcMotor.class, "carousel");
         rum = map.get(DcMotor.class, "4-bar");
         bucket = map.get(Servo.class, "bucket");
-        /*intakeFL = map.get(DcMotor.class, "intake");
+        intake = map.get(DcMotor.class, "intake");
         arm = map.get(DcMotor.class, "arm");
 
-        shooter = map.get(DcMotor.class, "shooter");
+      //  shooter = map.get(DcMotor.class, "shooter");
 
 
-        armServo = map.get(Servo.class, "armServo");
-        shooterServo = map.get(Servo.class, "shooterServo");
-        note - this is according to front orientation - front is in the front and back is in the back
-        also these should be configured accordingly
+       // armServo = map.get(Servo.class, "armServo");
+       // shooterServo = map.get(Servo.class, "shooterServo");
+     //   note - this is according to front orientation - front is in the front and back is in the back
+       // also these should be configured accordingly
 
-        distanceSensor = map.get(DistanceSensor.class, "distanceSensor");*/
+        distanceSensor = map.get(DistanceSensor.class, "distanceSensor");
         motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        // intakeFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        intake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
         motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //  intakeFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+         intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        // intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
-        // intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
+        intake.setDirection(DcMotorSimple.Direction.FORWARD);
 
 
         motorFL.setTargetPosition(0);

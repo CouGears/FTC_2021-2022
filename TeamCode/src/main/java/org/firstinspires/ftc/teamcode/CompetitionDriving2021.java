@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class CompetitionDriving2021 extends LinearOpMode{
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, lifter;
+    private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, lifter, carousel;
     //private Servo claw1, claw2,
     private Servo bucket, intakeservo;
     private boolean claw = false, bucketButton = false;
@@ -25,11 +25,13 @@ public class CompetitionDriving2021 extends LinearOpMode{
         motorBR = hardwareMap.get(DcMotor.class, "motorBR");
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
         intakeFL = hardwareMap.get(DcMotor.class, "intake");
-        lifter = hardwareMap.get(DcMotor.class, "lifter");
+        lifter = hardwareMap.get(DcMotor.class, "4-bar");
+        carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
         // claw2 = hardwareMap.get(Servo.class, "claw2");
         bucket = hardwareMap.get(Servo.class, "bucket");
         intakeservo = hardwareMap.get(Servo.class, "intakeservo");
+
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -38,6 +40,7 @@ public class CompetitionDriving2021 extends LinearOpMode{
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         lifter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        carousel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -45,6 +48,7 @@ public class CompetitionDriving2021 extends LinearOpMode{
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
         intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
         lifter.setDirection(DcMotorSimple.Direction.FORWARD);
+        carousel.setDirection(DcMotorSimple.Direction.FORWARD);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -60,10 +64,10 @@ public class CompetitionDriving2021 extends LinearOpMode{
 
 
             if(x == 0){
-                motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x))*.75);
-                motorBL.setPower(-((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x))*.75);
-                motorBR.setPower(-((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x))*.75);
-                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x))*.75);
+                motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x))*.9);
+                motorBL.setPower(-((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x))*.9);
+                motorBR.setPower(-((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x))*.9);
+                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x))*.9);
             }
 
             else if(x == 1) {
@@ -72,7 +76,7 @@ public class CompetitionDriving2021 extends LinearOpMode{
                 motorBR.setPower(-((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
                 motorFR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
             }
-            /*if(gamepad1.a) {
+           /* if(gamepad1.a) {
                 if (claw == false) {
                     claw1.setPosition(.5);
                     claw2.setPosition(.5);
@@ -123,7 +127,12 @@ public class CompetitionDriving2021 extends LinearOpMode{
             } else {
                 lifter.setPower(0);
             }
-            if (gamepad1.x) robot.setCarousel();
+            if (gamepad1.x) {
+                carousel.setPower(1);
+                robot.sleep(2000);
+                carousel.setPower(0);
+            }
+
 //hello there this is an easter egg
 
         }
