@@ -19,6 +19,3 @@ dependencies {
     implementation project(':FtcRobotController')
     annotationProcessor files('lib/OpModeAnnotationProcessor.jar')
 }
-task wrapper(type: Wrapper){
-    gradleVersion = '7.2'
-}
