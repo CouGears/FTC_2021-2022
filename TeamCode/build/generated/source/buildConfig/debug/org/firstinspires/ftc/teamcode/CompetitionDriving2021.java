@@ -12,7 +12,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
     private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, lifter, carousel;
     //private Servo claw1, claw2,
-    private Servo bucket;
+    private Servo bucket, intakeServo;
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
@@ -30,6 +30,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
         // claw2 = hardwareMap.get(Servo.class, "claw2");
         bucket = hardwareMap.get(Servo.class, "bucket");
+        intakeServo = hardwareMap.get(Servo.class, "intakeservo");
 
 
 
@@ -53,12 +54,12 @@ public class CompetitionDriving2021 extends LinearOpMode {
         telemetry.update();
 
 
-
+intakeServo.setPosition(1);
         waitForStart();
 
         while (opModeIsActive()) {
             x = 0;
-
+            intakeServo.setPosition(0);
 
 
 
