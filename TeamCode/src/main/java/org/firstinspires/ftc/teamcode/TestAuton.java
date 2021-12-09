@@ -104,6 +104,7 @@ public class TestAuton extends OpMode
         int tie = 0;
         switch (tie){
             case 0:
+                robot.intakeServo.setPosition(0);
 //                robot.drive(1*feet, 0 ,1);
                 robot.drive(-2 * feet,0 * feet,1 * feet); //drives to carousel
                 tie++;

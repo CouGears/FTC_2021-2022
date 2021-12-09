@@ -68,7 +68,7 @@ public class AutonMethods {
     double FRtpos, BRtpos, FLtpos, BLtpos;
     public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel; //rum refers to the 4-bar
     //public static DcMotor Forwards = intake, Sideways = carousel;
-    public static Servo bucket;
+    public static Servo bucket, intakeServo;
     public static DistanceSensor distanceSensor;
     public TouchSensor armTouch;
     private ElapsedTime runtime = new ElapsedTime();
@@ -98,6 +98,7 @@ public class AutonMethods {
         carousel = map.get(DcMotor.class, "carousel");
         rum = map.get(DcMotor.class, "4-bar");
         bucket = map.get(Servo.class, "bucket");
+        intakeServo = map.get(Servo.class, "intakeServo");
         intake = map.get(DcMotor.class, "intake");
 //        arm = map.get(DcMotor.class, "arm");
 
