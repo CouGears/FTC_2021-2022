@@ -64,10 +64,10 @@ intakeServo.setPosition(1);
 
 
             if (x == 0) {
-                motorFL.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .9);
+                motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .9);
                 motorBL.setPower(-(-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .9);
-                motorBR.setPower(-(-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .9);
-                motorFR.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .9);
+                motorBR.setPower(-((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .9);
+                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .9);
             } else if (x == 1) {
                 motorFL.setPower(((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
                 motorBL.setPower(-((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
@@ -121,9 +121,9 @@ intakeServo.setPosition(1);
             boolean FLIntakePowerL = gamepad1.left_bumper;
 
             if (gamepad1.right_bumper) {
-                intakeFL.setPower(FLIntakePowerR);
-            } else if (FLIntakePowerL) {
                 intakeFL.setPower(-1);
+            } else if (FLIntakePowerL) {
+                intakeFL.setPower(1);
             } else {
                 intakeFL.setPower(0);
             }
@@ -136,11 +136,12 @@ intakeServo.setPosition(1);
             } else {
                 lifter.setPower(0);
             }
-            while (gamepad1.x) {
+            if (gamepad1.x) {
                 carousel.setPower(.75);
                 //robot.sleep(2000);
                 //carousel.setPower(0);
-            }//set to while else??
+            } else if (gamepad1.y) carousel.setPower(-.75);
+            else carousel.setPower(0);//set to while else??
         }
     }
 }

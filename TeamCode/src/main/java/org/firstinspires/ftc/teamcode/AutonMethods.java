@@ -67,7 +67,7 @@ public class AutonMethods {
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
     public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel; //rum refers to the 4-bar
-    public static DcMotor Forwards = intake, Sideways = carousel;
+    //public static DcMotor Forwards = intake, Sideways = carousel;
     public static Servo bucket;
     public static DistanceSensor distanceSensor;
     public TouchSensor armTouch;
@@ -99,7 +99,7 @@ public class AutonMethods {
         rum = map.get(DcMotor.class, "4-bar");
         bucket = map.get(Servo.class, "bucket");
         intake = map.get(DcMotor.class, "intake");
-        arm = map.get(DcMotor.class, "arm");
+//        arm = map.get(DcMotor.class, "arm");
 
       //  shooter = map.get(DcMotor.class, "shooter");
 
@@ -109,7 +109,7 @@ public class AutonMethods {
      //   note - this is according to front orientation - front is in the front and back is in the back
        // also these should be configured accordingly
 
-        distanceSensor = map.get(DistanceSensor.class, "distanceSensor");
+
         motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -152,8 +152,8 @@ public class AutonMethods {
     
     public void getLocation() {
 
-        locationy = (int) (Forwards.getCurrentPosition() / feet2);
-        locationx = (int) (Sideways.getCurrentPosition() / feet2);
+     //   locationy = (int) (Forwards.getCurrentPosition() / feet2);
+       // locationx = (int) (Sideways.getCurrentPosition() / feet2);
     }
 
     public void movefb(int movefbfeet) {

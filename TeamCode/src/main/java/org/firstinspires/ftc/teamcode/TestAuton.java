@@ -50,10 +50,10 @@ public class TestAuton extends OpMode
     double rev = 383.6;
     double inch = rev / (3.78 * 3.14);
     double feet = inch * 12;
-    AutonomousOdometryBase bot = new AutonomousOdometryBase();
-    double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, carousel, rum;
-    public static DistanceSensor sensorDistance;
+   // AutonomousOdometryBase bot = new AutonomousOdometryBase();
+ //   double FRtpos, BRtpos, FLtpos, BLtpos;
+ //   public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, carousel, rum;
+  //  public static DistanceSensor sensorDistance;
     private ElapsedTime runtime = new ElapsedTime();
     AutonMethods robot = new AutonMethods();
     HardwareMap map;
