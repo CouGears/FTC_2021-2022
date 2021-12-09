@@ -101,6 +101,8 @@ intakeServo.setPosition(1);
             }*/
             if (gamepad1.b) {
                 bucket.setPosition(.5);
+                robot.sleep(1500);
+                bucket.setPosition(1);
             } else if (gamepad1.y){
                 bucket.setPosition(1);
             }
