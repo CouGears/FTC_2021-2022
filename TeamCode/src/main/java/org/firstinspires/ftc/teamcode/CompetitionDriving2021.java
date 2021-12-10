@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class CompetitionDriving2021 extends LinearOpMode {
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, lifter, carousel;
+    private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, lifter, carousel, stucky;
     //private Servo claw1, claw2,
     private Servo bucket, intakeServo;
     private boolean claw = false, bucketButton = false;
@@ -25,6 +25,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorBR = hardwareMap.get(DcMotor.class, "motorBR");
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
         intakeFL = hardwareMap.get(DcMotor.class, "intake");
+        stucky = hardwareMap.get(DcMotor.class, "stucky");
         lifter = hardwareMap.get(DcMotor.class, "4-bar");
         carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
@@ -41,6 +42,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         lifter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         carousel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        stucky.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -54,12 +56,10 @@ public class CompetitionDriving2021 extends LinearOpMode {
         telemetry.update();
 
 
-//intakeServo.setPosition(1);
         waitForStart();
 
         while (opModeIsActive()) {
             x = 0;
-            //intakeServo.setPosition(0);
 
 
 
@@ -138,6 +138,16 @@ public class CompetitionDriving2021 extends LinearOpMode {
             } else {
                 lifter.setPower(0);
             }
+
+            if (gamepad1.dpad_right) {
+                stucky.setPower(.5);
+            } else if (gamepad1.dpad_left) {
+                stucky.setPower(-.5);
+            } else {
+                stucky.setPower(0);
+            }
+
+
             if (gamepad1.x) {
                 carousel.setPower(.75);
                 //robot.sleep(2000);
