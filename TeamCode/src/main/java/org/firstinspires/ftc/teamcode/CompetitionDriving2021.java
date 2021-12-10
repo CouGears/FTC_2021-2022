@@ -106,6 +106,10 @@ public class CompetitionDriving2021 extends LinearOpMode {
             } else if (gamepad1.y){
                 bucket.setPosition(1);
             }
+
+            if (gamepad1.a) {
+                intakeServo.setPosition(.5);
+            }
 /*
             if(gamepad1.right_bumper) {
                 intakeFL.setPower(1);
