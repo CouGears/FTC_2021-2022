@@ -58,7 +58,7 @@ public class BlueSideComp1 extends OpMode {
                 robot.counter++;
                 break;
             case 2:
-                robot.drive(6*feet, 0, 1);
+                robot.drive(6*feet, 0, 1); //drive to drop point
                 robot.counter++;
                 break;
 
