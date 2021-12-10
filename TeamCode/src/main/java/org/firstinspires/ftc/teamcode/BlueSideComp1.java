@@ -36,16 +36,7 @@ public class BlueSideComp1 extends OpMode {
         robot.init(hardwareMap, telemetry, false);
         telemetry.addData("Status", "Initialized");
         telemetry.update();
-       /* while (!robot.scissorTouch.isPressed()) {
-            robot.scissorMotor.setPower(-1);
-        }
-        robot.scissorMotor.setPower(0);
-        while (!robot.armTouch.isPressed()) {
-            robot.arm.setPower(1);
-        }
-        robot.arm.setPower(0);
-        scissorMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);*/
+
 
     }
 
@@ -62,6 +53,15 @@ public class BlueSideComp1 extends OpMode {
                 robot.drive(1*feet, 0, 1);
                 robot.counter++;
                 break;
+            case 1:
+                robot.setCarousel();
+                robot.counter++;
+                break;
+            case 2:
+                robot.drive(6*feet, 0, 1);
+                robot.counter++;
+                break;
+
         }
     }
 }
