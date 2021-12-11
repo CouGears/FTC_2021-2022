@@ -51,7 +51,7 @@ public class BlueSideComp1 extends OpMode {
         switch (robot.counter) {
             case 0:
                 robot.intakeServo.setPosition(1);
-                robot.drive(1*feet, 0, 1);
+                robot.drive(-1*feet, 0, 1);
                 robot.counter++;
                 break;
             case 1:
