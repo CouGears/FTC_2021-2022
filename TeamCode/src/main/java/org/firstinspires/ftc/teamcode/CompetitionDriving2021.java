@@ -55,19 +55,19 @@ public class CompetitionDriving2021 extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-
+//        intakeServo.setPosition(1);
         waitForStart();
 
         while (opModeIsActive()) {
             x = 0;
-
+        intakeServo.setPosition(0);
 
 
             if (x == 0) {
-                motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .9);
-                motorBL.setPower(-(-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .9);
-                motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .9);
-                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .9);
+                motorFL.setPower(((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .9);
+                motorBL.setPower(-(-(this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .9);
+                motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .9);
+                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .9);
             } else if (x == 1) {
                 motorFL.setPower(((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
                 motorBL.setPower(-((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
@@ -108,7 +108,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
             }
 
             if (gamepad1.a) {
-                intakeServo.setPosition(.5);
+                intakeServo.setPosition(0);
             }
 /*
             if(gamepad1.right_bumper) {
