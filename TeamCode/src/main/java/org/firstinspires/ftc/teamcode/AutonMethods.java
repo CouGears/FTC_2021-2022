@@ -268,9 +268,9 @@ public class AutonMethods {
     }
 
     public void setCarousel() {
-        carousel.setPower(1);
+        carousel.setPower(-1);
         newSleep(4);
-        carousel.setPower(0);
+        //carousel.setPower(0);
     }
 
     public int distance() {
@@ -315,7 +315,7 @@ public class AutonMethods {
         motorFL.setPower(spee);
         motorBL.setPower(spee);
         motorFR.setPower(spee);
-        motorBR.setPower(spee);
+        motorBR.setPower(-spee);
     }
 
     public void newSleep(double timeinSeconds) {
