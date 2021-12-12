@@ -23,7 +23,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
 
-public class BlueSideComp1 extends OpMode {
+public class RedSideComp1 extends OpMode {
     double rev = 537.6;
     double inch = rev / (3.78 * 3.14);
     double feet = inch * 12;
@@ -51,18 +51,18 @@ public class BlueSideComp1 extends OpMode {
         switch (robot.counter) {
             case 0:
                 robot.intakeServo.setPosition(0);
-                robot.drive(15*feet, 0, 1);
+                robot.drive(-6*feet, 0, 1);
                 robot.counter++;
                 break;
-          /*  case 1:
+            case 1:
                 robot.setCarousel();
                 robot.counter++;
                 break;
             case 2:
-                robot.drive(6*feet, 0, 1); //drive to drop point
+                robot.drive(0, -1*feet, 1); //drive to drop point
                 robot.counter++;
                 break;
-*/
+
         }
     }
 }

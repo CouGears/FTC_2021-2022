@@ -160,10 +160,10 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
 
             if (gamepad1.x) {
-                carousel.setPower(.75);
+                carousel.setPower(.45);
                 //robot.sleep(2000);
                 //carousel.setPower(0);
-            } else if (gamepad1.y) carousel.setPower(-.75);
+            } else if (gamepad1.y) carousel.setPower(-.45);
             else carousel.setPower(0);//set to while else??
         }
     }

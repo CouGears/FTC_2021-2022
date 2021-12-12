@@ -247,15 +247,15 @@ public class AutonMethods {
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        FRtpos = -forward + sideways;
-        BRtpos = -forward - sideways;
-        FLtpos = -forward - sideways;
-        BLtpos = -forward + sideways;
+        FRtpos = forward - sideways;
+        BRtpos = forward + sideways;
+        FLtpos = forward + sideways;
+        BLtpos = forward - sideways;
 
-        motorFL.setTargetPosition((int) FLtpos);
-        motorBL.setTargetPosition((int) BLtpos);
+        motorFL.setTargetPosition(-(int) FLtpos);
+        motorBL.setTargetPosition(-(int) BLtpos);
         motorFR.setTargetPosition(-(int) FRtpos);
-        motorBR.setTargetPosition(-(int) BRtpos);
+        motorBR.setTargetPosition((int) BRtpos);
 
         motorFL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -268,9 +268,9 @@ public class AutonMethods {
     }
 
     public void setCarousel() {
-        carousel.setPower(-1);
+        carousel.setPower(.45);
         newSleep(4);
-        //carousel.setPower(0);
+        carousel.setPower(0);
     }
 
     public int distance() {
