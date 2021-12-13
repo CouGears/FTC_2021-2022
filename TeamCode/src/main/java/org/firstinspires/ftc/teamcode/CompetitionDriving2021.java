@@ -141,7 +141,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 intakeFL.setPower(0);
             }
 
-
+//hello there
             if (gamepad1.dpad_up) {
                 lifter.setPower(.5);
             } else if (gamepad1.dpad_down) {
