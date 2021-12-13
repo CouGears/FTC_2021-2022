@@ -34,7 +34,7 @@ public class BlueSideComp1 extends OpMode {
 
     public void init() {
         robot.init(hardwareMap, telemetry, false);
-        telemetry.addData("Status", "Initialized");
+        telemetry.addData("Status", "This worked");
         telemetry.update();
 
 

@@ -102,13 +102,13 @@ public class AutonMethods {
         intake = map.get(DcMotor.class, "intake");
 //        arm = map.get(DcMotor.class, "arm");
 
-      //  shooter = map.get(DcMotor.class, "shooter");
+        //  shooter = map.get(DcMotor.class, "shooter");
 
 
-       // armServo = map.get(Servo.class, "armServo");
-       // shooterServo = map.get(Servo.class, "shooterServo");
-     //   note - this is according to front orientation - front is in the front and back is in the back
-       // also these should be configured accordingly
+        // armServo = map.get(Servo.class, "armServo");
+        // shooterServo = map.get(Servo.class, "shooterServo");
+        //   note - this is according to front orientation - front is in the front and back is in the back
+        // also these should be configured accordingly
 
 
         motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -122,7 +122,7 @@ public class AutonMethods {
         motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-         intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -150,11 +150,11 @@ public class AutonMethods {
         // tele.update();
     }
 
-    
+
     public void getLocation() {
 
-     //   locationy = (int) (Forwards.getCurrentPosition() / feet2);
-       // locationx = (int) (Sideways.getCurrentPosition() / feet2);
+        //   locationy = (int) (Forwards.getCurrentPosition() / feet2);
+        // locationx = (int) (Sideways.getCurrentPosition() / feet2);
     }
 
     public void movefb(int movefbfeet) {
@@ -315,7 +315,7 @@ public class AutonMethods {
         motorFL.setPower(spee);
         motorBL.setPower(spee);
         motorFR.setPower(spee);
-        motorBR.setPower(-spee);
+        motorBR.setPower(spee);
     }
 
     public void newSleep(double timeinSeconds) {
@@ -338,7 +338,8 @@ public class AutonMethods {
         rum.setTargetPosition((int) tequila);
         rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
-    public void lift (){
+
+    public void lift() {
         bucket.setPosition(.5);
         sleep(1000);
         bucket.setPosition(1);
