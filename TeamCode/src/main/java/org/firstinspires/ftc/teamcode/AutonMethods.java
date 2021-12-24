@@ -155,8 +155,8 @@ public class AutonMethods {
 
     public void getLocation() {
 
-        //   locationy = (int) (Forwards.getCurrentPosition() / feet2);
-        // locationx = (int) (Sideways.getCurrentPosition() / feet2);
+         locationy = (int) (FODO.getCurrentPosition() / feet2);
+         locationx = (int) (SODO.getCurrentPosition() / feet2);
     }
 
     public void movefb(int movefbfeet) {
