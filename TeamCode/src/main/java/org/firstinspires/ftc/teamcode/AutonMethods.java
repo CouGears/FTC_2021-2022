@@ -66,7 +66,7 @@ public class AutonMethods {
     double inch2 = rev2 / (2 * 3.14);
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel; //rum refers to the 4-bar
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel, FODO, SODO; //rum refers to the 4-bar
     //public static DcMotor Forwards = intake, Sideways = carousel;
     public static Servo bucket, intakeServo;
     public static DistanceSensor distanceSensor;
@@ -95,6 +95,8 @@ public class AutonMethods {
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
         motorFR = map.get(DcMotor.class, "motorFR");
+        SODO = map.get(DcMotor.class, "SODO");
+        FODO = map.get(DcMotor.class, "FODO");
         carousel = map.get(DcMotor.class, "carousel");
         rum = map.get(DcMotor.class, "4-bar");
         bucket = map.get(Servo.class, "bucket");
