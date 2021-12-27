@@ -42,7 +42,7 @@ public class fourmotortestcode extends LinearOpMode {
     {
         motorBR.setPower(1);
     }
-    if(gamepad1.b)
+   else if(gamepad1.b)
     {
         motorBR.setPower(-1);
     }
@@ -53,7 +53,7 @@ public class fourmotortestcode extends LinearOpMode {
         {
             motorFR.setPower(1);
         }
-        if(gamepad1.y)
+       else if(gamepad1.y)
         {
             motorFR.setPower(-1);
         }
@@ -64,7 +64,7 @@ public class fourmotortestcode extends LinearOpMode {
         {
             intake.setPower(1);
         }
-        if(gamepad1.dpad_down)
+      else if(gamepad1.dpad_down)
         {
             intake.setPower(-1);
         }
@@ -75,7 +75,7 @@ public class fourmotortestcode extends LinearOpMode {
         {
             stucky.setPower(1);
         }
-        if(gamepad1.dpad_left)
+       else if(gamepad1.dpad_left)
         {
             stucky.setPower(-1);
         }
