@@ -159,13 +159,13 @@ public class AutonMethods {
          locationx = (int) (SODO.getCurrentPosition() / feet2);
     }
 
-    public void movefb(int movefbfeet) {
+    public void movefb(int forwards) {
         getLocation();
-        if (movefbfeet > 0) {
+        if (forwards > 0) {
             while (motorFR.isBusy() || motorFL.isBusy()) {
                 if (runtime.seconds() > 3) break;//do i need to runtime reset?
             }
-            while (movefbfeet - locationy >= 1) {
+            while (forwards - locationy >= 1) {
                 getLocation();//do i need to runtime reset?
                 motorFL.setPower(.5);
                 motorBL.setPower(.5);
@@ -175,7 +175,7 @@ public class AutonMethods {
                 tele.addData("move forwards", .5);
                 tele.update();//do i need to runtime reset?
             }
-            while (movefbfeet - locationy < 1) {
+            while (forwards - locationy < 1) {
                 getLocation();//do i need to runtime reset?
                 motorFL.setPower(.1);//do i need to runtime reset?
                 motorBL.setPower(.1);//do i need to runtime reset?
@@ -186,11 +186,11 @@ public class AutonMethods {
                 tele.update();//do i need to runtime reset?
             }
         }
-        if (movefbfeet < 0) {
+        if (forwards < 0) {
             while (motorFR.isBusy() || motorFL.isBusy()) {
                 if (runtime.seconds() > 3) break;
             }
-            while (locationy > movefbfeet) {
+            while (locationy > forwards) {
                 getLocation();
                 motorFL.setPower(-.5);
                 motorBL.setPower(-.5);
@@ -203,10 +203,10 @@ public class AutonMethods {
         }
     }
 
-    public void moverl(int moverlfeet) {
+    public void moverl(int sideways) {
         getLocation();
-        if (moverlfeet > 0) {
-            if (locationx < moverlfeet) {
+        if (sideways > 0) {
+            if (locationx < sideways) {
                 while (motorFR.isBusy() || motorFL.isBusy()) {
                     if (runtime.seconds() > 3) break;
                 }
@@ -220,8 +220,8 @@ public class AutonMethods {
                 tele.update();
             }
         }
-        if (moverlfeet < 0) {
-            if (locationx > moverlfeet) {
+        if (sideways < 0) {
+            if (locationx > sideways) {
                 while (motorFR.isBusy() || motorFL.isBusy()) {
                     if (runtime.seconds() > 3) break;
                 }
