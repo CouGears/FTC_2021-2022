@@ -119,13 +119,16 @@ public class AutonMethods {
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         intake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+        FODO.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        SODO.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        FODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        SODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -140,7 +143,8 @@ public class AutonMethods {
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
         intake.setDirection(DcMotorSimple.Direction.FORWARD);
-
+        FODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        SODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         motorFL.setTargetPosition(0);
         motorBL.setTargetPosition(0);
