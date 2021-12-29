@@ -158,8 +158,14 @@ public class AutonMethods {
          locationy = (int) (FODO.getCurrentPosition() / feet2);
          locationx = (int) (SODO.getCurrentPosition() / feet2);
     }
-
-    public void movefb(int forwards) {
+public void kill()
+{
+    motorFL.setPower(0);
+    motorBL.setPower(0);
+    motorBR.setPower(0);
+    motorFR.setPower(0);
+}
+    public void movefb(double forwards) {
         getLocation();
         if (forwards > 0) {
             while (motorFR.isBusy() || motorFL.isBusy()) {
@@ -186,7 +192,7 @@ public class AutonMethods {
                 tele.update();//do i need to runtime reset?
             }
         }
-        if (forwards < 0) {
+        else if (forwards < 0) {
             while (motorFR.isBusy() || motorFL.isBusy()) {
                 if (runtime.seconds() > 3) break;
             }
@@ -201,9 +207,10 @@ public class AutonMethods {
                 tele.update();
             }
         }
+        else kill();
     }
 
-    public void moverl(int sideways) {
+    public void moverl(double sideways) {
         getLocation();
         if (sideways > 0) {
             if (locationx < sideways) {
@@ -220,7 +227,7 @@ public class AutonMethods {
                 tele.update();
             }
         }
-        if (sideways < 0) {
+        else if (sideways < 0) {
             if (locationx > sideways) {
                 while (motorFR.isBusy() || motorFL.isBusy()) {
                     if (runtime.seconds() > 3) break;
@@ -235,6 +242,7 @@ public class AutonMethods {
                 tele.update();
             }
         }
+        else kill();
     }
 
 
