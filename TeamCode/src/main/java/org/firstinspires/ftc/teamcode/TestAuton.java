@@ -101,25 +101,24 @@ public class TestAuton extends OpMode
     public void loop() {
         //bot.autonomousIdleTasks();
         //vision.check();
-        int tie = 0;
-        switch (tie){
+//        int tie = 0;
+        switch (robot.counter){
             case 0:
-
 //                robot.drive(1*feet, 0 ,1);
                 robot.drive(-2 * feet,0 * feet,1 * feet); //drives to carousel
-                tie++;
+                robot.counter++;
                 break;
             case 1:
                 robot.setCarousel();
-                tie++;
+                robot.counter++;
                 break;
             case 2:
                 robot.drive(0,1.5* feet,1); //drives to scan point
-                tie++;
+                robot.counter++;
                 break;
             case 3:
                 robot.drive(2.3 * feet, .5 * feet, 1); //drive to drop point
-                tie++;
+                robot.counter++;
                 break;
             case 4:
                 if(robot.distance() == 1){
@@ -134,7 +133,7 @@ public class TestAuton extends OpMode
                     robot.alcohol(0);//Bottom of the tower
                     robot.lift();
                 }
-                tie++;
+                robot.counter++;
                 break;
             case 5:
                 robot.drive(-2.3 * feet, -2 * feet, 1);
@@ -143,7 +142,7 @@ public class TestAuton extends OpMode
                 robot.drive(5 * feet, 0,1 );
                 robot.turn(90);
                 robot.drive(2 * feet, 0, 1);*/
-                tie++;
+                robot.counter++;
                 break;
         }
     }
