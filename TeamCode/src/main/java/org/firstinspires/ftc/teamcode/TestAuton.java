@@ -137,10 +137,12 @@ public class TestAuton extends OpMode
                 tie++;
                 break;
             case 5:
-                robot.drive(0, .5 * feet, 1);
+                robot.drive(-2.3 * feet, -2 * feet, 1);
+                robot.drive(8 * feet,0, 1);
+               /* robot.drive(0, .5 * feet, 1);
                 robot.drive(5 * feet, 0,1 );
                 robot.turn(90);
-                robot.drive(2 * feet, 0, 1);
+                robot.drive(2 * feet, 0, 1);*/
                 tie++;
                 break;
         }
