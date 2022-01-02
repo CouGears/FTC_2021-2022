@@ -75,8 +75,8 @@ public class AutonMethods {
     private ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
     Telemetry tele;
-    int locationx = 0;
-    int locationy = 0;
+    double locationx = 0;
+    double locationy = 0;
     private double speed;
 
     public int counter = 0;
@@ -163,9 +163,8 @@ public class AutonMethods {
 
 
     public void getLocation() {
-
-         locationy = (int) (FODO.getCurrentPosition() / feet2);
-         locationx = (int) (SODO.getCurrentPosition() / feet2);
+          locationy = (FODO.getCurrentPosition() / feet2);
+          locationx = (SODO.getCurrentPosition() / feet2);
     }
 public void kill()
 {

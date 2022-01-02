@@ -12,8 +12,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class odometrytest extends LinearOpMode {
 
     private DcMotor motorBL, motorFR, motorBR, motorFL, carousel, FODO, SODO;
-    private boolean claw = false, bucketButton = false;
-    private AutonMethods robot = new AutonMethods();
+    private OdometryMethods odometry = new OdometryMethods();
     int x = 0;
 
 
@@ -51,10 +50,10 @@ public class odometrytest extends LinearOpMode {
         while (opModeIsActive()) {
             telemetry.addData("Status", "Activated");
             telemetry.update();
-            switch (robot.counter) {
+            switch (odometry.counter) {
                 case 0:
-                    robot.movefb(1);
-                    robot.counter++;
+                    odometry.movefb(1);
+                    odometry.counter++;
                     break;
             }
         }
