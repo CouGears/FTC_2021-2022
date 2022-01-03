@@ -110,6 +110,8 @@ public class TestAuton extends OpMode
                 break;
             case 1:
                 robot.setCarousel();
+                telemetry.addData("spot: carousel", 1);
+                telemetry.update();
                 robot.counter++;
                 break;
             case 2:
@@ -129,10 +131,13 @@ public class TestAuton extends OpMode
                     robot.alcohol(200);//Middle
                     robot.lift();
                 }
-                else if(robot.distance() == 3){
+                else if(robot.distance() == 3) {
                     robot.alcohol(0);//Bottom of the tower
                     robot.lift();
                 }
+                telemetry.addData("spot", robot.distance());
+                telemetry.update();
+
                 robot.counter++;
                 break;
             case 5:
