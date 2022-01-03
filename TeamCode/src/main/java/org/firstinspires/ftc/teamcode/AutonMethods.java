@@ -96,13 +96,13 @@ public class AutonMethods {
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
         motorFR = map.get(DcMotor.class, "motorFR");
-        SODO = map.get(DcMotor.class, "SODO");
-        FODO = map.get(DcMotor.class, "FODO");
+        //SODO = map.get(DcMotor.class, "SODO");
+        //FODO = map.get(DcMotor.class, "FODO");
         carousel = map.get(DcMotor.class, "carousel");
         rum = map.get(DcMotor.class, "4-bar");
         bucket = map.get(Servo.class, "bucket");
-        intakeServo = map.get(Servo.class, "intakeServo");
-        intake = map.get(DcMotor.class, "intake");
+        //intakeServo = map.get(Servo.class, "intakeServo");
+        //intake = map.get(DcMotor.class, "intake");
 //        arm = map.get(DcMotor.class, "arm");
 
         //  shooter = map.get(DcMotor.class, "shooter");
@@ -127,8 +127,8 @@ public class AutonMethods {
         motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        FODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        SODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+       // FODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //SODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -136,8 +136,8 @@ public class AutonMethods {
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        FODO.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        SODO.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+       // FODO.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //SODO.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -145,15 +145,15 @@ public class AutonMethods {
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
         intake.setDirection(DcMotorSimple.Direction.FORWARD);
-        FODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        SODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+       // FODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //SODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         motorFL.setTargetPosition(0);
         motorBL.setTargetPosition(0);
         motorFR.setTargetPosition(0);
         motorBR.setTargetPosition(0);
-        FODO.setTargetPosition(0);
-        SODO.setTargetPosition(0);
+     //   FODO.setTargetPosition(0);
+       // SODO.setTargetPosition(0);
 
         int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
 
