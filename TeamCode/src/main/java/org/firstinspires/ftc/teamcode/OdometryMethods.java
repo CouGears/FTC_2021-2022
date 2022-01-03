@@ -68,8 +68,10 @@ public class OdometryMethods {
     private ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
     Telemetry tele;
-    double locationx = 0;
-    double locationy = 0;
+    double locationx;
+    double locationy;
+    int Fpos = FODO.getCurrentPosition();
+    int Spos = SODO.getCurrentPosition();
     public int counter = 0;
 
     //Initialization
@@ -99,17 +101,22 @@ public class OdometryMethods {
         motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
+        FODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        SODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        FODO.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        SODO.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
+        FODO.setDirection(DcMotorSimple.Direction.FORWARD);
+        SODO.setDirection(DcMotorSimple.Direction.FORWARD);
 
         motorFL.setTargetPosition(0);
         motorBL.setTargetPosition(0);
@@ -124,8 +131,10 @@ public class OdometryMethods {
 
 
     public void getLocation() {
-        locationy = (FODO.getCurrentPosition() / feet2);
-        locationx = (SODO.getCurrentPosition() / feet2);
+        tele.addData("Updating Data", .5);
+        tele.update();
+        locationy = (Fpos / feet2);
+        locationx = (Spos / feet2);
     }
 
     public void kill() {
