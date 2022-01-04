@@ -52,7 +52,7 @@ public class TestAuton extends OpMode
     double feet = inch * 12;
    // AutonomousOdometryBase bot = new AutonomousOdometryBase();
  //   double FRtpos, BRtpos, FLtpos, BLtpos;
- //   public static DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, carousel, rum;
+ //   public static DcMotor motorBR, motorBL, motorFL, motorFR, intake, carousel, rum;
   //  public static DistanceSensor sensorDistance;
     private ElapsedTime runtime = new ElapsedTime();
     AutonMethods robot = new AutonMethods();
@@ -70,7 +70,7 @@ public class TestAuton extends OpMode
 
 
 
-        int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
+        //int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
 
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
 

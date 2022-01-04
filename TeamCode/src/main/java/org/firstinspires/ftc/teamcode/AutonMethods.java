@@ -14,21 +14,21 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
-//import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-//import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-//import com.qualcomm.robotcore.hardware.DcMotorSimple;
-//import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
-//import com.qualcomm.robotcore.hardware.DistanceSensor;
-import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
+//import com.qualcomm.robotcore.hardware.*;
 
 import android.graphics.Color;
 import android.app.Activity;
@@ -102,7 +102,7 @@ public class AutonMethods {
         rum = map.get(DcMotor.class, "4-bar");
         bucket = map.get(Servo.class, "bucket");
         //intakeServo = map.get(Servo.class, "intakeServo");
-        //intake = map.get(DcMotor.class, "intake");
+        intake = map.get(DcMotor.class, "intake");
 //        arm = map.get(DcMotor.class, "arm");
 
         //  shooter = map.get(DcMotor.class, "shooter");
@@ -119,8 +119,8 @@ public class AutonMethods {
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         intake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        FODO.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        SODO.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+     //   FODO.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    //    SODO.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -162,10 +162,10 @@ public class AutonMethods {
     }
 
 
-    public void getLocation() {
+  /*  public void getLocation() {
           locationy = (FODO.getCurrentPosition() / feet2);
           locationx = (SODO.getCurrentPosition() / feet2);
-    }
+    }*/
 public void kill()
 {
     motorFL.setPower(0);
@@ -173,7 +173,7 @@ public void kill()
     motorBR.setPower(0);
     motorFR.setPower(0);
 }
-    public void movefb(double forwards) {
+   /* public void movefb(double forwards) {
         getLocation();
         if (forwards > 0) {
             while (motorFR.isBusy() || motorFL.isBusy()) {
@@ -252,7 +252,7 @@ public void kill()
         }
         else kill();
     }
-
+*/
 
     //Function to move the robot in any direction
     public void drive(double forward, double sideways, double speed) {
