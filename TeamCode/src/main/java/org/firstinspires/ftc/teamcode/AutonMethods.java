@@ -67,9 +67,9 @@ public class AutonMethods {
     double inch2 = rev2 / (2 * 3.14);
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel, FODO, SODO; //rum refers to the 4-bar
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel; //rum refers to the 4-bar
     //public static DcMotor Forwards = intake, Sideways = carousel;
-    public static Servo bucket, intakeServo;
+    public static Servo bucketR, intakeServo, bucketL;
     public static DistanceSensor distanceSensor;
     public TouchSensor armTouch;
     private ElapsedTime runtime = new ElapsedTime();
@@ -100,7 +100,8 @@ public class AutonMethods {
         //FODO = map.get(DcMotor.class, "FODO");
         carousel = map.get(DcMotor.class, "carousel");
         rum = map.get(DcMotor.class, "4-bar");
-        bucket = map.get(Servo.class, "bucket");
+        bucketR = map.get(Servo.class, "bucketR");
+        bucketL = map.get(Servo.class, "bucketL");
         //intakeServo = map.get(Servo.class, "intakeServo");
         intake = map.get(DcMotor.class, "intake");
 //        arm = map.get(DcMotor.class, "arm");
@@ -358,9 +359,11 @@ public void kill()
     }
 
     public void lift() {
-        bucket.setPosition(.5);
+        bucketR.setPosition(.5);
+        bucketL.setPosition(.5);
         sleep(1000);
-        bucket.setPosition(1);
+        bucketR.setPosition(1);
+        bucketL.setPosition(1);
     }
 
     /*
