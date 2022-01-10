@@ -271,10 +271,10 @@ public void kill()
         FLtpos = forward + sideways;
         BLtpos = forward - sideways;
 
-        motorFL.setTargetPosition(-(int) FLtpos);
-        motorBL.setTargetPosition(-(int) BLtpos);
+        motorFL.setTargetPosition((int) FLtpos);
+        motorBL.setTargetPosition((int) BLtpos);
         motorFR.setTargetPosition(-(int) FRtpos);
-        motorBR.setTargetPosition((int) BRtpos);
+        motorBR.setTargetPosition(-(int) BRtpos);
 
         motorFL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBL.setMode(DcMotor.RunMode.RUN_TO_POSITION);

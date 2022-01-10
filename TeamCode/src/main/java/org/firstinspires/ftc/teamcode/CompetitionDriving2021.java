@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class CompetitionDriving2021 extends LinearOpMode {
 
     private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, liftR, liftL, carousel;
-    private Servo bucketR, bucketL, intakeServo;
+    private Servo bucketR, bucket, intakeServo;
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
@@ -30,7 +30,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
         // claw2 = hardwareMap.get(Servo.class, "claw2");
         bucketR = hardwareMap.get(Servo.class, "bucketR");
-        bucketL = hardwareMap.get(Servo.class, "bucketL");
+        bucket = hardwareMap.get(Servo.class, "bucketL");
         intakeServo = hardwareMap.get(Servo.class, "intakeServo");
 
 
