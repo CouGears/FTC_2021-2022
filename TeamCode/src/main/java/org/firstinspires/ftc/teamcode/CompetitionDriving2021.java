@@ -10,9 +10,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class CompetitionDriving2021 extends LinearOpMode {
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, lifter, carousel, stucky;
-    //private Servo claw1, claw2,
-    private Servo bucket, intakeServo;
+    private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, liftR, liftL, carousel;
+    private Servo bucketR, bucket, intakeServo;
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
@@ -25,12 +24,13 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorBR = hardwareMap.get(DcMotor.class, "motorBR");
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
         intakeFL = hardwareMap.get(DcMotor.class, "intake");
-        stucky = hardwareMap.get(DcMotor.class, "stucky");
-        lifter = hardwareMap.get(DcMotor.class, "4-bar");
+        liftR = hardwareMap.get(DcMotor.class, "liftR");
+        liftL = hardwareMap.get(DcMotor.class, "liftR");
         carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
         // claw2 = hardwareMap.get(Servo.class, "claw2");
-        bucket = hardwareMap.get(Servo.class, "bucket");
+        bucketR = hardwareMap.get(Servo.class, "bucketR");
+        bucket = hardwareMap.get(Servo.class, "bucketL");
         intakeServo = hardwareMap.get(Servo.class, "intakeServo");
 
 
@@ -40,16 +40,17 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        lifter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        liftR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        liftL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         carousel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        stucky.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
         intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
-        lifter.setDirection(DcMotorSimple.Direction.FORWARD);
+        liftR.setDirection(DcMotorSimple.Direction.FORWARD);
+        liftL.setDirection(DcMotorSimple.Direction.FORWARD);
         carousel.setDirection(DcMotorSimple.Direction.FORWARD);
 
         telemetry.addData("Status", "Initialized");
@@ -143,21 +144,15 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
 //hello there
             if (gamepad1.dpad_up) {
-                lifter.setPower(.5);
+                liftR.setPower(.5);
+                liftL.setPower(.5);
             } else if (gamepad1.dpad_down) {
-                lifter.setPower(-.5);
+                liftR.setPower(-.5);
+                liftL.setPower(-.5);
             } else {
-                lifter.setPower(0);
+                liftR.setPower(0);
+                liftL.setPower(0);
             }
-
-            if (gamepad1.dpad_right) {
-                stucky.setPower(.5);
-            } else if (gamepad1.dpad_left) {
-                stucky.setPower(-.5);
-            } else {
-                stucky.setPower(0);
-            }
-
 
             if (gamepad1.x) {
                 carousel.setPower(.45);

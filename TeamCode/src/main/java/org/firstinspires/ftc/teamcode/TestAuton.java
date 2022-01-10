@@ -31,6 +31,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -43,31 +44,28 @@ import org.firstinspires.ftc.teamcode.old.AutonomousOdometryBase;
 
 @Autonomous
 
-public class TestAuton extends OpMode
-{
+public class TestAuton extends OpMode {
 
     //TensorFlowVision vision = new TensorFlowVision();
     double rev = 383.6;
     double inch = rev / (3.78 * 3.14);
     double feet = inch * 12;
-   // AutonomousOdometryBase bot = new AutonomousOdometryBase();
- //   double FRtpos, BRtpos, FLtpos, BLtpos;
- //   public static DcMotor motorBR, motorBL, motorFL, motorFR, intake, carousel, rum;
-  //  public static DistanceSensor sensorDistance;
+    // AutonomousOdometryBase bot = new AutonomousOdometryBase();
+    //   double FRtpos, BRtpos, FLtpos, BLtpos;
+    //   public static DcMotor motorBR, motorBL, motorFL, motorFR, intake, carousel, rum;
+    //  public static DistanceSensor sensorDistance;
     private ElapsedTime runtime = new ElapsedTime();
     AutonMethods robot = new AutonMethods();
     HardwareMap map;
     Telemetry tele;
+
     @Override
     public void init() {
         // Tell the driver that initialization is complete.
-       // bot.initAutonomous();
-       // vision.init();
+        // bot.initAutonomous();
+        // vision.init();
 
         robot.init(hardwareMap, telemetry, false);
-
-
-
 
 
         //int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
@@ -102,36 +100,34 @@ public class TestAuton extends OpMode
         //bot.autonomousIdleTasks();
         //vision.check();
 //        int tie = 0;
-        switch (robot.counter){
+        switch (robot.counter) {
             case 0:
-//                robot.drive(1*feet, 0 ,1);
-                robot.drive(-2 * feet,0 * feet,1 * feet); //drives to carousel
+                //    robot.drive(0, 1*feet ,1);
+                robot.drive(-1.8 * feet, 0 * feet, .5); //drives to carousel
                 robot.counter++;
                 break;
             case 1:
                 robot.setCarousel();
                 telemetry.addData("spot: carousel", 1);
-                telemetry.update();
+                    telemetry.update();
                 robot.counter++;
                 break;
             case 2:
-                robot.drive(0,1.5* feet,1); //drives to scan point
+                robot.drive(-.3*feet, 1.7 * feet, .5); //drives to scan point
                 robot.counter++;
                 break;
             case 3:
-                robot.drive(2.3 * feet, .5 * feet, 1); //drive to drop point
+                robot.drive(1.9 * feet, 1.5 * feet, .5); //drive to drop point
                 robot.counter++;
                 break;
-            case 4:
-                if(robot.distance() == 1){
+           /* case 4:
+                if (robot.distance() == 1) {
                     robot.alcohol(400);//Top of the tower
                     robot.lift();
-                }
-                else if(robot.distance() == 2){
+                } else if (robot.distance() == 2) {
                     robot.alcohol(200);//Middle
                     robot.lift();
-                }
-                else if(robot.distance() == 3) {
+                } else if (robot.distance() == 3) {
                     robot.alcohol(0);//Bottom of the tower
                     robot.lift();
                 }
@@ -141,14 +137,14 @@ public class TestAuton extends OpMode
                 robot.counter++;
                 break;
             case 5:
-                robot.drive(-2.3 * feet, -2 * feet, 1);
-                robot.drive(8 * feet,0, 1);
-               /* robot.drive(0, .5 * feet, 1);
-                robot.drive(5 * feet, 0,1 );
+                robot.drive(-2.3 * feet, -2 * feet, .5);
+                robot.drive(8 * feet, 0, .5);
+                robot.drive(0, .5 * feet, .5);
+                robot.drive(5 * feet, 0, .5);
                 robot.turn(90);
-                robot.drive(2 * feet, 0, 1);*/
+                robot.drive(2 * feet, 0, .5);
                 robot.counter++;
-                break;
+                break;*/
         }
     }
 
