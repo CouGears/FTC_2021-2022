@@ -113,14 +113,14 @@ public class TestAuton extends OpMode {
                 robot.counter++;
                 break;
             case 2:
-                robot.drive(-.3*feet, 1.7 * feet, .5); //drives to scan point
+                robot.drive(-.3*feet, 1.7 * feet,.5); //drives to scan point
                 robot.counter++;
                 break;
             case 3:
-                robot.drive(1.9 * feet, 1.5 * feet, .5); //drive to drop point
+                robot.drive(1.9 * feet, 1.5 * feet,.5); //drive to drop point
                 robot.counter++;
                 break;
-           /* case 4:
+            case 4:
                 if (robot.distance() == 1) {
                     robot.alcohol(400);//Top of the tower
                     robot.lift();
@@ -137,14 +137,14 @@ public class TestAuton extends OpMode {
                 robot.counter++;
                 break;
             case 5:
-                robot.drive(-2.3 * feet, -2 * feet, .5);
-                robot.drive(8 * feet, 0, .5);
-                robot.drive(0, .5 * feet, .5);
-                robot.drive(5 * feet, 0, .5);
-                robot.turn(90);
-                robot.drive(2 * feet, 0, .5);
+                robot.drive(-.5 * feet, -2 * feet,.5);
+              //  robot.drive(8 * feet, 0, .5);
+                robot.drive(0, .5 * feet,.5);
+                //robot.drive(5 * feet, 0, .5);
+               // robot.turn(90);
+               // robot.drive(2 * feet, 0, .5);
                 robot.counter++;
-                break;*/
+                break;
         }
     }
 

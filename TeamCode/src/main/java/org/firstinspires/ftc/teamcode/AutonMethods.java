@@ -413,8 +413,8 @@ public void kill()
         while ((motorFR.isBusy() || motorFL.isBusy()) && runtime.seconds() < 3) {
             motorFL.setPower((((int) FLtpos - motorFL.getCurrentPosition()) / dist) + .2);
             motorBL.setPower((((int) BLtpos - motorBL.getCurrentPosition()) / dist) + .2);
-            motorFR.setPower((((int) FRtpos + motorFR.getCurrentPosition()) / dist) + .2);
-            motorBR.setPower((((int) BRtpos + motorBR.getCurrentPosition()) / dist) + .2);
+            motorFR.setPower(-(((int) FRtpos + motorFR.getCurrentPosition()) / dist) + .2);
+            motorBR.setPower(-(((int) BRtpos + motorBR.getCurrentPosition()) / dist) + .2);
         }
 
 
