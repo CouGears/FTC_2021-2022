@@ -313,7 +313,7 @@ public void kill()
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        double deltaturn = (deg / 360.0) * 21.654 * 3.14 * inch * 1.5;
+        double deltaturn = (deg / 360.0) * 21.654 * 3.14 * inch * 1.4 ;
         motorFL.setTargetPosition((int) deltaturn);
         motorBL.setTargetPosition((int) deltaturn);
         motorFR.setTargetPosition((int) deltaturn);

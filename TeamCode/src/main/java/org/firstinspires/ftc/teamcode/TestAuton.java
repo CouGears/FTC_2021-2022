@@ -102,11 +102,12 @@ public class TestAuton extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
+                robot.turn(180);
                 //    robot.drive(0, 1*feet ,1);
-                robot.drive(-1.8 * feet, 0 * feet, .5); //drives to carousel
+              //  robot.drive(-1.8 * feet, 0 * feet, .5); //drives to carousel
                 robot.counter++;
                 break;
-            case 1:
+           /* case 1:
                 robot.setCarousel();
                 telemetry.addData("spot: carousel", 1);
                     telemetry.update();
@@ -144,7 +145,7 @@ public class TestAuton extends OpMode {
                // robot.turn(90);
                // robot.drive(2 * feet, 0, .5);
                 robot.counter++;
-                break;
+                break;*/
         }
     }
 
