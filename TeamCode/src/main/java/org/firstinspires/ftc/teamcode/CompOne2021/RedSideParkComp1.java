@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.CompOne2021;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
@@ -13,6 +13,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+import org.firstinspires.ftc.teamcode.AutonMethods;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -23,7 +25,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
 
-public class BlueSideComp1 extends OpMode {
+public class RedSideParkComp1 extends OpMode {
     double rev = 537.6;
     double inch = rev / (3.78 * 3.14);
     double feet = inch * 12;
@@ -34,7 +36,7 @@ public class BlueSideComp1 extends OpMode {
 
     public void init() {
         robot.init(hardwareMap, telemetry, false);
-        telemetry.addData("Status", "This worked");
+        telemetry.addData("Status", "Initialized");
         telemetry.update();
 
 
@@ -51,7 +53,7 @@ public class BlueSideComp1 extends OpMode {
         switch (robot.counter) {
             case 0:
                 robot.intakeServo.setPosition(0);
-                robot.drive(15*feet, 0, 1);
+                robot.drive(0, 1*feet, 1);
                 robot.counter++;
                 break;
           /*  case 1:
