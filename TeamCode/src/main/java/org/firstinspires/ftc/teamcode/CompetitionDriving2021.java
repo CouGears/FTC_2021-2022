@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class CompetitionDriving2021 extends LinearOpMode {
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, liftR, liftL, carousel;
-    private Servo bucketR, bucket, intakeServo;
+    private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, lifter, carousel;
+    private Servo bucket, intakeServo;
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
@@ -24,13 +24,13 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorBR = hardwareMap.get(DcMotor.class, "motorBR");
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
         intakeFL = hardwareMap.get(DcMotor.class, "intake");
-        liftR = hardwareMap.get(DcMotor.class, "liftR");
-        liftL = hardwareMap.get(DcMotor.class, "liftR");
+        lifter = hardwareMap.get(DcMotor.class, "lifter");
+
         carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
         // claw2 = hardwareMap.get(Servo.class, "claw2");
-        bucketR = hardwareMap.get(Servo.class, "bucketR");
-        bucket = hardwareMap.get(Servo.class, "bucketL");
+
+        bucket = hardwareMap.get(Servo.class, "bucket");
         intakeServo = hardwareMap.get(Servo.class, "intakeServo");
 
 
@@ -40,8 +40,8 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        liftR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        liftL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lifter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
         carousel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -49,8 +49,8 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
         intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
-        liftR.setDirection(DcMotorSimple.Direction.FORWARD);
-        liftL.setDirection(DcMotorSimple.Direction.FORWARD);
+        lifter.setDirection(DcMotorSimple.Direction.FORWARD);
+
         carousel.setDirection(DcMotorSimple.Direction.FORWARD);
 
         telemetry.addData("Status", "Initialized");
@@ -108,16 +108,18 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
             }*/
             if (gamepad1.b) {
-                bucket.setPosition(.5);
+                bucket.setPosition(0);
                 robot.sleep(1500);
-                bucket.setPosition(1);
-            } else if (gamepad1.y){
-                bucket.setPosition(1);
+                bucket.setPosition(.5);
+                telemetry.addData("Position:", .5);
+                telemetry.update();
+            } else if (gamepad1.a){
+                bucket.setPosition(.6);
             }
 
-            if (gamepad1.a) {
-                intakeServo.setPosition(0);
-            }
+            //if (gamepad1.a) {
+           //     intakeServo.setPosition(0);
+           // }
 /*
             if(gamepad1.right_bumper) {
                 intakeFL.setPower(1);
@@ -144,21 +146,21 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
 //hello there
             if (gamepad1.dpad_up) {
-                liftR.setPower(.5);
-                liftL.setPower(.5);
+                lifter.setPower(-1);
+
             } else if (gamepad1.dpad_down) {
-                liftR.setPower(-.5);
-                liftL.setPower(-.5);
+                lifter.setPower(1);
+
             } else {
-                liftR.setPower(0);
-                liftL.setPower(0);
+                lifter.setPower(0);
+
             }
 
             if (gamepad1.x) {
-                carousel.setPower(.45);
+                carousel.setPower(.55);
                 //robot.sleep(2000);
                 //carousel.setPower(0);
-            } else if (gamepad1.y) carousel.setPower(-.45);
+            } else if (gamepad1.y) carousel.setPower(-.55);
             else carousel.setPower(0);//set to while else??
         }
     }

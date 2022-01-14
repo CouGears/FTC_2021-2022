@@ -313,7 +313,7 @@ public void kill()
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        double deltaturn = (deg / 360.0) * 21.654 * 3.14 * inch * 1.5;
+        double deltaturn = (deg / 360.0) * 21.654 * 3.14 * inch * 1.4 ;
         motorFL.setTargetPosition((int) deltaturn);
         motorBL.setTargetPosition((int) deltaturn);
         motorFR.setTargetPosition((int) deltaturn);
@@ -413,8 +413,8 @@ public void kill()
         while ((motorFR.isBusy() || motorFL.isBusy()) && runtime.seconds() < 3) {
             motorFL.setPower((((int) FLtpos - motorFL.getCurrentPosition()) / dist) + .2);
             motorBL.setPower((((int) BLtpos - motorBL.getCurrentPosition()) / dist) + .2);
-            motorFR.setPower((((int) FRtpos + motorFR.getCurrentPosition()) / dist) + .2);
-            motorBR.setPower((((int) BRtpos + motorBR.getCurrentPosition()) / dist) + .2);
+            motorFR.setPower(-(((int) FRtpos + motorFR.getCurrentPosition()) / dist) + .2);
+            motorBR.setPower(-(((int) BRtpos + motorBR.getCurrentPosition()) / dist) + .2);
         }
 
 
