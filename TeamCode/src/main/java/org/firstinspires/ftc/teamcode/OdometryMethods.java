@@ -65,6 +65,7 @@ public class OdometryMethods {
     double inch2 = rev2 / (2 * 3.14);
     double feet2 = inch2 * 12;
     public static DcMotor motorBR, motorBL, motorFL, motorFR, FODO, SODO;
+    public static LED red, green;
     private ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
     Telemetry tele;
@@ -82,13 +83,14 @@ public class OdometryMethods {
         motorFR = map.get(DcMotor.class, "motorFR");
         SODO = map.get(DcMotor.class, "SODO");
         FODO = map.get(DcMotor.class, "FODO");
-
+        red = map.get(LED.class, "red");
+        green = map.get(LED.class, "green");
 
         // armServo = map.get(Servo.class, "armServo");
         // shooterServo = map.get(Servo.class, "shooterServo");
         //   note - this is according to front orientation - front is in the front and back is in the back
         // also these should be configured accordingly
-
+        
 
         motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -118,6 +120,7 @@ public class OdometryMethods {
         FODO.setDirection(DcMotorSimple.Direction.FORWARD);
         SODO.setDirection(DcMotorSimple.Direction.FORWARD);
 
+
         motorFL.setTargetPosition(0);
         motorBL.setTargetPosition(0);
         motorFR.setTargetPosition(0);
@@ -144,14 +147,40 @@ public class OdometryMethods {
         motorFR.setPower(0);
     }
 
-    public void movefb(double forwards) {
 
-        getLocation();
+    public void setRed()
+    {
+        green.enable(false);
+        green.enableLight(false);
+        red.enable(true);
+        red.enableLight(true);
+    }
+    public void setGreen()
+    {
+        red.enable(false);
+        red.enableLight(false);
+        green.enable(true);
+        green.enableLight(true);
+    }
+    public void setAmber()
+    {
+        red.enable(true);
+        red.enableLight(true);
+        green.enable(true);
+        green.enableLight(true);
+    }
+    public void movefb(double forwards) {
+    getLocation();
         if (forwards > 0) {
             while (motorFR.isBusy() || motorFL.isBusy()) {
-                if (runtime.seconds() > 3) break;//do i need to runtime reset?
+                if (runtime.seconds() > 3)
+                {
+                    setRed();
+                    break;//do i need to runtime reset?
+                }
             }
             while (forwards - locationy >= 1) {
+                setAmber();
                 getLocation();//do i need to runtime reset?
                 motorFL.setPower(.5);
                 motorBL.setPower(.5);
@@ -162,6 +191,7 @@ public class OdometryMethods {
                 tele.update();
             }
             while (forwards - locationy < 1) {
+                setAmber();
                 getLocation();//do i need to runtime reset?
                 motorFL.setPower(.1);//do i need to runtime reset?
                 motorBL.setPower(.1);//do i need to runtime reset?
@@ -185,7 +215,11 @@ public class OdometryMethods {
                 tele.addData("move backwqards", .5);
                 tele.update();
             }
-        } else kill();
+        } else
+        {
+            setGreen();
+            kill();
+        }
     }
 
     public void moverl(double sideways) {
