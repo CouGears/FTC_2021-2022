@@ -57,7 +57,7 @@ public class BotBase {
         rearRightDrive.setDirection(DcMotorSimple.Direction.FORWARD);
 
         intakeFL = hardwareMap.get(DcMotor.class, "intake");
-        arm = hardwareMap.get(DcMotor.class, "arm");
+        lifter = hardwareMap.get(DcMotor.class, "lifter");
         shooter = hardwareMap.get(DcMotor.class, "shooter");
         bottomSensor = hardwareMap.get(DistanceSensor.class, "bottomSensor");
         topSensor = hardwareMap.get(DistanceSensor.class, "topSensor");
@@ -78,17 +78,17 @@ public class BotBase {
         rearRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         frontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         intakeFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        lifter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
 
         intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lifter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         scissorMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
-        arm.setDirection(DcMotorSimple.Direction.FORWARD);
+        lifter.setDirection(DcMotorSimple.Direction.FORWARD);
 
 
         frontLeftDrive.setTargetPosition(0);

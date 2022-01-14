@@ -30,7 +30,7 @@ public class CompetitionDriving2020 extends LinearOpMode{
         motorBR = hardwareMap.get(DcMotor.class, "motorBR");
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
        // intakeFL = hardwareMap.get(DcMotor.class, "intake");
-        //arm = hardwareMap.get(DcMotor.class, "arm");
+        //lifter = hardwareMap.get(DcMotor.class, "lifter");
 //        shooter = hardwareMap.get(DcMotor.class, "shooter");
 //        scissorMotor = hardwareMap.get(DcMotor.class, "scissorMotor");
 //        armServo = hardwareMap.get(Servo.class, "armServo");
@@ -182,11 +182,11 @@ public class CompetitionDriving2020 extends LinearOpMode{
 
             /*if (gamepad1.x){
 
-                arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-                while (arm.getCurrentPosition() < 1750) {
-                    arm.setPower(1);
+                lifter.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+                while (lifter.getCurrentPosition() < 1750) {
+                    lifter.setPower(1);
                 }
-                arm.setPower(0);
+                lifter.setPower(0);
                 armServo.setPosition(.7);
                 competition.sleep(300);
                 armServo.setPosition(1);
@@ -211,10 +211,10 @@ public class CompetitionDriving2020 extends LinearOpMode{
                 // armPos = !armPos;
                 // }
             /*else if (armPos == false){
-                arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                arm.setTargetPosition(0);
-                arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                arm.setPower(1);
+                lifter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                lifter.setTargetPosition(0);
+                lifter.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                lifter.setPower(1);
                 armPos = !armPos;
             }*/
             }

@@ -1,18 +1,10 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.util.Hardware;
-import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.TouchSensor;
-
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -20,37 +12,13 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import com.qualcomm.robotcore.hardware.Servo;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
-import com.qualcomm.robotcore.hardware.*;
-
-import android.graphics.Color;
-import android.app.Activity;
-import android.view.View;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
-
-import java.lang.annotation.Target;
-import java.util.Timer;
-
-import com.qualcomm.robotcore.hardware.Blinker;
-import com.qualcomm.robotcore.hardware.CRServo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-
-import com.qualcomm.robotcore.hardware.Gyroscope;
-import com.qualcomm.robotcore.hardware.DigitalChannel;
-import com.qualcomm.robotcore.util.ElapsedTime;
-
-import java.util.Locale;
-
-import android.app.Activity;
 
 public class AutonMethods {
 
@@ -67,7 +35,7 @@ public class AutonMethods {
     double inch2 = rev2 / (2 * 3.14);
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel; //rum refers to the 4-bar
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, lifter, rum, intake, carousel;
     //public static DcMotor Forwards = intake, Sideways = carousel;
     public static Servo bucket, intakeServo;
     public static DistanceSensor distanceSensor;
@@ -320,18 +288,17 @@ public void kill()
         }
     }
 
-    public void alcohol(double tequila) { //moves the 4 bar/arm
+    public void lift(double amount) { //moves the 4 bar/lifter
         rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rum.setTargetPosition((int) tequila);
+        rum.setTargetPosition((int) amount);
         rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
     public void lift() {
+
+        bucket.setPosition(0);
+        sleep(1500);
         bucket.setPosition(.5);
-
-        sleep(1000);
-
-        bucket.setPosition(1);
     }
 
     /*

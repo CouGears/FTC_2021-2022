@@ -50,7 +50,7 @@ public class AutonBase {
         motorBR = map.get(DcMotor.class, "motorBR");
         motorFR = map.get(DcMotor.class, "motorFR");
         intakeFL = map.get(DcMotor.class, "intake");
-        arm = map.get(DcMotor.class, "arm");
+        arm = map.get(DcMotor.class, "lifter");
         shooter = map.get(DcMotor.class, "shooter");
 
 

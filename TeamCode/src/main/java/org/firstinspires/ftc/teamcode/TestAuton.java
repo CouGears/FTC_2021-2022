@@ -123,13 +123,13 @@ public class TestAuton extends OpMode {
                 break;
             case 4:
                 if (robot.distance() == 1) {
-                    robot.alcohol(400);//Top of the tower
+                    robot.lift(400);//Top of the tower
                     robot.lift();
                 } else if (robot.distance() == 2) {
-                    robot.alcohol(200);//Middle
+                    robot.lift(200);//Middle
                     robot.lift();
                 } else if (robot.distance() == 3) {
-                    robot.alcohol(0);//Bottom of the tower
+                    robot.lift(0);//Bottom of the tower
                     robot.lift();
                 }
                 telemetry.addData("spot", robot.distance());

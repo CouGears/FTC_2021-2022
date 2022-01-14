@@ -69,4 +69,4 @@ public class Auton2021 extends LinearOpMode
         }
     }
 }
-//hello there here is a fun tidbit for next year to be confused by: alcohol and stuff
+//hello there here is a fun tidbit for next year to be confused by: lift and stuff
