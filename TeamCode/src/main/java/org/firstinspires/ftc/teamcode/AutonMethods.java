@@ -61,7 +61,7 @@ public class AutonMethods {
 
     //Declare and initial variables
     double rev = 383.6;
-    double inch = rev / (3.78 * 3.14);
+    double inch = rev / (3.5 * 3.14);
     double feet = inch * 12;
     double rev2 = 2048;
     double inch2 = rev2 / (2 * 3.14);
@@ -69,7 +69,7 @@ public class AutonMethods {
     double FRtpos, BRtpos, FLtpos, BLtpos;
     public static DcMotor motorBR, motorBL, motorFL, motorFR, arm, rum, intake, carousel; //rum refers to the 4-bar
     //public static DcMotor Forwards = intake, Sideways = carousel;
-    public static Servo bucketR, intakeServo, bucketL;
+    public static Servo bucket, intakeServo;
     public static DistanceSensor distanceSensor;
     public TouchSensor armTouch;
     private ElapsedTime runtime = new ElapsedTime();
@@ -96,40 +96,16 @@ public class AutonMethods {
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
         motorFR = map.get(DcMotor.class, "motorFR");
-        //SODO = map.get(DcMotor.class, "SODO");
-        //FODO = map.get(DcMotor.class, "FODO");
-        carousel = map.get(DcMotor.class, "carousel");
-        rum = map.get(DcMotor.class, "4-bar");
-        bucketR = map.get(Servo.class, "bucketR");
-        bucketL = map.get(Servo.class, "bucketL");
-        //intakeServo = map.get(Servo.class, "intakeServo");
         intake = map.get(DcMotor.class, "intake");
-//        arm = map.get(DcMotor.class, "arm");
+        rum = map.get(DcMotor.class, "lifter");
 
-        //  shooter = map.get(DcMotor.class, "shooter");
+        carousel = map.get(DcMotor.class, "carousel");
+        //   claw1 = hardwareMap.get(Servo.class, "claw1");
+        // claw2 = hardwareMap.get(Servo.class, "claw2");
 
+        bucket = map.get(Servo.class, "bucket");
+        intakeServo = map.get(Servo.class, "intakeServo");
 
-        // armServo = map.get(Servo.class, "armServo");
-        // shooterServo = map.get(Servo.class, "shooterServo");
-        //   note - this is according to front orientation - front is in the front and back is in the back
-        // also these should be configured accordingly
-
-
-        motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        intake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-     //   FODO.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-    //    SODO.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        motorFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-       // FODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        //SODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -137,24 +113,16 @@ public class AutonMethods {
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-       // FODO.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        //SODO.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rum.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        carousel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
         intake.setDirection(DcMotorSimple.Direction.FORWARD);
-       // FODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        //SODO.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-        motorFL.setTargetPosition(0);
-        motorBL.setTargetPosition(0);
-        motorFR.setTargetPosition(0);
-        motorBR.setTargetPosition(0);
-     //   FODO.setTargetPosition(0);
-       // SODO.setTargetPosition(0);
+        rum.setDirection(DcMotorSimple.Direction.FORWARD);
 
         int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
 
@@ -271,10 +239,10 @@ public void kill()
         FLtpos = forward + sideways;
         BLtpos = forward - sideways;
 
-        motorFL.setTargetPosition((int) FLtpos);
+        motorFL.setTargetPosition(-(int) FLtpos);
         motorBL.setTargetPosition((int) BLtpos);
-        motorFR.setTargetPosition(-(int) FRtpos);
-        motorBR.setTargetPosition(-(int) BRtpos);
+        motorFR.setTargetPosition((int) FRtpos);
+        motorBR.setTargetPosition((int) BRtpos);
 
         motorFL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -359,11 +327,11 @@ public void kill()
     }
 
     public void lift() {
-        bucketR.setPosition(.5);
-        bucketL.setPosition(.5);
+        bucket.setPosition(.5);
+
         sleep(1000);
-        bucketR.setPosition(1);
-        bucketL.setPosition(1);
+
+        bucket.setPosition(1);
     }
 
     /*

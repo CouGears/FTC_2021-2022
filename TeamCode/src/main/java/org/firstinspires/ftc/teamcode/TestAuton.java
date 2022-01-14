@@ -102,8 +102,8 @@ public class TestAuton extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.turn(180);
-                //    robot.drive(0, 1*feet ,1);
+              //  robot.turn(180);
+                    robot.drive(0, 5*feet ,.5);
               //  robot.drive(-1.8 * feet, 0 * feet, .5); //drives to carousel
                 robot.counter++;
                 break;
