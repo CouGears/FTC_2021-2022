@@ -47,7 +47,8 @@ import org.firstinspires.ftc.teamcode.old.AutonomousOdometryBase;
 public class TestAuton extends OpMode {
 
     //TensorFlowVision vision = new TensorFlowVision();
-    double rev = 383.6;
+    //double rev = 383.6; //435 rpm motor
+    double rev = 537.7; //312 rpm motor
     double inch = rev / (3.78 * 3.14);
     double feet = inch * 12;
     // AutonomousOdometryBase bot = new AutonomousOdometryBase();
@@ -103,11 +104,11 @@ public class TestAuton extends OpMode {
         switch (robot.counter) {
             case 0:
               //  robot.turn(180);
-                    //robot.drive(0, 5*feet ,.5); // I use this one to test the robot
+                    robot.drive(0, 5*feet ,.5); // I use this one to test the robot
                robot.drive(-1.8 * feet, 0 * feet, .5); //drives to carousel
                 robot.counter++;
                 break;
-            case 1:
+           /* case 1:
                 robot.setCarousel();
                 telemetry.addData("spot: carousel", 1);
                     telemetry.update();
@@ -150,7 +151,7 @@ public class TestAuton extends OpMode {
                // robot.turn(90);
                // robot.drive(-2 * feet, 0, .5);
                 robot.counter++;
-                break;
+                break;*/
         }
     }
 
