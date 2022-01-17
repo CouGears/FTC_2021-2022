@@ -207,7 +207,7 @@ public void kill()
         FLtpos = forward + sideways;
         BLtpos = forward - sideways;
 
-        motorFL.setTargetPosition(-(int) FLtpos);
+        motorFL.setTargetPosition((int) FLtpos);
         motorBL.setTargetPosition((int) BLtpos);
         motorFR.setTargetPosition((int) FRtpos);
         motorBR.setTargetPosition((int) BRtpos);

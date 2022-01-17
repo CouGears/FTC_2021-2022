@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class CompetitionDriving2021 extends LinearOpMode {
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR, intakeFL, lifter, carousel;
+    private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel;
     private Servo bucket, intakeServo;
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
@@ -23,7 +23,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorBL = hardwareMap.get(DcMotor.class, "motorBL");
         motorBR = hardwareMap.get(DcMotor.class, "motorBR");
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
-        intakeFL = hardwareMap.get(DcMotor.class, "intake");
+        intake = hardwareMap.get(DcMotor.class, "intake");
         lifter = hardwareMap.get(DcMotor.class, "lifter");
 
         carousel = hardwareMap.get(DcMotor.class, "carousel");
@@ -39,7 +39,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        intakeFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         lifter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         carousel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -48,7 +48,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
-        intakeFL.setDirection(DcMotorSimple.Direction.FORWARD);
+        intake.setDirection(DcMotorSimple.Direction.FORWARD);
         lifter.setDirection(DcMotorSimple.Direction.FORWARD);
 
         carousel.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -137,11 +137,11 @@ public class CompetitionDriving2021 extends LinearOpMode {
             boolean FLIntakePowerL = gamepad1.left_bumper;
 
             if (gamepad1.right_bumper) {
-                intakeFL.setPower(-1);
+                intake.setPower(-1);
             } else if (FLIntakePowerL) {
-                intakeFL.setPower(1);
+                intake.setPower(1);
             } else {
-                intakeFL.setPower(0);
+                intake.setPower(0);
             }
 
 //hello there

@@ -104,11 +104,11 @@ public class TestAuton extends OpMode {
         switch (robot.counter) {
             case 0:
               //  robot.turn(180);
-                    robot.drive(0, 5*feet ,.5); // I use this one to test the robot
+                   // robot.drive(0, 5*feet ,.5); // I use this one to test the robot
                robot.drive(-1.8 * feet, 0 * feet, .5); //drives to carousel
                 robot.counter++;
                 break;
-           /* case 1:
+            case 1:
                 robot.setCarousel();
                 telemetry.addData("spot: carousel", 1);
                     telemetry.update();
@@ -128,7 +128,7 @@ public class TestAuton extends OpMode {
                 robot.counter++;
                 break;
             case 5:
-                if (robot.distance() == 1) {
+               /* if (robot.distance() == 1) {
                     robot.lift(400);//Top of the tower
                     robot.lift();
                 } else if (robot.distance() == 2) {
@@ -137,7 +137,7 @@ public class TestAuton extends OpMode {
                 } else if (robot.distance() == 3) {
                     robot.lift(0);//Bottom of the tower
                     robot.lift();
-                }
+                }*/
                 telemetry.addData("spot", robot.distance());
                 telemetry.update();
 
@@ -151,7 +151,7 @@ public class TestAuton extends OpMode {
                // robot.turn(90);
                // robot.drive(-2 * feet, 0, .5);
                 robot.counter++;
-                break;*/
+                break;
         }
     }
 
