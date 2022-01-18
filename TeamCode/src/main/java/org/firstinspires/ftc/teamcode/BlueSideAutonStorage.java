@@ -129,6 +129,7 @@ public class BlueSideAutonStorage extends OpMode {
                 robot.counter++;
                 break;
            case 6:
+               robot.newSleep(2);
               /* if (robot.distance() == 1) {
                     robot.lift(400);//Top of the tower
                     robot.lift();
