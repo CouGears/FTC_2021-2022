@@ -28,7 +28,7 @@ public class AutonMethods {
     }
 
     //Declare and initial variables
-    double rev = 383.6;
+    double rev = 537.7;
     double inch = rev / (3.5 * 3.14);
     double feet = inch * 12;
     double rev2 = 2048;
@@ -91,6 +91,11 @@ public class AutonMethods {
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
         intake.setDirection(DcMotorSimple.Direction.FORWARD);
         rum.setDirection(DcMotorSimple.Direction.FORWARD);
+
+        motorFL.setTargetPosition(0);
+        motorBL.setTargetPosition(0);
+        motorFR.setTargetPosition(0);
+        motorBR.setTargetPosition(0);
 
         int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
 
@@ -204,12 +209,12 @@ public void kill()
 
         FRtpos = forward - sideways;
         BRtpos = forward + sideways;
-        FLtpos = forward + sideways;
-        BLtpos = forward - sideways;
+        FLtpos = forward - sideways;
+        BLtpos = forward + sideways;
 
-        motorFL.setTargetPosition((int) FLtpos);
+        motorFL.setTargetPosition(-(int) FLtpos);
         motorBL.setTargetPosition((int) BLtpos);
-        motorFR.setTargetPosition((int) FRtpos);
+        motorFR.setTargetPosition(-(int) FRtpos);
         motorBR.setTargetPosition((int) BRtpos);
 
         motorFL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -223,7 +228,7 @@ public void kill()
     }
 
     public void setCarousel() {
-        carousel.setPower(.45);
+        carousel.setPower(-.45);
         newSleep(4);
         carousel.setPower(0);
     }
@@ -249,11 +254,11 @@ public void kill()
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        double deltaturn = (deg / 360.0) * 21.654 * 3.14 * inch * 1.4 ;
-        motorFL.setTargetPosition((int) deltaturn);
+        double deltaturn = (deg / 360.0) * 21.654 * 3.14 * inch * 2.2 ;
+        motorFL.setTargetPosition(-(int) deltaturn);
         motorBL.setTargetPosition((int) deltaturn);
         motorFR.setTargetPosition((int) deltaturn);
-        motorBR.setTargetPosition((int) deltaturn);
+        motorBR.setTargetPosition(-(int) deltaturn);
         motorFR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorFL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -318,6 +323,11 @@ public void kill()
 
      }
  */
+    public void setIntake(int pos)
+    {
+        intakeServo.setPosition(pos);
+    }
+
     public void driveWithDecel(double forward, double sideways) {
         double dist = 8 * feet;
         runtime.reset();

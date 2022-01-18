@@ -56,17 +56,17 @@ public class CompetitionDriving2021 extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-//        intakeServo.setPosition(1);
+        intakeServo.setPosition(1);
         waitForStart();
 
         while (opModeIsActive()) {
             x = 0;
-        intakeServo.setPosition(0);
-
+    //    intakeServo.setPosition(0);
+      //  intakeServo.setPosition(1);
 
             if (x == 0) {
-                motorFL.setPower(((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.left_stick_x)) * .9);
-                motorBL.setPower(-(-(this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
+                motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.left_stick_x)) * .9);
+                motorBL.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
                 motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
                 motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
                 /*
@@ -98,25 +98,25 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 bucket.setPosition(.5);
                 robot.sleep(1000);
                // bucket.setPosition(1);
-                bucket.setPosition(-.5);//to turn the servo backwards
+                bucket.setPosi]tion(-.5);//to turn the servo backwards
                 //bucketButton = !bucketButton;
             }*/
-         /*   if (gamepad1.b) {
-                bucket.setPosition(.5);
-                robot.sleep(500);
-                bucket.setPosition(0);
 
-            }*/
             if (gamepad1.b) {
                 bucket.setPosition(0);
                 robot.sleep(1500);
                 bucket.setPosition(.5);
                 telemetry.addData("Position:", .5);
                 telemetry.update();
-            } else if (gamepad1.a){
+            } /*else if (gamepad1.a){
                 bucket.setPosition(.6);
-            }
+            }*/
+            else if (gamepad1.a) {
+                intakeServo.setPosition(0);
+                telemetry.addData("Servo", "Down");
+                telemetry.update();
 
+            }
             //if (gamepad1.a) {
            //     intakeServo.setPosition(0);
            // }
