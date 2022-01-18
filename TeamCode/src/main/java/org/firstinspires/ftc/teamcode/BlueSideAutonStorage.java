@@ -30,17 +30,16 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 @Autonomous
 
-public class BlueSideAuton extends OpMode {
+public class BlueSideAutonStorage extends OpMode {
 
     //TensorFlowVision vision = new TensorFlowVision();
 //   double rev = 383.6; //435 rpm motor
@@ -115,7 +114,7 @@ public class BlueSideAuton extends OpMode {
                 break;
             case 3:
                 robot.newSleep(3);
-                telemetry.addData("delay", 1);
+                telemetry.addData("delay", "Izzy Quit Robotics");
                 telemetry.update();
                 robot.counter++;
                 break;
@@ -146,12 +145,11 @@ public class BlueSideAuton extends OpMode {
                 robot.counter++;
                 break;
             case 7:
-                robot.drive(.5 * feet, 2 * feet,.5);
-              //  robot.drive(8 * feet, 0, .5);
-                robot.drive(0, -.5 * feet,.5);
-                //robot.drive(-5 * feet, 0, .5);
-               // robot.turn(90);
-               // robot.drive(-2 * feet, 0, .5);
+                robot.drive(1.9 * feet, 1.5 * feet,.5); //drive to drop point
+                robot.counter++;
+                break;
+            case 8:
+                robot.drive(1*feet,0,.5);
                 robot.counter++;
                 break;
         }
