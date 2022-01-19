@@ -103,7 +103,7 @@ public class BlueSideAutonWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 1:
-                robot.setCarousel();
+                robot.setCarousel(-.45);
                 robot.setIntake(1);
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
@@ -147,7 +147,7 @@ public class BlueSideAutonWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 7:
-                robot.drive(-6 * feet, 9 * feet,.5);
+                robot.drive(-9 * feet, 9 * feet,.5);
               //  robot.drive(8 * feet, 0, .5);
                // robot.drive(0, -.5 * feet,.5);
                 //robot.drive(-5 * feet, 0, .5);

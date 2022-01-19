@@ -39,7 +39,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 @Autonomous
 
-public class BlueSideAutonStorage extends OpMode {
+public class RedSideAutonWarehouse extends OpMode {
 
     //TensorFlowVision vision = new TensorFlowVision();
 //   double rev = 383.6; //435 rpm motor
@@ -109,7 +109,7 @@ public class BlueSideAutonStorage extends OpMode {
                 robot.counter++;
                 break;
             case 2:
-                robot.drive(-.5*feet, 3.2 * feet,.5); //drives to scan point
+                robot.drive(-.5*feet, -3.2 * feet,.5); //drives to scan point
                 robot.counter++;
                 break;
             case 3:
@@ -125,7 +125,7 @@ public class BlueSideAutonStorage extends OpMode {
                 robot.counter++;
                 break;
           case 5:
-                robot.drive(-1.9 * feet, -1.5 * feet,.5); //drive to drop point
+                robot.drive(-1.9 * feet, 1.5 * feet,.5); //drive to drop point
                 robot.counter++;
                 break;
            case 6:
@@ -146,14 +146,14 @@ public class BlueSideAutonStorage extends OpMode {
                 robot.counter++;
                 break;
             case 7:
-                robot.newSleep(2);
-                robot.drive(2.3 * feet, 2.3 * feet,.5);
+                robot.drive(-9 * feet, -9 * feet,.5);
+              //  robot.drive(8 * feet, 0, .5);
+               // robot.drive(0, -.5 * feet,.5);
+                //robot.drive(-5 * feet, 0, .5);
+               // robot.turn(90);
+               // robot.drive(-2 * feet, 0, .5);
                 robot.counter++;
                 break;
-        /*    case 8:
-                robot.drive(1*feet,0,.5);
-                robot.counter++;
-                break;*/
         }
     }
 

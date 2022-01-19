@@ -227,8 +227,8 @@ public void kill()
 
     }
 
-    public void setCarousel() {
-        carousel.setPower(-.45);
+    public void setCarousel(double pwr) {
+        carousel.setPower(pwr);
         newSleep(4);
         carousel.setPower(0);
     }

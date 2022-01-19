@@ -1,3 +1,32 @@
+/* Copyright (c) 2017 FIRST. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted (subject to the limitations in the disclaimer below) provided that
+ * the following conditions are met:
+ *
+ * Redistributions of source code must retain the above copyright notice, this list
+ * of conditions and the following disclaimer.
+ *
+ * Redistributions in binary form must reproduce the above copyright notice, this
+ * list of conditions and the following disclaimer in the documentation and/or
+ * other materials provided with the distribution.
+ *
+ * Neither the name of FIRST nor the names of its contributors may be used to endorse or
+ * promote products derived from this software without specific prior written permission.
+ *
+ * NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS
+ * LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -10,7 +39,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 @Autonomous
 
-public class RedSideAuton extends OpMode {
+public class RedSideAutonStorage extends OpMode {
 
     //TensorFlowVision vision = new TensorFlowVision();
 //   double rev = 383.6; //435 rpm motor
@@ -66,36 +95,42 @@ public class RedSideAuton extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.setCarousel();
-                robot.setIntake(1);
-                telemetry.addData("spot: carousel", 1);
-                telemetry.update();
+                robot.drive(-2.5*feet,0,.5);
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
+                robot.sleep(1500);
                 robot.counter++;
                 break;
             case 1:
-                robot.turn(25);
-                telemetry.addData("spot: turn", 1);
-                    telemetry.update();
+                robot.setCarousel(.45);
+                robot.setIntake(1);
+                telemetry.addData("spot: carousel", 1);
+                telemetry.update();
                 robot.counter++;
                 break;
             case 2:
-                robot.drive(-.3*feet, 3.2 * feet,.5); //drives to scan point
-                robot.sleep(2000);
+                robot.drive(-.5*feet, -3.2 * feet,.5); //drives to scan point
                 robot.counter++;
                 break;
-
             case 3:
-                robot.turn(180);
+                robot.newSleep(3);
+                telemetry.addData("delay", "Izzy Quit Robotics");
+                telemetry.update();
                 robot.counter++;
                 break;
-           case 4:
-                robot.drive(-1.9 * feet, -1.5 * feet,.5); //drive to drop point
+            case 4:
+
+                robot.turn(200);
+                robot.newSleep(2);
                 robot.counter++;
                 break;
-           /* case 5:
-               if (robot.distance() == 1) {
+          case 5:
+                robot.drive(-1.9 * feet, 1.5 * feet,.5); //drive to drop point
+                robot.counter++;
+                break;
+           case 6:
+               robot.newSleep(2);
+              /* if (robot.distance() == 1) {
                     robot.lift(400);//Top of the tower
                     robot.lift();
                 } else if (robot.distance() == 2) {
@@ -106,17 +141,17 @@ public class RedSideAuton extends OpMode {
                     robot.lift();
                 }
                 telemetry.addData("spot", robot.distance());
-                telemetry.update();
+                telemetry.update();*/
 
                 robot.counter++;
                 break;
-            case 6:
-                robot.drive(.5 * feet, 2 * feet,.5);
-              //  robot.drive(8 * feet, 0, .5);
-                robot.drive(0, -.5 * feet,.5);
-                //robot.drive(-5 * feet, 0, .5);
-               // robot.turn(90);
-               // robot.drive(-2 * feet, 0, .5);
+            case 7:
+                robot.newSleep(2);
+                robot.drive(2.3 * feet, -2.3 * feet,.5);
+                robot.counter++;
+                break;
+        /*    case 8:
+                robot.drive(1*feet,0,.5);
                 robot.counter++;
                 break;*/
         }
