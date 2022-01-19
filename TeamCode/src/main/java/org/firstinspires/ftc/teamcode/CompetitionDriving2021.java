@@ -31,7 +31,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         // claw2 = hardwareMap.get(Servo.class, "claw2");
 
         bucket = hardwareMap.get(Servo.class, "bucket");
-        intakeServo = hardwareMap.get(Servo.class, "intakeServo");
+        intakeServo = hardwareMap.get(Servo.class, "serv");
 
 
 
@@ -56,13 +56,13 @@ public class CompetitionDriving2021 extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-        intakeServo.setPosition(1);
+//        intakeServo.setPosition(1);
         waitForStart();
 
         while (opModeIsActive()) {
             x = 0;
-    //    intakeServo.setPosition(0);
-      //  intakeServo.setPosition(1);
+        intakeServo.setPosition(.45);
+
 
             if (x == 0) {
                 motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.left_stick_x)) * .9);
@@ -82,25 +82,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 motorBR.setPower(-((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
                 motorFR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
             }
-           /* if(gamepad1.a) {
-                if (claw == false) {
-                    claw1.setPosition(.5);
-                    claw2.setPosition(.5);
-                    claw = !claw;
-                } else {
-                    claw1.setPosition(1);
-                    claw2.setPosition(1);
-                    claw = !claw;
-                }
-            }*/
-          /*  while (gamepad1.b){
 
-                bucket.setPosition(.5);
-                robot.sleep(1000);
-               // bucket.setPosition(1);
-                bucket.setPosi]tion(-.5);//to turn the servo backwards
-                //bucketButton = !bucketButton;
-            }*/
 
             if (gamepad1.b) {
                 bucket.setPosition(0);
@@ -108,31 +90,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 bucket.setPosition(.5);
                 telemetry.addData("Position:", .5);
                 telemetry.update();
-            } /*else if (gamepad1.a){
-                bucket.setPosition(.6);
-            }*/
-            else if (gamepad1.a) {
-                intakeServo.setPosition(0);
-                telemetry.addData("Servo", "Down");
-                telemetry.update();
-
             }
-            //if (gamepad1.a) {
-           //     intakeServo.setPosition(0);
-           // }
-/*
-            if(gamepad1.right_bumper) {
-                intakeFL.setPower(1);
-            } else if(gamepad1.left_bumper){
-                intakeFL.setPower(-1);
-            } else {
-                intakeFL.setPower(0);
-            }
-*/
- /*
-  public int FLIntakePowerR = gamepad1.right_trigger;
-  public int FLIntakePowerL = gamepad1.left_bumper;
-*/
             int FLIntakePowerR = (int) gamepad1.right_trigger;
             boolean FLIntakePowerL = gamepad1.left_bumper;
 
@@ -146,10 +104,10 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
 //hello there
             if (gamepad1.dpad_up) {
-                lifter.setPower(-1);
+                lifter.setPower(-.6);
 
             } else if (gamepad1.dpad_down) {
-                lifter.setPower(1);
+                lifter.setPower(.6);
 
             } else {
                 lifter.setPower(0);

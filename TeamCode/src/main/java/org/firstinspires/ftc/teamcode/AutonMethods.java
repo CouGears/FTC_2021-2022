@@ -35,7 +35,7 @@ public class AutonMethods {
     double inch2 = rev2 / (2 * 3.14);
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, lifter, rum, intake, carousel;
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, rum, intake, carousel;
     //public static DcMotor Forwards = intake, Sideways = carousel;
     public static Servo bucket, intakeServo;
     public static DistanceSensor distanceSensor;
@@ -103,11 +103,6 @@ public class AutonMethods {
         // tele.update();
     }
 
-
-  /*  public void getLocation() {
-          locationy = (FODO.getCurrentPosition() / feet2);
-          locationx = (SODO.getCurrentPosition() / feet2);
-    }*/
 public void kill()
 {
     motorFL.setPower(0);
@@ -115,86 +110,6 @@ public void kill()
     motorBR.setPower(0);
     motorFR.setPower(0);
 }
-   /* public void movefb(double forwards) {
-        getLocation();
-        if (forwards > 0) {
-            while (motorFR.isBusy() || motorFL.isBusy()) {
-                if (runtime.seconds() > 3) break;//do i need to runtime reset?
-            }
-            while (forwards - locationy >= 1) {
-                getLocation();//do i need to runtime reset?
-                motorFL.setPower(.5);
-                motorBL.setPower(.5);
-                motorBR.setPower(.5);
-                motorFR.setPower(.5);
-                //drive until robot.locationy>movefb
-                tele.addData("move forwards", .5);
-                tele.update();//do i need to runtime reset?
-            }
-            while (forwards - locationy < 1) {
-                getLocation();//do i need to runtime reset?
-                motorFL.setPower(.1);//do i need to runtime reset?
-                motorBL.setPower(.1);//do i need to runtime reset?
-                motorBR.setPower(.1);
-                motorFR.setPower(.1);
-                //drive until robot.locationy>movefb
-                tele.addData("move forwards", .5);
-                tele.update();//do i need to runtime reset?
-            }
-        }
-        else if (forwards < 0) {
-            while (motorFR.isBusy() || motorFL.isBusy()) {
-                if (runtime.seconds() > 3) break;
-            }
-            while (locationy > forwards) {
-                getLocation();
-                motorFL.setPower(-.5);
-                motorBL.setPower(-.5);
-                motorBR.setPower(-.5);
-                motorFR.setPower(-.5);
-                //drive until robot.locationy<movefb
-                tele.addData("move backwqards", .5);
-                tele.update();
-            }
-        }
-        else kill();
-    }
-
-    public void moverl(double sideways) {
-        getLocation();
-        if (sideways > 0) {
-            if (locationx < sideways) {
-                while (motorFR.isBusy() || motorFL.isBusy()) {
-                    if (runtime.seconds() > 3) break;
-                }
-                getLocation();
-                motorFL.setPower(.5);
-                motorBL.setPower(-.5);
-                motorBR.setPower(.5);
-                motorFR.setPower(-.5);
-                //drive until robot.locationx>moverl
-                tele.addData("move right", .5);
-                tele.update();
-            }
-        }
-        else if (sideways < 0) {
-            if (locationx > sideways) {
-                while (motorFR.isBusy() || motorFL.isBusy()) {
-                    if (runtime.seconds() > 3) break;
-                }
-                getLocation();
-                motorFL.setPower(-.5);
-                motorBL.setPower(.5);
-                motorBR.setPower(-.5);
-                motorFR.setPower(.5);
-                //drive until robot.locationx<moverl
-                tele.addData("move left", .5);
-                tele.update();
-            }
-        }
-        else kill();
-    }
-*/
 
     //Function to move the robot in any direction
     public void drive(double forward, double sideways, double speed) {
@@ -297,6 +212,7 @@ public void kill()
         rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rum.setTargetPosition((int) amount);
         rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rum.setPower(.6);
     }
 
     public void lift() {

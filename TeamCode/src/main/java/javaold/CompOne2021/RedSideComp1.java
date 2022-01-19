@@ -41,7 +41,7 @@ public class RedSideComp1 extends OpMode {
                 robot.counter++;
                 break;
             case 1:
-                robot.setCarousel();
+                robot.setCarousel(.45);
                 robot.counter++;
                 break;
             case 2:
