@@ -132,13 +132,13 @@ public class BlueSideAutonWarehouse extends OpMode {
            case 6:
                robot.newSleep(2);
               /* if (robot.distance() == 1) {
-                    robot.lift(400);//Top of the tower
+                    robot.lift(3300);//Top of the tower
                     robot.lift();
                 } else if (robot.distance() == 2) {
-                    robot.lift(200);//Middle
+                    robot.lift(2500);//Middle
                     robot.lift();
                 } else if (robot.distance() == 3) {
-                    robot.lift(0);//Bottom of the tower
+                    robot.lift(2000);//Bottom of the tower
                     robot.lift();
                 }
                 telemetry.addData("spot", robot.distance());
