@@ -209,6 +209,7 @@ public void kill()
     }
 
     public void lift(double amount) { //moves the 4 bar/lifter
+        amount = -amount;
         rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rum.setTargetPosition((int) amount);
         rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);

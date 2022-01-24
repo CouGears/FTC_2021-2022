@@ -95,7 +95,7 @@ public class SlideTest extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.lift(1000);
+                robot.lift(400);
               /*  if (robot.distance() == 1) {
                     robot.lift(400);//Top of the tower
                     robot.lift();
@@ -112,7 +112,16 @@ public class SlideTest extends OpMode {
 
                 robot.counter++;
                 break;
-
+            case 1:
+                robot.newSleep(5);
+                robot.counter++;
+                break;
+            case 2:
+                robot.lift(-400);
+                telemetry.addData("Izzy quit Robotics", robot.distance());
+                telemetry.update();
+                robot.counter++;
+                break;
         }
     }
 
