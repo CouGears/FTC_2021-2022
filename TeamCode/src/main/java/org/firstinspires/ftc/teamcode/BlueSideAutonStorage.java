@@ -95,7 +95,7 @@ public class BlueSideAutonStorage extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.drive(-2.5*feet,0,.5);
+                robot.drive(-1*feet,0,.5);
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
                 robot.sleep(1500);
@@ -109,26 +109,39 @@ public class BlueSideAutonStorage extends OpMode {
                 robot.counter++;
                 break;
             case 2:
-                robot.drive(-.5*feet, 3.2 * feet,.5); //drives to scan point
+                robot.drive(0*feet, 3.3 *feet,.5); //drives to scan point
                 robot.counter++;
                 break;
             case 3:
+                //robot.drive(-.5, 0*feet,.5); //drives to scan point
+                robot.counter++;
+                break;
+            case 4:
+                //robot.drive(0, 1.17*feet,.5); //drives to scan point
+                robot.counter++;
+                break;
+            case 5:
                 robot.newSleep(3);
                 telemetry.addData("delay", "Izzy Quit Robotics");
                 telemetry.update();
                 robot.counter++;
                 break;
-            case 4:
-
-                robot.turn(200);
+            case 6:
+                robot.drive(0 * feet, .5* feet,.5); //drive to drop point
+                robot.counter++;
+                break;
+            case 7:
+                robot.turn(180);
                 robot.newSleep(2);
                 robot.counter++;
                 break;
-          case 5:
-                robot.drive(-1.9 * feet, -1.5 * feet,.5); //drive to drop point
+            case 8:
+                robot.drive(-2.25 * feet, 0* feet,.5); //drive to drop point
+                robot.newSleep(.5);
                 robot.counter++;
                 break;
-           case 6:
+
+           case 9:
                robot.newSleep(2);
               /* if (robot.distance() == 1) {
                     robot.lift(400);//Top of the tower
@@ -145,9 +158,9 @@ public class BlueSideAutonStorage extends OpMode {
 
                 robot.counter++;
                 break;
-            case 7:
+            case 10:
                 robot.newSleep(2);
-                robot.drive(2.3 * feet, 2.3 * feet,.5);
+                robot.drive(2.55 * feet, .8 * feet,.5);
                 robot.counter++;
                 break;
         /*    case 8:
