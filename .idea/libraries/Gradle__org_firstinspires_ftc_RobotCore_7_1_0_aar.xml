@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="Gradle: org.firstinspires.ftc:RobotCore:7.1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/24d3cfd086df18c7bf6e5145ba16ca77/transformed/jetified-RobotCore-7.1.0/jars/libs/Vuforia.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/24d3cfd086df18c7bf6e5145ba16ca77/transformed/jetified-RobotCore-7.1.0/jars/libs/androidx-rs.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/24d3cfd086df18c7bf6e5145ba16ca77/transformed/jetified-RobotCore-7.1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/24d3cfd086df18c7bf6e5145ba16ca77/transformed/jetified-RobotCore-7.1.0/jars/libs/gson-2.8.0.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/24d3cfd086df18c7bf6e5145ba16ca77/transformed/jetified-RobotCore-7.1.0/jars/libs/gson-extras-0.2.1.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/24d3cfd086df18c7bf6e5145ba16ca77/transformed/jetified-RobotCore-7.1.0/jars/libs/slf4j-api-1.7.26.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/24d3cfd086df18c7bf6e5145ba16ca77/transformed/jetified-RobotCore-7.1.0/jars/libs/slf4j-handroid-1.7.27.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/24d3cfd086df18c7bf6e5145ba16ca77/transformed/jetified-RobotCore-7.1.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/24d3cfd086df18c7bf6e5145ba16ca77/transformed/jetified-RobotCore-7.1.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.firstinspires.ftc/RobotCore/7.1.0/d908331911dec8ca6cf8fceb74f7047c4811f089/RobotCore-7.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.firstinspires.ftc/RobotCore/7.1.0/51a43a8010d7c33e7867c79b5d89ef9c9af3c6e/RobotCore-7.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

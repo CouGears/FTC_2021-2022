@@ -1,13 +1,28 @@
-#Mon Jan 24 20:48:50 EST 2022
-path.3=classes_0.dex
-path.2=classes2.dex
-path.1=classes.dex
+#Wed Jan 26 16:47:36 EST 2022
+path.4=15/classes.dex
+path.3=10/classes.dex
+path.2=0/classes.dex
+path.1=0/classes.dex
+renamed.8=classes9.dex
+path.8=classes2.dex
+path.7=9/classes.dex
+path.6=4/classes.dex
+path.5=3/classes.dex
 path.0=classes.dex
-base.3=/Users/danielsarasohn/Documents/GitHub/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeLibDexDebug/classes_0.dex
-base.2=/Users/danielsarasohn/Documents/GitHub/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
-base.1=/Users/danielsarasohn/Documents/GitHub/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex
-base.0=/Users/danielsarasohn/Documents/GitHub/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.4=/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/15/classes.dex
+base.3=/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
+base.2=/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.1=/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
+base.0=/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
+renamed.7=classes8.dex
+base.8=/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+renamed.6=classes7.dex
+base.7=/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+renamed.5=classes6.dex
+base.6=/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
+renamed.4=classes5.dex
+base.5=/Users/aarongoldgewert/Documents/FTC_2021-2022/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/3/classes.dex

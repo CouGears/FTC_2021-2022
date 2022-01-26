@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: org.firstinspires.ftc:Hardware:7.1.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9f70b2453ad98f043c1df305b904a1d7/transformed/jetified-Hardware-7.1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9f70b2453ad98f043c1df305b904a1d7/transformed/jetified-Hardware-7.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9f70b2453ad98f043c1df305b904a1d7/transformed/jetified-Hardware-7.1.0/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.firstinspires.ftc/Hardware/7.1.0/254ef0995d879eef877d2d4afe4077992ca38a6a/Hardware-7.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.firstinspires.ftc/Hardware/7.1.0/2221a45da99c84b65f887cadc2ccb6c26c502650/Hardware-7.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
