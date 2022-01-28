@@ -136,7 +136,7 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 8:
-                robot.drive(-2.25 * feet, -0.5* feet,.5); //drive to drop point
+                robot.drive(-2.5 * feet, -0.5* feet,.5); //drive to drop point
                 //robot.newSleep(.5);
                 robot.counter++;
                 break;
@@ -160,7 +160,7 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
                 case 11:
-                robot.drive(2.7 * feet, .8 * feet,.5);
+                robot.drive(2.55 * feet, 1 * feet,.5);
                 robot.counter++;
                 break;
         /*    case 8:
