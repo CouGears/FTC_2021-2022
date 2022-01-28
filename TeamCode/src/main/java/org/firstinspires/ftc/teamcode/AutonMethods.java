@@ -40,13 +40,13 @@ public class AutonMethods {
     public static Servo bucket, intakeServo;
     public static DistanceSensor distanceSensor;
     public TouchSensor armTouch;
-    private ElapsedTime runtime = new ElapsedTime();
+    private final ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
     Telemetry tele;
     double locationx = 0;
     double locationy = 0;
     private double speed;
-public int crap;
+    public int crap = 0;
     public int counter = 0;
     public double dist;
 
@@ -73,7 +73,6 @@ public int crap;
 
         bucket = map.get(Servo.class, "bucket");
         intakeServo = map.get(Servo.class, "intakeServo");
-
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -103,17 +102,17 @@ public int crap;
         // tele.update();
     }
 
-public void kill()
-{
-    motorFL.setPower(0);
-    motorBL.setPower(0);
-    motorBR.setPower(0);
-    motorFR.setPower(0);
-}
-public void distanceSet()
-{
-    dist = distanceSensor.getDistance(DistanceUnit.CM);
-}
+    public void kill() {
+        motorFL.setPower(0);
+        motorBL.setPower(0);
+        motorBR.setPower(0);
+        motorFR.setPower(0);
+    }
+
+    public void distanceSet() {
+        dist = distanceSensor.getDistance(DistanceUnit.CM);
+    }
+
     //Function to move the robot in any direction
     public void drive(double forward, double sideways, double speed) {
         runtime.reset();
@@ -145,10 +144,9 @@ public void distanceSet()
 
     }
 
-public void setIntakeServo()
-{
-    intakeServo.setPosition(.45);
-}
+    public void setIntakeServo() {
+        intakeServo.setPosition(.45);
+    }
 
     public void setCarousel(double pwr) {
         carousel.setPower(pwr);
@@ -160,7 +158,7 @@ public void setIntakeServo()
         int stuff = 3300;
         if (dist < 20) {
             stuff = 3300;
-            crap =3300;
+            crap = 3300;
         } else if (dist > 25 && dist < 40) {
             stuff = 2500;
             crap = 2500;
@@ -180,7 +178,7 @@ public void setIntakeServo()
         motorBL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorBR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorFR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        double deltaturn = (deg / 360.0) * 21.654 * 3.14 * inch * 2.2 ;
+        double deltaturn = (deg / 360.0) * 21.654 * 3.14 * inch * 2.2;
         motorFL.setTargetPosition(-(int) deltaturn);
         motorBL.setTargetPosition((int) deltaturn);
         motorFR.setTargetPosition((int) deltaturn);
@@ -251,8 +249,7 @@ public void setIntakeServo()
 
      }
  */
-    public void setIntake(int pos)
-    {
+    public void setIntake(int pos) {
         intakeServo.setPosition(pos);
     }
 

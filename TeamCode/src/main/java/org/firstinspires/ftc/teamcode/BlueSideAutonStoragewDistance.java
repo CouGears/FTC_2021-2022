@@ -37,7 +37,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 
-
 @Autonomous
 
 public class BlueSideAutonStoragewDistance extends OpMode {
@@ -46,7 +45,7 @@ public class BlueSideAutonStoragewDistance extends OpMode {
 //   double rev = 383.6; //435 rpm motor
     double rev = 537.7; //312 rpm motor
     double inch = rev / (3.78 * 3.14);
-    double feet = inch * 12 + (10*inch);
+    double feet = inch * 12 + (10 * inch);
 
     private ElapsedTime runtime = new ElapsedTime();
     AutonMethods robot = new AutonMethods();
@@ -96,7 +95,7 @@ public class BlueSideAutonStoragewDistance extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.drive(-1*feet,0,.5);//move to carousel
+                robot.drive(-1 * feet, 0, .5);//move to carousel
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
                 robot.sleep(1500);
@@ -110,16 +109,16 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 2:
-                robot.drive(0*feet, 2 *feet,.5); //drives right to scan point
+                robot.drive(0 * feet, 2 * feet, .5); //drives right to scan point
                 robot.counter++;
                 break;
             case 3:
-                robot.drive(-.5*feet, 0.01*feet,.5); //drives back to scan point
+                robot.drive(-.5 * feet, 0.01 * feet, .5); //drives back to scan point
                 robot.newSleep(.01);
                 robot.counter++;
                 break;
             case 4:
-                robot.drive(0*feet, 1.3*feet,.5); //drives right to scan point
+                robot.drive(0 * feet, 1.3 * feet, .5); //drives right to scan point
                 //needs three to be in right position and avoid carousel
                 robot.counter++;
                 break;
@@ -128,7 +127,7 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 6:
-                robot.drive(0.01 * feet, .5* feet,.5); //drive to drop point move over
+                robot.drive(0.01 * feet, .5 * feet, .5); //drive to drop point move over
                 robot.counter++;
                 break;
             case 7:
@@ -137,14 +136,14 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 8:
-                robot.drive(-2.75 * feet, -0.6* feet,.5); //drive to drop point
+                robot.drive(-2.75 * feet, -0.6 * feet, .5); //drive to drop point
                 //robot.newSleep(.5);
                 robot.counter++;
                 break;
 
-           case 9:
-               //robot.newSleep(2);
-               if (robot.distance() == 3300) {//this is all preconfigured and stays the same
+            case 9:
+                //robot.newSleep(2);
+                if (robot.distance() == 3300) {//this is all preconfigured and stays the same
                     robot.lift(3300);//Top of the tower
                 } else if (robot.distance() == 2500) {
                     robot.lift(2500);//Middle
@@ -160,15 +159,15 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.dump();//configured stays the same
                 robot.counter++;
                 break;
-                case 11:
-                robot.drive(2.7 * feet, 1.25 * feet,.5);//move to park
+            case 11:
+                robot.drive(2.7 * feet, 1.25 * feet, .5);//move to park
                 robot.counter++;
                 break;
             case 12:
                 //open servo to lower arm
-                  robot.setIntakeServo();
-                  robot.counter++;
-                  break;
+                robot.intakeServo.setPosition(.45);
+                robot.counter++;
+                break;
             case 13:
                 if (robot.crap == 3300) {//this is all preconfigured and stays the same
                     robot.lift(-3300);//Top of the tower
