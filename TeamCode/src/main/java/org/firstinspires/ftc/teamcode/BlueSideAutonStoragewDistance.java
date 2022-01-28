@@ -36,13 +36,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import com.qualcomm.robotcore.hardware.DistanceSensor;
 
 
 @Autonomous
 
-public class BlueSideAutonStoragewDisstance extends OpMode {
+public class BlueSideAutonStoragewDistance extends OpMode {
 
     //TensorFlowVision vision = new TensorFlowVision();
 //   double rev = 383.6; //435 rpm motor
@@ -125,9 +123,7 @@ public class BlueSideAutonStoragewDisstance extends OpMode {
                 robot.counter++;
                 break;
             case 5:
-                robot.newSleep(3);
-                telemetry.addData("delay", "Izzy Quit Robotics");
-                telemetry.update();
+                robot.distanceSet();
                 robot.counter++;
                 break;
             case 6:
@@ -147,23 +143,22 @@ public class BlueSideAutonStoragewDisstance extends OpMode {
 
            case 9:
                robot.newSleep(2);
-              /* if (robot.distance() == 1) {
-                    robot.lift(400);//Top of the tower
+               if (robot.distance() == 3300) {
+                    robot.lift(3300);//Top of the tower
                     robot.lift();
-                } else if (robot.distance() == 2) {
-                    robot.lift(200);//Middle
+                } else if (robot.distance() == 2500) {
+                    robot.lift(2500);//Middle
                     robot.lift();
-                } else if (robot.distance() == 3) {
-                    robot.lift(0);//Bottom of the tower
+                } else if (robot.distance() == 2000) {
+                    robot.lift(2000);//Bottom of the tower
                     robot.lift();
                 }
                 telemetry.addData("spot", robot.distance());
-                telemetry.update();*/
+                telemetry.update();
 
                 robot.counter++;
                 break;
             case 10:
-                robot.newSleep(2);
                 robot.drive(2.55 * feet, .8 * feet,.5);
                 robot.counter++;
                 break;

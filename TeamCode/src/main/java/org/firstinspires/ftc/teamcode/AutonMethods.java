@@ -48,7 +48,7 @@ public class AutonMethods {
     private double speed;
 
     public int counter = 0;
-    public double dist = distanceSensor.getDistance(DistanceUnit.CM);
+    public double dist;
 
     public static BNO055IMU imu;
     BNO055IMU.Parameters parameters;
@@ -110,7 +110,10 @@ public void kill()
     motorBR.setPower(0);
     motorFR.setPower(0);
 }
-
+public void distanceSet()
+{
+    dist = distanceSensor.getDistance(DistanceUnit.CM);
+}
     //Function to move the robot in any direction
     public void drive(double forward, double sideways, double speed) {
         runtime.reset();
