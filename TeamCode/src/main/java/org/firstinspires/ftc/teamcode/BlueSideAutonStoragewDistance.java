@@ -96,43 +96,44 @@ public class BlueSideAutonStoragewDistance extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.drive(-1*feet,0,.5);
+                robot.drive(-1*feet,0,.5);//move to carousel
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
                 robot.sleep(1500);
                 robot.counter++;
                 break;
             case 1:
-                robot.setCarousel(-.45);
+                robot.setCarousel(-.45);//move carousel
                 robot.setIntake(1);
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
                 robot.counter++;
                 break;
             case 2:
-                robot.drive(0*feet, 2 *feet,.5); //drives to scan point
+                robot.drive(0*feet, 2 *feet,.5); //drives right to scan point
                 robot.counter++;
                 break;
             case 3:
-                robot.drive(-.5*feet, 0.01*feet,.5); //drives to scan point
+                robot.drive(-.5*feet, 0.01*feet,.5); //drives back to scan point
                 robot.newSleep(.01);
                 robot.counter++;
                 break;
             case 4:
-                robot.drive(0*feet, 1.3*feet,.5); //drives to scan point
+                robot.drive(0*feet, 1.3*feet,.5); //drives right to scan point
+                //needs three to be in right position and avoid carousel
                 robot.counter++;
                 break;
             case 5:
-                robot.distanceSet();
+                robot.distanceSet();//grab distance of block and know how to move arm this is stored and stay same but right leg of robot needs to line up with barcode for this system to work(sorry thatll be change case 4)
                 robot.counter++;
                 break;
             case 6:
-                robot.drive(0.01 * feet, .5* feet,.5); //drive to drop point
+                robot.drive(0.01 * feet, .5* feet,.5); //drive to drop point move over
                 robot.counter++;
                 break;
             case 7:
-                robot.turn(180);
-                robot.newSleep(2);
+                robot.turn(180);//turn to drop
+                robot.newSleep(2);//wait for completion so we dont drive on angle
                 robot.counter++;
                 break;
             case 8:
@@ -143,7 +144,7 @@ public class BlueSideAutonStoragewDistance extends OpMode {
 
            case 9:
                //robot.newSleep(2);
-               if (robot.distance() == 3300) {
+               if (robot.distance() == 3300) {//this is all preconfigured and stays the same
                     robot.lift(3300);//Top of the tower
                 } else if (robot.distance() == 2500) {
                     robot.lift(2500);//Middle
@@ -156,11 +157,11 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 10:
-                robot.dump();
+                robot.dump();//configured stays the same
                 robot.counter++;
                 break;
                 case 11:
-                robot.drive(2.55 * feet, 1 * feet,.5);
+                robot.drive(2.55 * feet, 1 * feet,.5);//move to park
                 robot.counter++;
                 break;
         /*    case 8:
