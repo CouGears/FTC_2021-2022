@@ -114,12 +114,12 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 3:
-                robot.drive(-.5, 0*feet,.5); //drives to scan point
+                robot.drive(-.5*feet, 0.01*feet,.5); //drives to scan point
                 robot.newSleep(.01);
                 robot.counter++;
                 break;
             case 4:
-                robot.drive(0, 1.3*feet,.5); //drives to scan point
+                robot.drive(0*feet, 1.3*feet,.5); //drives to scan point
                 robot.counter++;
                 break;
             case 5:
@@ -127,7 +127,7 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 6:
-                robot.drive(0 * feet, .5* feet,.5); //drive to drop point
+                robot.drive(0.01 * feet, .5* feet,.5); //drive to drop point
                 robot.counter++;
                 break;
             case 7:
@@ -136,30 +136,31 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 8:
-                robot.drive(-2.25 * feet, 0* feet,.5); //drive to drop point
-                robot.newSleep(.5);
+                robot.drive(-2.25 * feet, -0.5* feet,.5); //drive to drop point
+                //robot.newSleep(.5);
                 robot.counter++;
                 break;
 
            case 9:
-               robot.newSleep(2);
+               //robot.newSleep(2);
                if (robot.distance() == 3300) {
                     robot.lift(3300);//Top of the tower
-                    robot.lift();
                 } else if (robot.distance() == 2500) {
                     robot.lift(2500);//Middle
-                    robot.lift();
                 } else if (robot.distance() == 2000) {
                     robot.lift(2000);//Bottom of the tower
-                    robot.lift();
                 }
                 telemetry.addData("spot", robot.distance());
                 telemetry.update();
-
+                robot.newSleep(2);
                 robot.counter++;
                 break;
             case 10:
-                robot.drive(2.55 * feet, .8 * feet,.5);
+                robot.dump();
+                robot.counter++;
+                break;
+                case 11:
+                robot.drive(2.7 * feet, .8 * feet,.5);
                 robot.counter++;
                 break;
         /*    case 8:

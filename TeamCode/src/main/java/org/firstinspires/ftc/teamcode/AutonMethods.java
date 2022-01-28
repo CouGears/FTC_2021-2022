@@ -155,11 +155,11 @@ public void distanceSet()
 
     public int distance() {
         int stuff = 3300;
-        if (dist < 5) {
+        if (dist < 20) {
             stuff = 3300;
-        } else if (dist > 10 && dist < 15) {
+        } else if (dist > 25 && dist < 40) {
             stuff = 2500;
-        } else if (dist > 15) {
+        } else if (dist > 45) {
             stuff = 2000;
         }
         return stuff;
@@ -221,7 +221,7 @@ public void distanceSet()
         rum.setPower(.6);
     }
 
-    public void lift() {
+    public void dump() {
 
         bucket.setPosition(0);
         sleep(1500);
