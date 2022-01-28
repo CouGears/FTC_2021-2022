@@ -137,7 +137,7 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 8:
-                robot.drive(-2.5 * feet, -0.5* feet,.5); //drive to drop point
+                robot.drive(-2.75 * feet, -0.6* feet,.5); //drive to drop point
                 //robot.newSleep(.5);
                 robot.counter++;
                 break;
@@ -161,10 +161,26 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
                 case 11:
-                robot.drive(2.55 * feet, 1 * feet,.5);//move to park
+                robot.drive(2.7 * feet, 1.25 * feet,.5);//move to park
                 robot.counter++;
                 break;
-        /*    case 8:
+            case 12:
+                //open servo to lower arm
+                  robot.setIntakeServo();
+                  robot.counter++;
+                  break;
+            case 13:
+                if (robot.crap == 3300) {//this is all preconfigured and stays the same
+                    robot.lift(-3300);//Top of the tower
+                } else if (robot.crap == 2500) {
+                    robot.lift(-2500);//Middle
+                } else if (robot.crap == 2000) {
+                    robot.lift(-2000);//Bottom of the tower
+                }
+                robot.counter++;
+                break;
+
+                /*    case 8:
                 robot.drive(1*feet,0,.5);
                 robot.counter++;
                 break;*/

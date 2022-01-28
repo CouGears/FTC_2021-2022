@@ -31,7 +31,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         // claw2 = hardwareMap.get(Servo.class, "claw2");
 
         bucket = hardwareMap.get(Servo.class, "bucket");
-        intakeServo = hardwareMap.get(Servo.class, "serv");
+        intakeServo = hardwareMap.get(Servo.class, "intakeServo");
 
 
 

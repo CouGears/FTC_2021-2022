@@ -164,6 +164,8 @@ public class BlueSideAutonStorage extends OpMode {
                 robot.drive(2.55 * feet, .8 * feet,.5);
                 robot.counter++;
                 break;
+            case 11:
+
         /*    case 8:
                 robot.drive(1*feet,0,.5);
                 robot.counter++;

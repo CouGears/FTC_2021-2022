@@ -46,7 +46,7 @@ public class AutonMethods {
     double locationx = 0;
     double locationy = 0;
     private double speed;
-
+public int crap;
     public int counter = 0;
     public double dist;
 
@@ -145,7 +145,10 @@ public void distanceSet()
 
     }
 
-
+public void setIntakeServo()
+{
+    intakeServo.setPosition(.45);
+}
 
     public void setCarousel(double pwr) {
         carousel.setPower(pwr);
@@ -157,10 +160,13 @@ public void distanceSet()
         int stuff = 3300;
         if (dist < 20) {
             stuff = 3300;
+            crap =3300;
         } else if (dist > 25 && dist < 40) {
             stuff = 2500;
+            crap = 2500;
         } else if (dist > 45) {
             stuff = 2000;
+            crap = 2000;
         }
         return stuff;
     }
