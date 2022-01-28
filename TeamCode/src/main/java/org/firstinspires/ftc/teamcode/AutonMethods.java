@@ -48,7 +48,7 @@ public class AutonMethods {
     private double speed;
 
     public int counter = 0;
-
+    public double dist = distanceSensor.getDistance(DistanceUnit.CM);
 
     public static BNO055IMU imu;
     BNO055IMU.Parameters parameters;
@@ -142,6 +142,8 @@ public void kill()
 
     }
 
+
+
     public void setCarousel(double pwr) {
         carousel.setPower(pwr);
         newSleep(4);
@@ -149,13 +151,13 @@ public void kill()
     }
 
     public int distance() {
-        int stuff = 0;
-        if (distanceSensor.getDistance(DistanceUnit.CM) < 5) {
-            stuff = 1;
-        } else if (distanceSensor.getDistance(DistanceUnit.CM) > 10 && distanceSensor.getDistance(DistanceUnit.CM) < 15) {
-            stuff = 2;
-        } else if (distanceSensor.getDistance(DistanceUnit.CM) > 15) {
-            stuff = 3;
+        int stuff = 3300;
+        if (dist < 5) {
+            stuff = 3300;
+        } else if (dist > 10 && dist < 15) {
+            stuff = 2500;
+        } else if (dist > 15) {
+            stuff = 2000;
         }
         return stuff;
     }
