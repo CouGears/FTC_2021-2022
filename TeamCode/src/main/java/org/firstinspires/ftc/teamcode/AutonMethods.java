@@ -156,9 +156,10 @@ public class AutonMethods {
 
     public int distance() {
         int stuff = 3300;
-        if (dist < 20) {
+        if (dist < 15) {
             stuff = 3300;
             crap = 3300;
+
         } else if (dist > 25 && dist < 40) {
             stuff = 2500;
             crap = 2500;

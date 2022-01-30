@@ -136,39 +136,48 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 8:
-                robot.drive(-2.75 * feet, -0.6 * feet, .5); //drive to drop point
+                robot.drive(0 * feet, -0.6 * feet, .5); //drive to drop point
+
                 //robot.newSleep(.5);
                 robot.counter++;
                 break;
-
             case 9:
-                //robot.newSleep(2);
-                if (robot.distance() == 3300) {//this is all preconfigured and stays the same
-                    robot.lift(3300);//Top of the tower
-                } else if (robot.distance() == 2500) {
-                    robot.lift(2500);//Middle
-                } else if (robot.distance() == 2000) {
-                    robot.lift(2000);//Bottom of the tower
-                }
-                telemetry.addData("spot", robot.distance());
-                telemetry.update();
-                robot.newSleep(2);
+                robot.drive(-2.75 * feet, 0 * feet, .5); //drive to drop point
                 robot.counter++;
                 break;
             case 10:
-                robot.dump();//configured stays the same
+                //robot.newSleep(2);
+                if (robot.distance() == 3300) {//this is all preconfigured and stays the same
+                    robot.lift(3300);//Top of the tower
+                    telemetry.addData("spot - top", robot.distance());
+                    telemetry.update();
+                } else if (robot.distance() == 2500) {
+                    robot.lift(2500);//Middle
+                    telemetry.addData("spot - middle", robot.distance());
+                    telemetry.update();
+                } else if (robot.distance() == 2000) {
+                    robot.lift(2000);
+                    telemetry.addData("spot - bottom", robot.distance());
+                    telemetry.update();//Bottom of the tower
+                }
+
+                robot.newSleep(2);
                 robot.counter++;
                 break;
             case 11:
-                robot.drive(2.7 * feet, 1.25 * feet, .5);//move to park
+                robot.dump();//configured stays the same
                 robot.counter++;
                 break;
             case 12:
+                robot.drive(2.7 * feet, 1.25 * feet, .5);//move to park
+                robot.counter++;
+                break;
+            case 13:
                 //open servo to lower arm
                 robot.intakeServo.setPosition(.45);
                 robot.counter++;
                 break;
-            case 13:
+            case 14:
                 if (robot.crap == 3300) {//this is all preconfigured and stays the same
                     robot.lift(-3300);//Top of the tower
                 } else if (robot.crap == 2500) {
