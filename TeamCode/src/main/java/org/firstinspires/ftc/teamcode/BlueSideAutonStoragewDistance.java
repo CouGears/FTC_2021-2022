@@ -124,6 +124,8 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 break;
             case 5:
                 robot.distanceSet();//grab distance of block and know how to move arm this is stored and stay same but right leg of robot needs to line up with barcode for this system to work(sorry thatll be change case 4)
+                telemetry.addData("spot", robot.distance());
+                telemetry.update();
                 robot.counter++;
                 break;
             case 6:
