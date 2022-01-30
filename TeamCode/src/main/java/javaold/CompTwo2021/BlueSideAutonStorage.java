@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package javaold.CompTwo2021;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -35,11 +35,12 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.AutonMethods;
 
 
 @Autonomous
 
-public class SlideTest extends OpMode {
+public class BlueSideAutonStorage extends OpMode {
 
     //TensorFlowVision vision = new TensorFlowVision();
 //   double rev = 383.6; //435 rpm motor
@@ -95,31 +96,79 @@ public class SlideTest extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.lift(3300);
-              /*  if (robot.distance() == 1) {
+                robot.drive(-1*feet,0,.5);
+//                robot.turn(180);
+//                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
+                robot.sleep(1500);
+                robot.counter++;
+                break;
+            case 1:
+                robot.setCarousel(-.45);
+                robot.setIntake(1);
+                telemetry.addData("spot: carousel", 1);
+                telemetry.update();
+                robot.counter++;
+                break;
+            case 2:
+                robot.drive(0*feet, 2 *feet,.5); //drives to scan point
+                robot.counter++;
+                break;
+            case 3:
+                robot.drive(-.5, 0*feet,.5); //drives to scan point
+                robot.newSleep(.01);
+                robot.counter++;
+                break;
+            case 4:
+                robot.drive(0, 1.3*feet,.5); //drives to scan point
+                robot.counter++;
+                break;
+            case 5:
+                robot.newSleep(3);
+                telemetry.addData("delay", "Izzy Quit Robotics");
+                telemetry.update();
+                robot.counter++;
+                break;
+            case 6:
+                robot.drive(0 * feet, .5* feet,.5); //drive to drop point
+                robot.counter++;
+                break;
+            case 7:
+                robot.turn(180);
+                robot.newSleep(2);
+                robot.counter++;
+                break;
+            case 8:
+                robot.drive(-2.25 * feet, 0* feet,.5); //drive to drop point
+                robot.newSleep(.5);
+                robot.counter++;
+                break;
+
+           case 9:
+               robot.newSleep(2);
+              /* if (robot.distance() == 1) {
                     robot.lift(400);//Top of the tower
                     robot.lift();
-                }
-                else if (robot.distance() == 2) {
+                } else if (robot.distance() == 2) {
                     robot.lift(200);//Middle
                     robot.lift();
                 } else if (robot.distance() == 3) {
                     robot.lift(0);//Bottom of the tower
                     robot.lift();
-                }*/
-                telemetry.addData("Up", robot.distance());
-                telemetry.update();
+                }
+                telemetry.addData("spot", robot.distance());
+                telemetry.update();*/
 
                 robot.counter++;
                 break;
-       /*     case 1:
-                robot.newSleep(5);
+            case 10:
+                robot.newSleep(2);
+                robot.drive(2.55 * feet, .8 * feet,.5);
                 robot.counter++;
                 break;
-            case 2:
-                robot.lift(-400);
-                telemetry.addData("Izzy quit Robotics", robot.distance());
-                telemetry.update();
+            case 11:
+
+        /*    case 8:
+                robot.drive(1*feet,0,.5);
                 robot.counter++;
                 break;*/
         }
