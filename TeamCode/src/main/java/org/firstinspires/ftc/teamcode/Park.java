@@ -40,7 +40,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
 
-public class BlueSideAutonWarehouse extends OpMode {
+public class Park extends OpMode {
 
     //TensorFlowVision vision = new TensorFlowVision();
 //   double rev = 383.6; //435 rpm motor
@@ -96,65 +96,9 @@ public class BlueSideAutonWarehouse extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.drive(-2.5*feet,0,.5);
-//                robot.turn(180);
-//                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
-                robot.sleep(1500);
-                robot.counter++;
-                break;
-            case 1:
-                robot.setCarousel(-.45);
-                robot.setIntake(1);
-                telemetry.addData("spot: carousel", 1);
-                telemetry.update();
-                robot.counter++;
-                break;
-            case 2:
-                robot.drive(-.5*feet, 3.2 * feet,.5); //drives to scan point
-                robot.counter++;
-                break;
-            case 3:
-                robot.newSleep(3);
-                telemetry.addData("delay", "Izzy Quit Robotics");
-                telemetry.update();
-                robot.counter++;
-                break;
-            case 4:
-
-                robot.turn(200);
-                robot.newSleep(2);
-                robot.counter++;
-                break;
-          case 5:
-                robot.drive(-1.9 * feet, -1.5 * feet,.5); //drive to drop point
-                robot.counter++;
-                break;
-           case 6:
-               robot.newSleep(2);
-              /* if (robot.distance() == 1) {
-                    robot.lift(3300);//Top of the tower
-                    robot.lift();
-                } else if (robot.distance() == 2) {
-                    robot.lift(2500);//Middle
-                    robot.lift();
-                } else if (robot.distance() == 3) {
-                    robot.lift(2000);//Bottom of the tower
-                    robot.lift();
-                }
-                telemetry.addData("spot", robot.distance());
-                telemetry.update();*/
-
-                robot.counter++;
-                break;
-            case 7:
-                robot.drive(-9 * feet, 9 * feet,.5);
-              //  robot.drive(8 * feet, 0, .5);
-               // robot.drive(0, -.5 * feet,.5);
-                //robot.drive(-5 * feet, 0, .5);
-               // robot.turn(90);
-               // robot.drive(-2 * feet, 0, .5);
-                robot.counter++;
-                break;
+              robot.drive(10*feet,0,1);
+              robot.counter++;
+              break;
         }
     }
 
