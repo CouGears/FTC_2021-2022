@@ -109,8 +109,9 @@ public class AutonMethods {
         motorFR.setPower(0);
     }
 
-    public void distanceSet() {
+    public double distanceSet() {
         dist = distanceSensor.getDistance(DistanceUnit.CM);
+        return dist;
     }
 
     //Function to move the robot in any direction
