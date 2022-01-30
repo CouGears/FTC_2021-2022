@@ -102,7 +102,7 @@ public class RedSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 1:
-                robot.setCarousel(-.45);//move carousel
+                robot.setCarousel(.45);//move carousel
                 robot.setIntake(1);
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
