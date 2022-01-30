@@ -95,7 +95,7 @@ public class BlueSideAutonStoragewDistance extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.drive(-1 * feet, 0, .5);//move to carousel
+                robot.drive(-1.17 * feet, 0, .5);//move to carousel
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
                 robot.sleep(1500);
@@ -109,11 +109,11 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 2:
-                robot.drive(0 * feet, 2 * feet, .5); //drives right to scan point
+                robot.drive(.17 * feet, 2 * feet, .5); //drives right to scan point
                 robot.counter++;
                 break;
             case 3:
-                robot.drive(-.5 * feet, 0.01 * feet, .5); //drives back to scan point
+                robot.drive(-.33 * feet, 0.01 * feet, .5); //drives back to scan point
                 robot.newSleep(.01);
                 robot.counter++;
                 break;

@@ -95,18 +95,18 @@ public class RedSideAutonStoragewDistance extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.drive(-1 * feet, 0, .5);//move to carousel
+                robot.drive(-1.17 * feet, 0, .5);//move to carousel
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
                 robot.sleep(1500);
                 robot.counter++;
                 break;
             case 1:
-                robot.turn(-20);
-                robot.newSleep(1);
+                //robot.turn(-10);
+               // robot.newSleep(1);
                 robot.setCarousel(.45);//move carousel
-                robot.setIntake(1);
-                robot.turn(20);
+                //robot.setIntake(1);
+                //  robot.turn(10);
                // robot.newSleep(1);
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
@@ -117,7 +117,7 @@ public class RedSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 3:
-                robot.drive(-.5 * feet, -0.01 * feet, .5); //drives back to scan point
+                robot.drive(-.33 * feet, -0.01 * feet, .5); //drives back to scan point
                 robot.newSleep(.01);
                 robot.counter++;
                 break;
@@ -144,13 +144,13 @@ public class RedSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 8:
-                robot.drive(0 * feet, 0.4 * feet, .5); //drive to drop point
+                robot.drive(0 * feet, 0.65 * feet, .5); //drive to drop point
 
                 //robot.newSleep(.5);
                 robot.counter++;
                 break;
             case 9:
-                robot.drive(-2.7 * feet, 0 * feet, .5); //drive to drop point
+                robot.drive(-2.9 * feet, 0 * feet, .5); //drive to drop point
                 robot.counter++;
                 break;
             case 10:
@@ -177,7 +177,7 @@ public class RedSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 12:
-                robot.drive(2.9 * feet, -1.35 * feet, .5);//move to park
+                robot.drive(2.85 * feet, -1.35 * feet, .5);//move to park
                 robot.counter++;
                 break;
             case 13:
@@ -193,6 +193,8 @@ public class RedSideAutonStoragewDistance extends OpMode {
                 } else if (robot.crap == 2000) {
                     robot.lift(-2000);//Bottom of the tower
                 }
+                telemetry.addData("arm lowered", robot.value());
+                telemetry.update();//Bottom of the tower
                 robot.counter++;
                 break;
 

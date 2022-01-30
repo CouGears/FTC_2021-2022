@@ -108,6 +108,8 @@ public class AutonMethods {
         motorBR.setPower(0);
         motorFR.setPower(0);
     }
+public int value()
+{return 0;}
 
     public double distanceSet() {
         dist = distanceSensor.getDistance(DistanceUnit.CM);
