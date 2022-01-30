@@ -123,9 +123,11 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 5:
+               robot.newSleep(1);
                 robot.distanceSet();//grab distance of block and know how to move arm this is stored and stay same but right leg of robot needs to line up with barcode for this system to work(sorry thatll be change case 4)
                 telemetry.addData("spot", robot.distanceSet());
                 telemetry.update();
+                robot.newSleep(1);
                 robot.counter++;
                 break;
             case 6:
@@ -138,13 +140,13 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 8:
-                robot.drive(0 * feet, -0.6 * feet, .5); //drive to drop point
+                robot.drive(0 * feet, -0.4 * feet, .5); //drive to drop point
 
                 //robot.newSleep(.5);
                 robot.counter++;
                 break;
             case 9:
-                robot.drive(-2.75 * feet, 0 * feet, .5); //drive to drop point
+                robot.drive(-2.7 * feet, 0 * feet, .5); //drive to drop point
                 robot.counter++;
                 break;
             case 10:
@@ -171,7 +173,7 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 12:
-                robot.drive(2.7 * feet, 1.25 * feet, .5);//move to park
+                robot.drive(2.9 * feet, 1.25 * feet, .5);//move to park
                 robot.counter++;
                 break;
             case 13:
