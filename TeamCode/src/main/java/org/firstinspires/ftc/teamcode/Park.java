@@ -96,9 +96,14 @@ public class Park extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-              robot.drive(6*feet,0,1);
+              robot.drive(4*feet,0,1);
               robot.counter++;
               break;
+         /*   case 1:
+                robot.newSleep(1);
+                robot.drive(0*feet, -2*feet, 1);
+                robot.counter++;
+                        break;*/
         }
     }
 

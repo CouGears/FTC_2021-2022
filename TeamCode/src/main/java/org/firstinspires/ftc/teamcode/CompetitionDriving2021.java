@@ -31,7 +31,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         // claw2 = hardwareMap.get(Servo.class, "claw2");
 
         bucket = hardwareMap.get(Servo.class, "bucket");
-        intakeServo = hardwareMap.get(Servo.class, "intakeServo");
+        intakeServo = hardwareMap.get(Servo.class, "serv");
 
 
 
@@ -56,7 +56,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-//        intakeServo.setPosition(1);
+//      intakeServo.setPosition(1);
         waitForStart();
 
         while (opModeIsActive()) {
@@ -90,6 +90,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 bucket.setPosition(.5);
                 telemetry.addData("Position:", .5);
                 telemetry.update();
+            }
+            else {
+                bucket.setPosition(.5);
             }
             int FLIntakePowerR = (int) gamepad1.right_trigger;
             boolean FLIntakePowerL = gamepad1.left_bumper;
