@@ -107,7 +107,7 @@ public class RedSideAutonStoragewDistance extends OpMode {
                 robot.setCarousel(.45);//move carousel
                 robot.setIntake(1);
                 robot.turn(20);
-                robot.newSleep(1);
+               // robot.newSleep(1);
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
                 robot.counter++;
@@ -122,7 +122,7 @@ public class RedSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 4:
-                robot.drive(0 * feet, -1.3 * feet, .5); //drives right to scan point
+                robot.drive(0 * feet, -.7 * feet, .5); //drives right to scan point
                 //needs three to be in right position and avoid carousel
                 robot.counter++;
                 break;
@@ -135,7 +135,7 @@ public class RedSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 6:
-                robot.drive(0.01 * feet, -.5 * feet, .5); //drive to drop point move over
+                robot.drive(0.01 * feet, -1.1 * feet, .5); //drive to drop point move over
                 robot.counter++;
                 break;
             case 7:
@@ -177,7 +177,7 @@ public class RedSideAutonStoragewDistance extends OpMode {
                 robot.counter++;
                 break;
             case 12:
-                robot.drive(2.9 * feet, -1.25 * feet, .5);//move to park
+                robot.drive(2.9 * feet, -1.35 * feet, .5);//move to park
                 robot.counter++;
                 break;
             case 13:
