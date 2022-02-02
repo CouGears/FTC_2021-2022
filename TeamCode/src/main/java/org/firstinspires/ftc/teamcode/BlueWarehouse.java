@@ -72,15 +72,45 @@ public class BlueWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 1:
-                if(robot.distanceSensor.getDistance(DistanceUnit.CM)<=15)
-                {
-                    robot.distanceSet();
-                }
+                robot.distanceSetBack();
 
-                robot.counter++;
+                if(robot.dist <= 15)
+                {
+                    robot.BlockPosition++;
+                }
+                robot.counter=2;
                 break;
             case 2:
                 robot.drive(0*feet, -8*inch, .5);
+                robot.counter++;
+                break;
+            case 3:
+                robot.distanceSetBack();
+
+                if(robot.dist <= 15)
+                {
+                    robot.BlockPosition++;
+                }
+                robot.counter=3;
+                break;
+            case 4:
+                robot.drive(0*feet, -18*inch, .5);
+                robot.counter++;
+                break;
+            case 5:
+            robot.blockPos();
+            robot.counter++;
+                break;
+            case 6:
+                robot.turn(90);
+                robot.counter++;
+                break;
+            case 7:
+                robot.drive(0*inch, -33*inch, .5);
+                robot.counter++;
+                break;
+            case 8:
+                robot.drive(4*feet, 0 ,.5);
                 robot.counter++;
                 break;
         }

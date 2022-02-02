@@ -38,7 +38,7 @@ public class AutonMethods {
     public static DcMotor motorBR, motorBL, motorFL, motorFR, rum, intake, carousel;
     //public static DcMotor Forwards = intake, Sideways = carousel;
     public static Servo bucket, intakeServo;
-    public static DistanceSensor distanceSensor;
+    public static DistanceSensor distanceSensor, distanceSensorBack;
     public TouchSensor armTouch;
     private final ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
@@ -49,6 +49,7 @@ public class AutonMethods {
     public int crap = 0;
     public int counter = 0;
     public double dist;
+    public int BlockPosition = 1;
 
     public static BNO055IMU imu;
     BNO055IMU.Parameters parameters;
@@ -60,6 +61,7 @@ public class AutonMethods {
         //location[1] = 0;
 
         distanceSensor = map.get(DistanceSensor.class, "distanceSensor");
+        distanceSensorBack = map.get(DistanceSensor.class, "distanceSensorBack");
         motorFL = map.get(DcMotor.class, "motorFL");
         motorBL = map.get(DcMotor.class, "motorBL");
         motorBR = map.get(DcMotor.class, "motorBR");
@@ -115,7 +117,25 @@ public int value()
         dist = distanceSensor.getDistance(DistanceUnit.CM);
         return dist;
     }
-
+    public double distanceSetBack() {
+        dist = distanceSensorBack.getDistance(DistanceUnit.CM);
+        return dist;
+    }
+public int blockPos()
+{
+    if(BlockPosition == 1)
+    {
+        lift(1500);
+    }
+    else if (BlockPosition == 2)
+    {
+        lift(2500);
+    }
+    else if (BlockPosition == 3)
+    {
+        lift(3300);
+    }
+}
     //Function to move the robot in any direction
     public void drive(double forward, double sideways, double speed) {
         runtime.reset();
