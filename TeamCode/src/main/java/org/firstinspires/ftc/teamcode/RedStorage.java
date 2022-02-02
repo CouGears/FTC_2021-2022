@@ -95,13 +95,15 @@ public class RedStorage extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.drive(-1.34 * feet, 0, .5);//move to carousel
+                robot.drive(0 * feet, .5*feet, .5);//move to carousel
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
                 robot.sleep(1500);
                 robot.counter++;
                 break;
             case 1:
+                robot.drive(-1.34 * feet, 0, .5);//move to carousel
+                robot.turn(15);
                 //robot.turn(-10);
                // robot.newSleep(1);
                 robot.setCarousel(.45);//move carousel
@@ -110,6 +112,8 @@ public class RedStorage extends OpMode {
                // robot.newSleep(1);
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
+                robot.newSleep(.5);
+                robot.turn(-.15);
                 robot.counter++;
                 break;
             case 2:
