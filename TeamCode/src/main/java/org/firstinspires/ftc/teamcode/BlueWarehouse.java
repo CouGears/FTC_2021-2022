@@ -91,7 +91,7 @@ public class BlueWarehouse extends OpMode {
                 {
                     robot.BlockPosition++;
                 }
-                robot.counter=3;
+                robot.counter++;
                 break;
             case 4:
                 robot.drive(0*feet, -18*inch, .5);

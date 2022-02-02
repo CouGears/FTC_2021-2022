@@ -122,12 +122,12 @@ public class RedStorage extends OpMode {
                 robot.counter++;
                 break;
             case 5:
-                robot.drive(.41 * feet, -1.5 * feet, .5); //drives right to scan point
+                robot.drive(0, -1.5 * feet, .5); //drives right to scan point
                 robot.counter++;
                 break;
             case 6:
-                robot.drive(-.33 * feet, -0.01 * feet, .5); //drives back to scan point
-                robot.newSleep(.01);
+                robot.drive(0 * feet, -0.01 * feet, .5); //drives back to scan point
+//                robot.newSleep(.01);
                 robot.counter++;
                 break;
             case 7:
@@ -164,10 +164,10 @@ public class RedStorage extends OpMode {
                 robot.counter++;
                 break;
             case 13:
-                robot.newSleep(2);
+//                robot.newSleep(2);
                 if (robot.distance() == 3300) {//this is all preconfigured and stays the same
                     robot.drive(.4*feet,0,1);
-                    robot.lift(3400);//Top of the tower
+                    robot.lift(3300);//Top of the tower
                     telemetry.addData("spot - top", robot.distance());
                     telemetry.update();
                 } else if (robot.distance() == 2000) {
