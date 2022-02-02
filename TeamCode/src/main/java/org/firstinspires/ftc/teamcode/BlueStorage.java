@@ -179,12 +179,12 @@ public class BlueStorage extends OpMode {
                 break;
             case 12:
                 robot.dump();//configured stays the same
-                robot.newSleep(.5);
+           /*     robot.newSleep(.5);
                 if (robot.distance()==2000){
                     robot.drive(-.2*feet,0,1);
                 } else if (robot.distance()==1500) {
                 robot.drive(-.4*feet,0,1);
-            }
+            }*/
                 robot.counter++;
                 break;
             case 13:
@@ -193,7 +193,7 @@ public class BlueStorage extends OpMode {
                 break;
             case 14:
                 //open servo to lower arm
-                robot.intakeServo.setPosition(.45);
+//                robot.intakeServo.setPosition(.45);
                 robot.counter++;
                 break;
             case 15:

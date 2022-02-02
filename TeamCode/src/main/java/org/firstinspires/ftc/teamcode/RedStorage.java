@@ -39,7 +39,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 @Autonomous
 
-public class RedSideAutonStorage extends OpMode {
+public class RedStorage extends OpMode {
 
     //TensorFlowVision vision = new TensorFlowVision();
 //   double rev = 383.6; //435 rpm motor
