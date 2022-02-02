@@ -108,7 +108,10 @@ public class OdometryMethods {
         motorFR.setPower(0);
     }
 
-
+    public void newSleep(double timeinSeconds) {
+        runtime.reset();
+        while (runtime.seconds() < timeinSeconds) ;
+    }
     public void setRed()
     {
         green.enable(false);

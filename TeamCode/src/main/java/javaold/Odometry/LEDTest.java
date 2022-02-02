@@ -1,17 +1,14 @@
-package org.firstinspires.ftc.teamcode;
+package javaold.Odometry;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.LED;
-import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
 
 public class LEDTest extends LinearOpMode {
     public static LED red, green, red2, green2, red3, green3, red4, green4;
-    private AutonMethods robot = new AutonMethods();
+    private OdometryMethods robot = new OdometryMethods();
 
 
     @Override
