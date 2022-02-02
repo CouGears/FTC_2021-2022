@@ -121,7 +121,7 @@ public int value()
         dist = distanceSensorBack.getDistance(DistanceUnit.CM);
         return dist;
     }
-public int blockPos()
+public void blockPos()
 {
     if(BlockPosition == 1)
     {
