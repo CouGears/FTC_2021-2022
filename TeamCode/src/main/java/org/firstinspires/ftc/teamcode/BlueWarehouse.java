@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 
 @Autonomous
@@ -67,8 +68,21 @@ public class BlueWarehouse extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-              robot.counter++;
-              break;
+                robot.drive(-1.25*feet, 0*feet, .5);
+                robot.counter++;
+                break;
+            case 1:
+                if(robot.distanceSensor.getDistance(DistanceUnit.CM)<=15)
+                {
+                    robot.distanceSet();
+                }
+
+                robot.counter++;
+                break;
+            case 2:
+                robot.drive(0*feet, -8*inch, .5);
+                robot.counter++;
+                break;
         }
     }
 

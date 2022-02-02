@@ -236,27 +236,9 @@ public int value()
         bucket.setPosition(.5);
     }
 
-    /*
-
-
-     public void intake(int time) {
-         intakeFL.setPower(1);
-         sleep(time);
-         intakeFL.setPower(0);
-
-     }
-
-
-
-
-
-
-     }
- */
     public void setIntake(int pos) {
         intakeServo.setPosition(pos);
     }
-
     public void driveWithDecel(double forward, double sideways) {
         double dist = 8 * feet;
         runtime.reset();
