@@ -95,34 +95,41 @@ public class BlueSideAutonStoragewDistance extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.drive(-1.17 * feet, 0, .5);//move to carousel
+                robot.drive(0 * feet, .5*feet, .5);//move to carousel
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
                 robot.sleep(1500);
                 robot.counter++;
                 break;
             case 1:
+                robot.drive(-1.3 * feet, 0*feet, .5);//move to carousel
+//                robot.turn(180);
+//                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
+                robot.sleep(1500);
+                robot.counter++;
+                break;
+            case 2:
                 robot.setCarousel(-.45);//move carousel
                 robot.setIntake(1);
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
                 robot.counter++;
                 break;
-            case 2:
-                robot.drive(0 * feet, 2 * feet, .5); //drives right to scan point
+            case 3:
+                robot.drive(0 * feet, 1.5 * feet, .5); //drives right to scan point
                 robot.counter++;
                 break;
-            case 3:
+            case 4:
                 robot.drive(-.33 * feet, 0.01 * feet, .5); //drives back to scan point
                 robot.newSleep(.01);
                 robot.counter++;
                 break;
-            case 4:
+            case 5:
                 robot.drive(0 * feet, 1.3 * feet, .5); //drives right to scan point
                 //needs three to be in right position and avoid carousel
                 robot.counter++;
                 break;
-            case 5:
+            case 6:
                robot.newSleep(1);
                 robot.distanceSet();//grab distance of block and know how to move arm this is stored and stay same but right leg of robot needs to line up with barcode for this system to work(sorry thatll be change case 4)
                 telemetry.addData("spot", robot.distanceSet());
@@ -130,64 +137,72 @@ public class BlueSideAutonStoragewDistance extends OpMode {
                 robot.newSleep(1);
                 robot.counter++;
                 break;
-            case 6:
+            case 7:
                 robot.drive(0.01 * feet, .5 * feet, .5); //drive to drop point move over
                 robot.counter++;
                 break;
-            case 7:
+            case 8:
                 robot.turn(180);//turn to drop
                 robot.newSleep(2);//wait for completion so we dont drive on angle
                 robot.counter++;
                 break;
-            case 8:
+            case 9:
                 robot.drive(0 * feet, -0.4 * feet, .5); //drive to drop point
 
                 //robot.newSleep(.5);
                 robot.counter++;
                 break;
-            case 9:
+            case 10:
                 robot.drive(-2.4 * feet, 0 * feet, .5); //drive to drop point
                 robot.counter++;
                 break;
-            case 10:
+            case 11:
                 //robot.newSleep(2);
-                if (robot.distance() == 3300) {//this is all preconfigured and stays the same
-                    robot.lift(3300);//Top of the tower
-                    telemetry.addData("spot - top", robot.distance());
-                    telemetry.update();
-                } else if (robot.distance() == 2500) {
-                    robot.lift(2500);//Middle
-                    telemetry.addData("spot - middle", robot.distance());
+                if (robot.distance() == 1500) {//this is all preconfigured and stays the same
+                    robot.lift(1500);//Top of the tower
+                    telemetry.addData("spot - bottom", robot.distance());
                     telemetry.update();
                 } else if (robot.distance() == 2000) {
-                    robot.lift(2000);
-                    telemetry.addData("spot - bottom", robot.distance());
+                    robot.drive(.2*feet,0,1);
+                    robot.lift(2000);//Middle
+                    telemetry.addData("spot - middle", robot.distance());
+                    telemetry.update();
+                } else if (robot.distance() == 3300) {
+                    robot.drive(.4*feet,0,1);
+                    robot.lift(3300);
+                    telemetry.addData("spot - top", robot.distance());
                     telemetry.update();//Bottom of the tower
                 }
 
                 robot.newSleep(2);
                 robot.counter++;
                 break;
-            case 11:
-                robot.dump();//configured stays the same
-                robot.counter++;
-                break;
             case 12:
-                robot.drive(2.9 * feet, 1.25 * feet, .5);//move to park
+                robot.dump();//configured stays the same
+                robot.newSleep(.5);
+                if (robot.distance()==2000){
+                    robot.drive(-.2*feet,0,1);
+                } else if (robot.distance()==1500) {
+                robot.drive(-.4*feet,0,1);
+            }
                 robot.counter++;
                 break;
             case 13:
+                robot.drive(2.9 * feet, 1.25 * feet, .5);//move to park
+                robot.counter++;
+                break;
+            case 14:
                 //open servo to lower arm
                 robot.intakeServo.setPosition(.45);
                 robot.counter++;
                 break;
-            case 14:
+            case 15:
                 if (robot.crap == 3300) {//this is all preconfigured and stays the same
                     robot.lift(-3300);//Top of the tower
                 } else if (robot.crap == 2500) {
-                    robot.lift(-2500);//Middle
+                    robot.lift(-2000);//Middle
                 } else if (robot.crap == 2000) {
-                    robot.lift(-2000);//Bottom of the tower
+                    robot.lift(-1500);//Bottom of the tower
                 }
                 robot.counter++;
                 break;

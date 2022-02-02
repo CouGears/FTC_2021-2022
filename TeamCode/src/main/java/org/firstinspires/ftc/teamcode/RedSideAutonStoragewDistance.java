@@ -95,7 +95,7 @@ public class RedSideAutonStoragewDistance extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.drive(-1.17 * feet, 0, .5);//move to carousel
+                robot.drive(-1.34 * feet, 0, .5);//move to carousel
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
                 robot.sleep(1500);
@@ -159,12 +159,12 @@ public class RedSideAutonStoragewDistance extends OpMode {
                     robot.lift(3300);//Top of the tower
                     telemetry.addData("spot - top", robot.distance());
                     telemetry.update();
-                } else if (robot.distance() == 2500) {
-                    robot.lift(2500);//Middle
+                } else if (robot.distance() == 2000) {
+                    robot.lift(2000);//Middle
                     telemetry.addData("spot - middle", robot.distance());
                     telemetry.update();
-                } else if (robot.distance() == 2000) {
-                    robot.lift(2000);
+                } else if (robot.distance() == 1500) {
+                    robot.lift(1500);
                     telemetry.addData("spot - bottom", robot.distance());
                     telemetry.update();//Bottom of the tower
                 }
@@ -189,9 +189,9 @@ public class RedSideAutonStoragewDistance extends OpMode {
                 if (robot.crap == 3300) {//this is all preconfigured and stays the same
                     robot.lift(-3300);//Top of the tower
                 } else if (robot.crap == 2500) {
-                    robot.lift(-2500);//Middle
-                } else if (robot.crap == 2000) {
-                    robot.lift(-2000);//Bottom of the tower
+                    robot.lift(-2000);//Middle
+                } else if (robot.crap == 1500) {
+                    robot.lift(-1500);//Bottom of the tower
                 }
                 telemetry.addData("arm lowered", robot.value());
                 telemetry.update();//Bottom of the tower
