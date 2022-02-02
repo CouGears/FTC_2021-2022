@@ -173,7 +173,7 @@ public int value()
         return stuff;
     }
 
-    //circumscibed robot has a diameter of 21 inches
+    //circumscribed robot has a diameter of 21 inches
     public void turn(double deg) {
         while (motorFR.isBusy() || motorFL.isBusy()) {
             if (runtime.seconds() > 2) break;
