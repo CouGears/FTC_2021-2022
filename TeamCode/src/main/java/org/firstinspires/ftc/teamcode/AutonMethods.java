@@ -49,6 +49,7 @@ public class AutonMethods {
     public int crap = 0;
     public int counter = 0;
     public double dist;
+    public double distBack;
     public int BlockPosition = 1;
 
     public static BNO055IMU imu;
@@ -118,8 +119,8 @@ public int value()
         return dist;
     }
     public double distanceSetBack() {
-        dist = distanceSensorBack.getDistance(DistanceUnit.CM);
-        return dist;
+        distBack = distanceSensorBack.getDistance(DistanceUnit.CM);
+        return distBack;
     }
 public void blockPos()
 {
@@ -134,6 +135,21 @@ public void blockPos()
     else if (BlockPosition == 3)
     {
         lift(3300);
+    }
+}
+public void autonLower()
+{
+    if(BlockPosition == 1)
+    {
+        lift(-1500);
+    }
+    else if (BlockPosition == 2)
+    {
+        lift(-2500);
+    }
+    else if (BlockPosition == 3)
+    {
+        lift(-3300);
     }
 }
     //Function to move the robot in any direction
@@ -260,7 +276,7 @@ public void blockPos()
         intakeServo.setPosition(pos);
     }
     public void driveWithDecel(double forward, double sideways) {
-        double dist = 8 * feet;
+        double distd = 8 * feet;
         runtime.reset();
         while (motorFR.isBusy() || motorFL.isBusy()) {
             if (runtime.seconds() > 3) break;
@@ -287,10 +303,10 @@ public void blockPos()
         speed(1);
         runtime.reset();
         while ((motorFR.isBusy() || motorFL.isBusy()) && runtime.seconds() < 3) {
-            motorFL.setPower((((int) FLtpos - motorFL.getCurrentPosition()) / dist) + .2);
-            motorBL.setPower((((int) BLtpos - motorBL.getCurrentPosition()) / dist) + .2);
-            motorFR.setPower(-(((int) FRtpos + motorFR.getCurrentPosition()) / dist) + .2);
-            motorBR.setPower(-(((int) BRtpos + motorBR.getCurrentPosition()) / dist) + .2);
+            motorFL.setPower((((int) FLtpos - motorFL.getCurrentPosition()) / distd) + .2);
+            motorBL.setPower((((int) BLtpos - motorBL.getCurrentPosition()) / distd) + .2);
+            motorFR.setPower(-(((int) FRtpos + motorFR.getCurrentPosition()) / distd) + .2);
+            motorBR.setPower(-(((int) BRtpos + motorBR.getCurrentPosition()) / distd) + .2);
         }
 
 
