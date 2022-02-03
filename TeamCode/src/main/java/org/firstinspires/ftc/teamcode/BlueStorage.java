@@ -159,7 +159,8 @@ public class BlueStorage extends OpMode {
             case 11:
                 //robot.newSleep(2);
                 if (robot.distance() == 1500) {//this is all preconfigured and stays the same
-                    robot.lift(1500);//Top of the tower
+                    robot.drive(.35*feet,0,1);
+                    robot.lift(1400);//Top of the tower
                     telemetry.addData("spot - bottom", robot.distance());
                     telemetry.update();
                 } else if (robot.distance() == 2000) {
@@ -168,7 +169,7 @@ public class BlueStorage extends OpMode {
                     telemetry.addData("spot - middle", robot.distance());
                     telemetry.update();
                 } else if (robot.distance() == 3300) {
-                    robot.drive(.4*feet,0,1);
+                    robot.drive(.2*feet,0,1);
                     robot.lift(3300);
                     telemetry.addData("spot - top", robot.distance());
                     telemetry.update();//Bottom of the tower
@@ -179,16 +180,17 @@ public class BlueStorage extends OpMode {
                 break;
             case 12:
                 robot.dump();//configured stays the same
-           /*     robot.newSleep(.5);
-                if (robot.distance()==2000){
-                    robot.drive(-.2*feet,0,1);
-                } else if (robot.distance()==1500) {
-                robot.drive(-.4*feet,0,1);
-            }*/
+//                robot.newSleep(.5);
+                if (robot.distance()==1500){
+                    robot.drive(-.4*feet,0,1);
+                } else if (robot.distance()==2000) {
+                robot.drive(-.2*feet,0,1);
+            }
                 robot.counter++;
                 break;
             case 13:
-                robot.drive(2.9 * feet, 1.25 * feet, .5);//move to park
+                robot.drive(2.8 * feet, 0 * feet, .5);//move to park
+                robot.drive(0,1.35*feet,1);
                 robot.counter++;
                 break;
             case 14:

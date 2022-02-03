@@ -176,7 +176,8 @@ public class RedStorage extends OpMode {
                     telemetry.addData("spot - middle", robot.distance());
                     telemetry.update();
                 } else if (robot.distance() == 3300) {
-                    robot.lift(1500);
+                    robot.drive(.35*feet,0,1);
+                    robot.lift(1400);//Top of the tower
                     telemetry.addData("spot - bottom", robot.distance());
                     telemetry.update();//Bottom of the tower
                 }
@@ -189,7 +190,8 @@ public class RedStorage extends OpMode {
                 robot.counter++;
                 break;
             case 15:
-                robot.drive(2.85 * feet, -1.35 * feet, .5);//move to park
+                robot.drive(2.85 * feet, 0, .5);//move to park
+                robot.drive(0,-1.35*feet, 1);
                 robot.counter++;
                 break;
             case 16:
@@ -199,11 +201,11 @@ public class RedStorage extends OpMode {
                 break;
             case 17:
                 if (robot.crap == 3300) {//this is all preconfigured and stays the same
-                    robot.lift(-3300);//Top of the tower
+                    robot.lift(-1500);//Top of the tower
                 } else if (robot.crap == 2500) {
                     robot.lift(-2000);//Middle
                 } else if (robot.crap == 1500) {
-                    robot.lift(-1500);//Bottom of the tower
+                    robot.lift(-3300);//Bottom of the tower
                 }
                 telemetry.addData("arm lowered", robot.value());
                 telemetry.update();//Bottom of the tower
