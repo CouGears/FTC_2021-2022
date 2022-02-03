@@ -165,7 +165,7 @@ public class RedStorage extends OpMode {
                 break;
             case 13:
 //                robot.newSleep(2);
-                if (robot.distance() == 3300) {//this is all preconfigured and stays the same
+                if (robot.distance() == 1500) {//this is all preconfigured and stays the same
                     robot.drive(.4*feet,0,1);
                     robot.lift(3300);//Top of the tower
                     telemetry.addData("spot - top", robot.distance());
@@ -175,7 +175,7 @@ public class RedStorage extends OpMode {
                     robot.lift(2000);//Middle
                     telemetry.addData("spot - middle", robot.distance());
                     telemetry.update();
-                } else if (robot.distance() == 1500) {
+                } else if (robot.distance() == 3300) {
                     robot.lift(1500);
                     telemetry.addData("spot - bottom", robot.distance());
                     telemetry.update();//Bottom of the tower
