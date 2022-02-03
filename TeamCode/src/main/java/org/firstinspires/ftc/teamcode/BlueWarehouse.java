@@ -76,7 +76,7 @@ public class BlueWarehouse extends OpMode {
 
                 if(robot.dist <= 15)
                 {
-                    robot.BlockPosition++;
+                    robot.BlockPosition=2;
                 }
                 robot.counter=2;
                 break;
@@ -89,7 +89,7 @@ public class BlueWarehouse extends OpMode {
 
                 if(robot.dist <= 15)
                 {
-                    robot.BlockPosition++;
+                    robot.BlockPosition=3;
                 }
                 robot.counter++;
                 break;
