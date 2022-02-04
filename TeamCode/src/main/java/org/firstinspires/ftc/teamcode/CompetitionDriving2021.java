@@ -10,12 +10,12 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class CompetitionDriving2021 extends LinearOpMode {
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel;
-    private Servo bucket, intakeServo;
+    private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, lift;
+    private Servo bucket, intakeServo, liftyThingy;
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
-
+    int SWITCH = 0;
 
     @Override
     public void runOpMode() {
@@ -25,6 +25,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
         intake = hardwareMap.get(DcMotor.class, "intake");
         lifter = hardwareMap.get(DcMotor.class, "lifter");
+        lift = hardwareMap.get(DcMotor.class, "lift");
 
         carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
@@ -32,6 +33,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
         bucket = hardwareMap.get(Servo.class, "bucket");
         intakeServo = hardwareMap.get(Servo.class, "serv");
+        liftyThingy = hardwareMap.get(Servo.class, "liftyThingy");
 
 
 
@@ -116,12 +118,40 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 lifter.setPower(0);
 
             }
+            if (gamepad1.y) {
 
+                lift.setPower(.6);
+
+            } else if (gamepad1.a) {
+                lift.setPower(-.6);
+
+            } else {
+                lift.setPower(0);
+
+            }
             if (gamepad1.x) {
+                if (SWITCH == 0) {
+                    robot.newSleep(.5);
+                    SWITCH++;
+                } else if (SWITCH == 1) {
+                    robot.newSleep(.5);
+                    SWITCH--;
+                }
+            }
+            if (SWITCH==0)
+            {
+                liftyThingy.setPosition(.66);
+            }
+            if (SWITCH ==1)
+            {
+                liftyThingy.setPosition(1);
+            }
+
+            if (gamepad1.dpad_left) {
                 carousel.setPower(.7);
                 //robot.sleep(2000);
                 //carousel.setPower(0);
-            } else if (gamepad1.y) carousel.setPower(-.7);
+            } else if (gamepad1.dpad_right) carousel.setPower(-.7);
             else carousel.setPower(0);//set to while else??
         }
     }

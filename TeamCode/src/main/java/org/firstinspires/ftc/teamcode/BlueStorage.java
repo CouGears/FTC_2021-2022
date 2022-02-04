@@ -109,7 +109,7 @@ public class BlueStorage extends OpMode {
                 robot.counter++;
                 break;
             case 2:
-                robot.setCarousel(-.45);//move carousel
+                robot.setCarousel(-.7);//move carousel
                 robot.setIntake(1);
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
@@ -180,7 +180,7 @@ public class BlueStorage extends OpMode {
                 break;
             case 12:
                 robot.dump();//configured stays the same
-//                robot.newSleep(.5);
+               robot.newSleep(.5);
                 if (robot.distance()==1500){
                     robot.drive(-.4*feet,0,1);
                 } else if (robot.distance()==2000) {

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.LED;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
@@ -51,6 +52,8 @@ public class AutonMethods {
     public double dist;
     public double distBack;
     public int BlockPosition = 1;
+    public static LED red, green, red2, green2;
+
 
     public static BNO055IMU imu;
     BNO055IMU.Parameters parameters;
@@ -69,6 +72,11 @@ public class AutonMethods {
         motorFR = map.get(DcMotor.class, "motorFR");
         intake = map.get(DcMotor.class, "intake");
         rum = map.get(DcMotor.class, "lifter");
+
+        red = map.get(LED.class, "red");
+        green = map.get(LED.class, "green");
+        red2 = map.get(LED.class, "red2");
+        green2 = map.get(LED.class, "green2");
 
         carousel = map.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
@@ -111,8 +119,38 @@ public class AutonMethods {
         motorBR.setPower(0);
         motorFR.setPower(0);
     }
-public int value()
-{return 0;}
+
+    public void setRed2()
+    {
+        green2.enable(false);
+        red2.enable(true);
+    }
+    public void setGreen2()
+    {
+        red2.enable(false);
+        green2.enable(true);
+    }
+    public void setAmber2()
+    {
+        red2.enable(true);
+        green2.enable(true);
+    }
+    public void setRed()
+    {
+        green.enable(false);
+        red.enable(true);
+    }
+        public void setGreen()
+        {
+            red.enable(false);
+            green.enable(true);
+        }
+        public void setAmber()
+        {
+            red.enable(true);
+            green.enable(true);
+        }
+public int value() {return 0;}
 
     public double distanceSet() {
         dist = distanceSensor.getDistance(DistanceUnit.CM);
@@ -122,7 +160,7 @@ public int value()
         distBack = distanceSensorBack.getDistance(DistanceUnit.CM);
         return distBack;
     }
-public void blockPos()
+public void blockPosBlue()
 {
     if(BlockPosition == 1)
     {
@@ -137,7 +175,22 @@ public void blockPos()
         lift(3300);
     }
 }
-public void autonLower()
+    public void blockPosRed()
+    {
+        if(BlockPosition == 3)
+        {
+            lift(1500);
+        }
+        else if (BlockPosition == 2)
+        {
+            lift(2500);
+        }
+        else if (BlockPosition == 1)
+        {
+            lift(3300);
+        }
+    }
+public void autonLowerBlue()
 {
     if(BlockPosition == 1)
     {
@@ -152,6 +205,21 @@ public void autonLower()
         lift(-3300);
     }
 }
+    public void autonLowerRed()
+    {
+        if(BlockPosition == 3)
+        {
+            lift(-1500);
+        }
+        else if (BlockPosition == 2)
+        {
+            lift(-2500);
+        }
+        else if (BlockPosition == 1)
+        {
+            lift(-3300);
+        }
+    }
     //Function to move the robot in any direction
     public void drive(double forward, double sideways, double speed) {
         runtime.reset();
@@ -189,7 +257,7 @@ public void autonLower()
 
     public void setCarousel(double pwr) {
         carousel.setPower(pwr);
-        newSleep(4);
+        newSleep(3);
         carousel.setPower(0);
     }
 
@@ -199,7 +267,7 @@ public void autonLower()
             stuff = 3300;
             crap = 3300;
 
-        } else if (dist >= 25 && dist < 40) {
+        } else if (dist >= 25 && dist < 45) {
             stuff = 2000;
             crap = 2000;
         } else if (dist >= 45) {

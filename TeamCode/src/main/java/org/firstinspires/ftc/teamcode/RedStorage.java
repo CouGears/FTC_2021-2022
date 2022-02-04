@@ -104,21 +104,21 @@ public class RedStorage extends OpMode {
                 break;
             case 1:
                 robot.drive(-1.71 * feet, 0, .5);//move to carousel
-                robot.sleep(1500);
+                robot.sleep(1300);
                 robot.counter++;
                 break;
             case 2:
-                robot.turn(-30);
+                robot.turn(-32);
                 robot.counter++;
                 break;
             case 3:
-                robot.setCarousel(.45);//move carousel
+                robot.setCarousel(.7);//move carousel
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
                 robot.counter++;
                 break;
             case 4:
-                robot.turn(30);
+                robot.turn(32);
                 robot.counter++;
                 break;
             case 5:
@@ -131,7 +131,7 @@ public class RedStorage extends OpMode {
                 robot.counter++;
                 break;
             case 7:
-                robot.drive(0 * feet, -.7 * feet, .5); //drives right to scan point
+                robot.drive(0 * feet, -.71 * feet, .5); //drives right to scan point
                 //needs three to be in right position and avoid carousel
                 robot.counter++;
                 break;
@@ -166,18 +166,21 @@ public class RedStorage extends OpMode {
             case 13:
 //                robot.newSleep(2);
                 if (robot.distance() == 1500) {//this is all preconfigured and stays the same
+                    robot.setRed();
                     robot.drive(.4*feet,0,1);
                     robot.lift(3300);//Top of the tower
                     telemetry.addData("spot - top", robot.distance());
                     telemetry.update();
                 } else if (robot.distance() == 2000) {
+                    robot.setAmber();
                     robot.drive(.2*feet,0,1);
                     robot.lift(2000);//Middle
                     telemetry.addData("spot - middle", robot.distance());
                     telemetry.update();
                 } else if (robot.distance() == 3300) {
-                    robot.drive(.35*feet,0,1);
-                    robot.lift(1400);//Top of the tower
+                    robot.setGreen();
+                    robot.drive(.39*feet,0,1);
+                    robot.lift(1400);//Bottom of the tower
                     telemetry.addData("spot - bottom", robot.distance());
                     telemetry.update();//Bottom of the tower
                 }

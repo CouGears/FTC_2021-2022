@@ -7,12 +7,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 
 @Autonomous
 
-public class BlueWarehouse extends OpMode {
+public class RedWarehouse extends OpMode {
 
     //TensorFlowVision vision = new TensorFlowVision();
 //   double rev = 383.6; //435 rpm motor
@@ -69,7 +68,7 @@ public class BlueWarehouse extends OpMode {
         switch (robot.counter) {
             case 0:
 
-                robot.drive(0, -.46*feet,.5);
+                //robot.drive(0, .46*feet,.5);
                 robot.setRed();
                 robot.counter++;
                 break;
@@ -94,7 +93,7 @@ public class BlueWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 3:
-                robot.drive(0.01*feet, -.9*feet, .5);
+                robot.drive(0.01*feet, .82*feet, .5);
                 robot.newSleep(1);
                 telemetry.addData("Move to Scan",2);
                 telemetry.update();
@@ -114,7 +113,7 @@ public class BlueWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 5:
-                robot.drive(0.01*feet, -1.25*feet, .5);
+                robot.drive(0.01*feet, 1.5*feet, .5);
                 telemetry.addData("Move to Dump",0);
                 telemetry.addLine();
                 telemetry.addData("dumping in position" , robot.BlockPosition);
@@ -122,7 +121,7 @@ public class BlueWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 6:
-            robot.blockPosBlue();
+            robot.blockPosRed();
             robot.newSleep(2);
             robot.counter++;
                 break;
@@ -131,11 +130,11 @@ public class BlueWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 8:
-                robot.turn(90);
+                robot.turn(-90);
                 robot.counter++;
                 break;
             case 9:
-                robot.drive(0*inch, -39*inch, .5);
+                robot.drive(0*inch, 39*inch, .5);
                 robot.counter++;
                 break;
             case 10:
@@ -143,17 +142,17 @@ public class BlueWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 11:
-                robot.autonLowerBlue();
+                robot.autonLowerRed();
                 robot.newSleep(1);
                 robot.counter++;
                 break;
             case 12:
-                robot.drive(0, 2.3*feet,1);
+                robot.drive(0, -1.5*feet,1);
                 robot.newSleep(1);
                 robot.counter++;
                 break;
             case 13:
-                robot.turn(-45);
+                robot.turn(45);
                 robot.counter++;
                 break;
 
