@@ -1,4 +1,4 @@
-package javaold.CompTwo2021;
+package javaold.Components;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
