@@ -11,7 +11,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class CompetitionDriving2021 extends LinearOpMode {
 
     private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, lift;
-    private Servo bucket, intakeServo, liftyThingy;
+    private Servo bucket, intakeServo,
+            liftyThingy;
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
@@ -64,7 +65,6 @@ public class CompetitionDriving2021 extends LinearOpMode {
         while (opModeIsActive()) {
             x = 0;
         intakeServo.setPosition(.45);
-
 
             if (x == 0) {
                 motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x)) * .9);
