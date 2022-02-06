@@ -137,22 +137,22 @@ public class CompetitionDriving2021 extends LinearOpMode {
                     SWITCH--;
                 }
             }
-            if (SWITCH==0)
+          /*  if (SWITCH==0)
             {
                 liftyThingy.setPosition(.66);
             }
             if (SWITCH ==1)
             {
                 liftyThingy.setPosition(1);
-            }
+            }*/
 
             if (gamepad1.dpad_left) {
                 carousel.setPower(.7);
                 //robot.sleep(2000);
                 //carousel.setPower(0);
             } else if (gamepad1.dpad_right) carousel.setPower(-.7);
-            else carousel.setPower(0);//set to while else??
-            liftyThingy.setPosition(gamepad1.left_trigger*.2);
+            else carousel.setPower(0);//set ===to while else??
+            liftyThingy.setPosition(1-(gamepad1.right_trigger*.33));
         }
     }
 }
