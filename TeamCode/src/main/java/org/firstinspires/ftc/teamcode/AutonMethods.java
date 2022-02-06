@@ -38,7 +38,7 @@ public class AutonMethods {
     double FRtpos, BRtpos, FLtpos, BLtpos;
     public static DcMotor motorBR, motorBL, motorFL, motorFR, rum, intake, carousel;
     //public static DcMotor Forwards = intake, Sideways = carousel;
-    public static Servo bucket, intakeServo;
+    public static Servo bucket, intakeServo, liftyThingy;
     public static DistanceSensor distanceSensor, distanceSensorBack;
     public TouchSensor armTouch;
     private final ElapsedTime runtime = new ElapsedTime();
@@ -83,6 +83,7 @@ public class AutonMethods {
         // claw2 = hardwareMap.get(Servo.class, "claw2");
 
         bucket = map.get(Servo.class, "bucket");
+        liftyThingy = map.get(Servo.class, "liftyThingy");
         intakeServo = map.get(Servo.class, "intakeServo");
 
 
@@ -119,7 +120,10 @@ public class AutonMethods {
         motorBR.setPower(0);
         motorFR.setPower(0);
     }
-
+public void setServo()
+{
+    liftyThingy.setPosition(1);
+}
     public void setRed2()
     {
         green2.enable(false);

@@ -1,8 +1,10 @@
-package javaold.Odometry;
+package javaold.Components;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.LED;
+
+import javaold.Odometry.OdometryMethods;
 
 @TeleOp
 

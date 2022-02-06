@@ -64,6 +64,7 @@ public class RedStorage extends OpMode {
         //int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
 
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
+        robot.setServo();
 
         telemetry.addData("Status", "Initialized");
 
