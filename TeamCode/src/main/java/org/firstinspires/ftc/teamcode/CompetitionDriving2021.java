@@ -15,7 +15,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
-    int SWITCH = 1;
+    int SWITCH = 0;
 
     @Override
     public void runOpMode() {
@@ -136,15 +136,17 @@ public class CompetitionDriving2021 extends LinearOpMode {
                     robot.newSleep(.5);
                     SWITCH--;
                 }
+
             }
-          /*  if (SWITCH==0)
+            if (SWITCH==0)
             {
-                liftyThingy.setPosition(.66);
+                liftyThingy.setPosition(1-(gamepad1.right_trigger*.33));
             }
             if (SWITCH ==1)
             {
-                liftyThingy.setPosition(1);
-            }*/
+                liftyThingy.setPosition(.66+(gamepad1.right_trigger*.33));
+            }
+          /*  */
 
             if (gamepad1.dpad_left) {
                 carousel.setPower(.7);
@@ -152,7 +154,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 //carousel.setPower(0);
             } else if (gamepad1.dpad_right) carousel.setPower(-.7);
             else carousel.setPower(0);//set ===to while else??
-            liftyThingy.setPosition(1-(gamepad1.right_trigger*.33));
+
         }
     }
 }
