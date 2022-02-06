@@ -16,7 +16,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
-    int SWITCH = 0;
+    int SWITCH = 1;
 
     @Override
     public void runOpMode() {

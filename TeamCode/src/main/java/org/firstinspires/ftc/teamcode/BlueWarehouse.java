@@ -71,6 +71,7 @@ public class BlueWarehouse extends OpMode {
 
                 robot.drive(0, -.46*feet,.5);
                 robot.setRed();
+                robot.setRed2();
                 robot.counter++;
                 break;
             case 1:
@@ -86,6 +87,7 @@ public class BlueWarehouse extends OpMode {
                 if(robot.distBack <= 20)
                 {
                     robot.setAmber();
+                    robot.setAmber2();
                     robot.BlockPosition=2;
                     telemetry.addData("Scanned - Block in POS",2);
                     telemetry.update();
@@ -106,6 +108,7 @@ public class BlueWarehouse extends OpMode {
                 if(robot.distBack <= 20)
                 {
                     robot.setGreen();
+                    robot.setGreen2();
                     robot.BlockPosition=3;
                     telemetry.addData("Scanned - Block in POS",3);
                     telemetry.update();

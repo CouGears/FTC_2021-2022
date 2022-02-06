@@ -148,6 +148,7 @@ public class AutonMethods {
         public void setAmber()
         {
             red.enable(true);
+            red.enable(true);
             green.enable(true);
         }
 public int value() {return 0;}
