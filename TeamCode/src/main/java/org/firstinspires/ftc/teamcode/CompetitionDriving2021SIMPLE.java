@@ -48,13 +48,9 @@ public class CompetitionDriving2021SIMPLE extends LinearOpMode {
                 motorBL.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * .9);
                 motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * .9);
                 motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * .9);
-            if (gamepad1.dpad_left) {
-                carousel.setPower(.7);
-                //robot.sleep(2000);
-                //carousel.setPower(0);
-            } else if (gamepad1.dpad_right) carousel.setPower(-.7);
-            else carousel.setPower(0);//set ===to while else??
-        }
+            if (gamepad1.dpad_left) carousel.setPower(.7);
+            else if (gamepad1.dpad_right) carousel.setPower(-.7);
+            else carousel.setPower(0);
+             }
     }
 }
-
