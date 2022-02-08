@@ -10,10 +10,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class CompetitionDriving2021SIMPLE extends LinearOpMode {
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, lift;
-    private Servo bucket, intakeServo, liftyThingy;
-    private boolean claw = false, bucketButton = false;
-    private AutonMethods robot = new AutonMethods();
+    private DcMotor motorBR, motorBL, motorFL, motorFR, carousel;
+    private Servo  intakeServo;
 
     @Override
     public void runOpMode() {
