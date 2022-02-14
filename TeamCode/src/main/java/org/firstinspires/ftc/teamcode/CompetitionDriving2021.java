@@ -5,17 +5,24 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
 
 @TeleOp
 
 public class CompetitionDriving2021 extends LinearOpMode {
 
     private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, lift;
-    private Servo bucket, intakeServo, liftyThingy;
+    private Servo bucket, intakeServo, liftyThingy, hServo, vServo;
+    private CRServo dServo;
     private boolean claw = false, bucketButton = false;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
     int SWITCH = 0;
+    double xtape = .5;
+    double ytape = .5;
+    double extendpower = 0;
+    double pextend = .2;
+    // double 
 
     @Override
     public void runOpMode() {
@@ -34,6 +41,10 @@ public class CompetitionDriving2021 extends LinearOpMode {
         bucket = hardwareMap.get(Servo.class, "bucket");
         intakeServo = hardwareMap.get(Servo.class, "serv");
         liftyThingy = hardwareMap.get(Servo.class, "liftyThingy");
+
+        hServo = hardwareMap.get(Servo.class, "hServo");
+        vServo = hardwareMap.get(Servo.class, "vServo");
+        dServo = hardwareMap.crservo.get("dServo");
 
 
 
@@ -154,8 +165,24 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 //carousel.setPower(0);
             } else if (gamepad1.dpad_right) carousel.setPower(-.7);
             else carousel.setPower(0);//set ===to while else??
+            
+            if (xtape <= .97 && xtape >= -.97) xtape = xtape + this.gamepad2.right_stick_x * .03;
+            if (ytape <= .97 && ytape >= -.97) ytape = ytape + this.gamepad2.right_stick_y * .03;
+            if (gamepad2.right_bumper){
+                extendpower = pextend;
+            } else if (gamepad2.right_trigger) {
+                extendpower = -pextend;
+            }
+            else {
+                extendpower = 0;
+            }
+
+            hServo.setPosition(ytape);
+            vServo.setPosition(xtape);
+            dServo.setPower(extendpower);
+            
+
 
         }
     }
 }
-
