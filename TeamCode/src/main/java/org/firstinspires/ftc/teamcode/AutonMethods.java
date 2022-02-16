@@ -84,7 +84,7 @@ public class AutonMethods {
 
         bucket = map.get(Servo.class, "bucket");
         liftyThingy = map.get(Servo.class, "liftyThingy");
-        intakeServo = map.get(Servo.class, "intakeServo");
+        intakeServo = map.get(Servo.class, "serv");
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -345,7 +345,7 @@ public void autonLowerBlue()
         bucket.setPosition(.5);
     }
 
-    public void setIntake(int pos) {
+    public void setIntake(double pos) {
         intakeServo.setPosition(pos);
     }
     public void driveWithDecel(double forward, double sideways) {

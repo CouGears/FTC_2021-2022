@@ -92,7 +92,7 @@ private Servo intakeServo;
      */
     @Override
     public void loop() {
-        robot.intakeServo.setPosition(.45);
+        robot.setIntake(.45);
         //bot.autonomousIdleTasks();
         //vision.check();
 //        int tie = 0;
