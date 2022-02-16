@@ -27,8 +27,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package javaold.Components;
-
+package org.firstinspires.ftc.teamcode;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -41,7 +41,7 @@ import org.firstinspires.ftc.teamcode.AutonMethods;
 @Autonomous
 
 public class SlideTest extends OpMode {
-
+private Servo intakeServo;
     //TensorFlowVision vision = new TensorFlowVision();
 //   double rev = 383.6; //435 rpm motor
     double rev = 537.7; //312 rpm motor
@@ -76,6 +76,7 @@ public class SlideTest extends OpMode {
     @Override
     public void init_loop() {
 
+
     }
 
     /*
@@ -91,12 +92,15 @@ public class SlideTest extends OpMode {
      */
     @Override
     public void loop() {
+        robot.intakeServo.setPosition(.45);
         //bot.autonomousIdleTasks();
         //vision.check();
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.lift(3300);
+                //intakeServo.setPosition(.45);
+//                robot.lift(1500);
+
               /*  if (robot.distance() == 1) {
                     robot.lift(400);//Top of the tower
                     robot.lift();

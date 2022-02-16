@@ -331,11 +331,11 @@ public void autonLowerBlue()
     }
 
     public void lift(double amount) { //moves the 4 bar/lifter
-        amount = -amount;
+        amount = amount;
         rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rum.setTargetPosition((int) amount);
         rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        rum.setPower(.6);
+        rum.setPower(.8);
     }
 
     public void dump() {
