@@ -15,6 +15,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
     private Servo bucket, intakeServo, liftyThingy;//, hServo, vServo;
     //private CRServo dServo;
     private boolean claw = false, bucketButton = false;
+    private double switch1Smoothed, switch1Prev;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
     int SWITCH = 0;
@@ -143,8 +144,18 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 liftyThingy.setPosition(.66+(gamepad1.right_trigger*.33));
             }
 
-            if (gamepad1.dpad_left) carousel.setPower(.7);
-            else if (gamepad1.dpad_right) carousel.setPower(-.7);
+            if (gamepad1.dpad_left) {
+                switch1Smoothed = ((1*.005) + (switch1Prev * .995));
+                switch1Prev = switch1Smoothed;
+                telemetry.addData("speed", switch1Smoothed);
+                telemetry.update();
+                carousel.setPower(switch1Smoothed);
+            }
+            else if (gamepad1.dpad_right) {
+                switch1Smoothed = ((1*.005) + (switch1Prev * .995));
+                switch1Prev = switch1Smoothed;
+                carousel.setPower(-switch1Smoothed);
+            }
             else carousel.setPower(0);//set ===to while else??
             
             if (xtape <= .97 && xtape >= -.97) xtape = xtape + this.gamepad2.right_stick_x * .03;

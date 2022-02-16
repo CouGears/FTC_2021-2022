@@ -36,7 +36,7 @@ public class RedWarehouse extends OpMode {
         //int relativeLayoutId = map.appContext.getResources().getIdentifier("RelativeLayout", "id", map.appContext.getPackageName());
 
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
-
+        robot.intakeServo.setPosition(.45);
         telemetry.addData("Status", "Initialized");
 
     }

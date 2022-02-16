@@ -65,7 +65,7 @@ public class RedStorage extends OpMode {
 
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
         robot.setServo();
-
+        robot.intakeServo.setPosition(.45);
         telemetry.addData("Status", "Initialized");
 
     }
