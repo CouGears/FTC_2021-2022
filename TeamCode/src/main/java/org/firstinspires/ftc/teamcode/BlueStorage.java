@@ -110,7 +110,7 @@ public class BlueStorage extends OpMode {
                 break;
             case 2:
                 robot.setCarousel(-.7);//move carousel
-                robot.setIntake(1);
+
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
                 robot.counter++;
