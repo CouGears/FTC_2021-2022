@@ -97,7 +97,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
 
             if (gamepad1.b) {
-                bucket.setPosition(0);
+                bucket.setPosition(.05);
                 robot.sleep(1500);
                 bucket.setPosition(.49);
                 telemetry.addData("Position:", .5);
@@ -156,7 +156,11 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 switch1Prev = switch1Smoothed;
                 carousel.setPower(-switch1Smoothed);
             }
-            else carousel.setPower(0);//set ===to while else??
+            else {
+                switch1Smoothed = 0;
+                switch1Prev = 0;
+                carousel.setPower(0);//set ===to while else??
+            }
             
             if (xtape <= .97 && xtape >= -.97) xtape = xtape + this.gamepad2.right_stick_x * .03;
             if (ytape <= .97 && ytape >= -.97) ytape = ytape + this.gamepad2.right_stick_y * .03;

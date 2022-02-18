@@ -82,6 +82,7 @@ public class AutonMethods {
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
         // claw2 = hardwareMap.get(Servo.class, "claw2");
 
+
         bucket = map.get(Servo.class, "bucket");
         liftyThingy = map.get(Servo.class, "liftyThingy");
         intakeServo = map.get(Servo.class, "serv");
@@ -169,45 +170,45 @@ public void blockPosBlue()
 {
     if(BlockPosition == 1)
     {
-        lift(1500);
+        lift(2000);
     }
     else if (BlockPosition == 2)
     {
-        lift(2500);
+        lift(3000);
     }
     else if (BlockPosition == 3)
     {
-        lift(3300);
+        lift(3800);
     }
 }
     public void blockPosRed()
     {
         if(BlockPosition == 3)
         {
-            lift(1500);
+            lift(2000);
         }
         else if (BlockPosition == 2)
         {
-            lift(2500);
+            lift(3000);
         }
         else if (BlockPosition == 1)
         {
-            lift(3300);
+            lift(3800);
         }
     }
 public void autonLowerBlue()
 {
     if(BlockPosition == 1)
     {
-        lift(-1500);
+        lift(-2000);
     }
     else if (BlockPosition == 2)
     {
-        lift(-2500);
+        lift(-3000);
     }
     else if (BlockPosition == 3)
     {
-        lift(-3300);
+        lift(-3800);
     }
 }
     public void autonLowerRed()
@@ -340,7 +341,7 @@ public void autonLowerBlue()
 
     public void dump() {
 
-        bucket.setPosition(0);
+        bucket.setPosition(.05);
         sleep(2000);
         bucket.setPosition(.5);
     }

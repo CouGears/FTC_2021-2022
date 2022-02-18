@@ -159,7 +159,7 @@ public class BlueStorage extends OpMode {
             case 11:
                 //robot.newSleep(2);
                 if (robot.distance() == 1500) {//this is all preconfigured and stays the same
-                    robot.drive(.2*feet,0,1);
+                    robot.drive(.35*feet,0,1);
                     robot.lift(2000);//Bottom of the tower
                     robot.setRed();
                     robot.setRed2();
@@ -181,14 +181,14 @@ public class BlueStorage extends OpMode {
                     telemetry.update();//Top of the tower
                 }
 
-                robot.newSleep(2);
+                robot.newSleep(1);
                 robot.counter++;
                 break;
             case 12:
                 robot.dump();//configured stays the same
                robot.newSleep(.5);
                 if (robot.distance()==1500){
-                    robot.drive(0,0,1);
+                    robot.drive(-.35,0,1);
                 } else if (robot.distance()==2000) {
                 robot.drive(-.2*feet,0,1);
             }
