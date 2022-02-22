@@ -116,7 +116,7 @@ public class RedWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 5:
-                robot.drive(0.01*feet, 1.5*feet, .5);
+                robot.drive(-.4*feet, 1.5*feet, .5);
                 telemetry.addData("Move to Dump",0);
                 telemetry.addLine();
                 telemetry.addData("dumping in position" , robot.BlockPosition);

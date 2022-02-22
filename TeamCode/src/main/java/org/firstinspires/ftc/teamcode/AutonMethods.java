@@ -189,7 +189,7 @@ public void blockPosBlue()
         }
         else if (BlockPosition == 2)
         {
-            lift(3000);
+            lift(2500);
         }
         else if (BlockPosition == 1)
         {

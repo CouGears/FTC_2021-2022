@@ -21,13 +21,14 @@ import android.graphics.Color;
 @TeleOp
 
 public class DistanceTest extends LinearOpMode {
-    private DistanceSensor distanceSensor;
+    private DistanceSensor distanceSensor, distanceSensorBack;
     private ColorSensor sensorColor;
 
     @Override
     public void runOpMode() {
 
         distanceSensor = hardwareMap.get(DistanceSensor.class, "distanceSensor");
+        distanceSensorBack = hardwareMap.get(DistanceSensor.class, "distanceSensorBack");
 
         float hsvValues[] = {0F, 0F, 0F};
         // values is a reference to the hsvValues array.
@@ -44,7 +45,7 @@ public class DistanceTest extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-           telemetry.addData("Distance: ", distanceSensor.getDistance(DistanceUnit.CM));
+           telemetry.addData("Distance: ", distanceSensorBack.getDistance(DistanceUnit.CM));
            telemetry.update();
 //            telemetry.addData("Distance (cm)",
         /*    Color.RGBToHSV((int) (sensorColor.red() * SCALE_FACTOR),
