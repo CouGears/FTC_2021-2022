@@ -340,7 +340,7 @@ public void autonLowerBlue()
 
     public void dump() {
 
-        bucket.setPosition(0);
+        bucket.setPosition(.05);
         sleep(2000);
         bucket.setPosition(.5);
     }
