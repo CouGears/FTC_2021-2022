@@ -76,10 +76,10 @@ public class CompetitionDriving2021 extends LinearOpMode {
         intakeServo.setPosition(.45);
 
             if (x == 0) {
-                motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x)) * .9);
-                motorBL.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * .9);
-                motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * .9);
-                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * .9);
+                motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x)) * 1);
+                motorBL.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
+                motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
+                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
                 /*
                  motorFL.setPower(((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.left_stick_x)) * .9);
                 motorBL.setPower(-(-(this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
@@ -134,14 +134,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
                     SWITCH--;
                 }
             }
-            if (SWITCH==0)
-            {
-                liftyThingy.setPosition(1-(gamepad1.right_trigger*.33));
-            }
-            if (SWITCH ==1)
-            {
-                liftyThingy.setPosition(.66+(gamepad1.right_trigger*.33));
-            }
+            if (SWITCH==0) liftyThingy.setPosition(1-(gamepad1.right_trigger*.33));
+            if (SWITCH ==1)liftyThingy.setPosition(.66+(gamepad1.right_trigger*.33));
+
 
             if (gamepad1.dpad_left) carousel.setPower(.7);
             else if (gamepad1.dpad_right) carousel.setPower(-.7);

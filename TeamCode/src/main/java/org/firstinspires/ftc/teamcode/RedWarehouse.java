@@ -67,7 +67,7 @@ public class RedWarehouse extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-
+robot.setIntakeServo();
                 //robot.drive(0, .46*feet,.5);
                 robot.setRed();
                 robot.setRed2();
@@ -137,7 +137,7 @@ public class RedWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 9:
-                robot.drive(0*inch, 39*inch, .5);
+                robot.drive(0*inch, 37*inch, .5);
                 robot.counter++;
                 break;
             case 10:
@@ -150,7 +150,7 @@ public class RedWarehouse extends OpMode {
                 robot.counter++;
                 break;
             case 12:
-                robot.drive(0, -1.5*feet,1);
+                robot.drive(0, -2*feet,1);
                 robot.newSleep(1);
                 robot.counter++;
                 break;

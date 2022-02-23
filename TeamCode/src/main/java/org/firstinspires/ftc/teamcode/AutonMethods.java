@@ -36,7 +36,7 @@ public class AutonMethods {
     double inch2 = rev2 / (2 * 3.14);
     double feet2 = inch2 * 12;
     double FRtpos, BRtpos, FLtpos, BLtpos;
-    public static DcMotor motorBR, motorBL, motorFL, motorFR, rum, intake, carousel;
+    public static DcMotor motorBR, motorBL, motorFL, motorFR, lifter, intake, carousel;
     //public static DcMotor Forwards = intake, Sideways = carousel;
     public static Servo bucket, intakeServo, liftyThingy;
     public static DistanceSensor distanceSensor, distanceSensorBack;
@@ -71,7 +71,7 @@ public class AutonMethods {
         motorBR = map.get(DcMotor.class, "motorBR");
         motorFR = map.get(DcMotor.class, "motorFR");
         intake = map.get(DcMotor.class, "intake");
-        rum = map.get(DcMotor.class, "lifter");
+        lifter = map.get(DcMotor.class, "lifter");
 
         red = map.get(LED.class, "red");
         green = map.get(LED.class, "green");
@@ -92,7 +92,7 @@ public class AutonMethods {
         motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rum.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lifter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         carousel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
@@ -101,7 +101,7 @@ public class AutonMethods {
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
         intake.setDirection(DcMotorSimple.Direction.FORWARD);
-        rum.setDirection(DcMotorSimple.Direction.FORWARD);
+        lifter.setDirection(DcMotorSimple.Direction.FORWARD);
 
         motorFL.setTargetPosition(0);
         motorBL.setTargetPosition(0);
@@ -331,11 +331,11 @@ public void autonLowerBlue()
     }
 
     public void lift(double amount) { //moves the 4 bar/lifter
-        amount = -amount;
-        rum.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rum.setTargetPosition((int) amount);
-        rum.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        rum.setPower(.6);
+       // amount = -amount;
+        lifter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        lifter.setTargetPosition((int) amount);
+        lifter.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        lifter.setPower(.6);
     }
 
     public void dump() {

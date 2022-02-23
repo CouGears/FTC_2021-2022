@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package javaold.Components;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -96,7 +96,7 @@ public class SlideTest extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-                robot.lift(3300);
+                robot.lift(-3300);
               /*  if (robot.distance() == 1) {
                     robot.lift(400);//Top of the tower
                     robot.lift();
