@@ -84,7 +84,7 @@ public class AutonMethods {
 
         bucket = map.get(Servo.class, "bucket");
         liftyThingy = map.get(Servo.class, "liftyThingy");
-        intakeServo = map.get(Servo.class, "intakeServo");
+        intakeServo = map.get(Servo.class, "serv");
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -169,14 +169,17 @@ public void blockPosBlue()
 {
     if(BlockPosition == 1)
     {
+        drive(-9*inch,0,.5);
         lift(1500);
     }
     else if (BlockPosition == 2)
     {
+        drive(-9*inch,0,.5);
         lift(2500);
     }
     else if (BlockPosition == 3)
     {
+        drive(-10*inch,0,.5);
         lift(3300);
     }
 }
@@ -184,14 +187,17 @@ public void blockPosBlue()
     {
         if(BlockPosition == 3)
         {
+            drive(-15*inch,0,.5);
             lift(1500);
         }
         else if (BlockPosition == 2)
         {
+            drive(-15*inch,0,.5);
             lift(2500);
         }
         else if (BlockPosition == 1)
         {
+            drive(-15*inch,0,.5);
             lift(3300);
         }
     }

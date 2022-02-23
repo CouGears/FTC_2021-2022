@@ -95,6 +95,7 @@ public class BlueStorage extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
+                robot.setIntakeServo();
                 robot.drive(0 * feet, .5*feet, .5);//move to carousel
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
@@ -110,7 +111,7 @@ public class BlueStorage extends OpMode {
                 break;
             case 2:
                 robot.setCarousel(-.7);//move carousel
-                robot.setIntake(1);
+//                robot.setIntake(1);
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
                 robot.counter++;
@@ -120,17 +121,18 @@ public class BlueStorage extends OpMode {
                 robot.counter++;
                 break;
             case 4:
-                robot.drive(-.33 * feet, 0.01 * feet, .5); //drives back to scan point
+                robot.drive(-.5 * feet, 0.01 * feet, .5); //drives back to scan point
                 robot.newSleep(.01);
                 robot.counter++;
                 break;
             case 5:
-                robot.drive(0 * feet, 1.3 * feet, .5); //drives right to scan point
+                robot.drive(0 * feet, 1.45 * feet, .5); //drives right to scan point
                 //needs three to be in right position and avoid carousel
+
                 robot.counter++;
                 break;
             case 6:
-               robot.newSleep(1);
+                robot.newSleep(1);
                 robot.distanceSet();//grab distance of block and know how to move arm this is stored and stay same but right leg of robot needs to line up with barcode for this system to work(sorry thatll be change case 4)
                 telemetry.addData("spot", robot.distanceSet());
                 telemetry.update();
@@ -147,7 +149,7 @@ public class BlueStorage extends OpMode {
                 robot.counter++;
                 break;
             case 9:
-                robot.drive(0 * feet, -0.4 * feet, .5); //drive to drop point
+                robot.drive(0 * feet, -0.3 * feet, .5); //drive to drop point
 
                 //robot.newSleep(.5);
                 robot.counter++;
@@ -159,21 +161,21 @@ public class BlueStorage extends OpMode {
             case 11:
                 //robot.newSleep(2);
                 if (robot.distance() == 1500) {//this is all preconfigured and stays the same
-                    robot.drive(1*inch,0,1);
+                    robot.drive(7*inch,0,1);
                     robot.lift(2000);//Bottom of the tower
                     robot.setRed();
                     robot.setRed2();
                     telemetry.addData("spot - bottom", robot.distance());
                     telemetry.update();
                 } else if (robot.distance() == 2000) {
-                    robot.drive(-8*inch,0,1);
+                    robot.drive(2*inch,0,1);
                     robot.lift(2500);//Middle
                     robot.setAmber();
                     robot.setAmber2();
                     telemetry.addData("spot - middle", robot.distance());
                     telemetry.update();
                 } else if (robot.distance() == 3300) {
-                    robot.drive(-8*inch,0,1);
+                    robot.drive(0*inch,0,1);
                     robot.lift(3300);
                     robot.setGreen();
                     robot.setGreen2();
@@ -187,16 +189,16 @@ public class BlueStorage extends OpMode {
             case 12:
                 robot.dump();//configured stays the same
                robot.newSleep(.5);
-                if (robot.distance()==1500){
+            /*    if (robot.distance()==1500){
                     robot.drive(-.4*feet,0,1);
                 } else if (robot.distance()==2000) {
                 robot.drive(-.2*feet,0,1);
-            }
+            }*/
                 robot.counter++;
                 break;
             case 13:
                 robot.drive(2.8 * feet, 0 * feet, .5);//move to park
-                robot.drive(0,1.35*feet,1);
+                robot.drive(0,1.4*feet,1);
                 robot.counter++;
                 break;
             case 14:

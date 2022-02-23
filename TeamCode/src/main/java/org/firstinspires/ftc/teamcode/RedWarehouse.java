@@ -137,7 +137,7 @@ robot.setIntakeServo();
                 robot.counter++;
                 break;
             case 9:
-                robot.drive(0*inch, 37*inch, .5);
+                robot.drive(0*inch, 2.4*feet, .5);
                 robot.counter++;
                 break;
             case 10:
