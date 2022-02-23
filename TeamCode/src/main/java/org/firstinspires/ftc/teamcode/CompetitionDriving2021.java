@@ -15,6 +15,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
     private Servo bucket, intakeServo, liftyThingy;//, hServo, vServo;
     //private CRServo dServo;
     private boolean claw = false, bucketButton = false;
+    private double switch1Smoothed, switch1Prev;
     private AutonMethods robot = new AutonMethods();
     int x = 0;
     int SWITCH = 0;
@@ -42,10 +43,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
         intakeServo = hardwareMap.get(Servo.class, "serv");
         liftyThingy = hardwareMap.get(Servo.class, "liftyThingy");
 
-       // hServo = hardwareMap.get(Servo.class, "hServo");
-       // vServo = hardwareMap.get(Servo.class, "vServo");
-      //  dServo = hardwareMap.crservo.get("dServo");
-
+        // hServo = hardwareMap.get(Servo.class, "hServo");
+        // vServo = hardwareMap.get(Servo.class, "vServo");
+        //  dServo = hardwareMap.crservo.get("dServo");
 
 
         motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -73,7 +73,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
         while (opModeIsActive()) {
             x = 0;
-        intakeServo.setPosition(.45);
+            intakeServo.setPosition(.45);
 
             if (x == 0) {
                 motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x)) * 1);
@@ -101,8 +101,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 bucket.setPosition(.5);
                 telemetry.addData("Position:", .5);
                 telemetry.update();
-            }
-            else {
+            } else {
                 bucket.setPosition(.5);
             }
             int FLIntakePowerR = (int) gamepad1.right_trigger;
@@ -116,13 +115,13 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 intake.setPower(0);
             }
 
-            if (gamepad1.dpad_up)lifter.setPower(.8);
+            if (gamepad1.dpad_up) lifter.setPower(.8);
             else if (gamepad1.dpad_down) lifter.setPower(-.8);
             else lifter.setPower(0);
 
 
-            if (gamepad1.y)lift.setPower(.6);
-            else if (gamepad1.a)lift.setPower(-.6);
+            if (gamepad1.y) lift.setPower(.6);
+            else if (gamepad1.a) lift.setPower(-.6);
             else lift.setPower(0);
 
             if (gamepad1.x) {
@@ -134,23 +133,37 @@ public class CompetitionDriving2021 extends LinearOpMode {
                     SWITCH--;
                 }
             }
-            if (SWITCH==0) liftyThingy.setPosition(1-(gamepad1.right_trigger*.33));
-            if (SWITCH ==1)liftyThingy.setPosition(.66+(gamepad1.right_trigger*.33));
+            if (SWITCH == 0) liftyThingy.setPosition(1 - (gamepad1.right_trigger * .33));
+            if (SWITCH == 1) liftyThingy.setPosition(.66 + (gamepad1.right_trigger * .33));
 
 
-            if (gamepad1.dpad_left) carousel.setPower(.7);
-            else if (gamepad1.dpad_right) carousel.setPower(-.7);
-            else carousel.setPower(0);//set ===to while else??
-            
-            if (xtape <= .97 && xtape >= -.97) xtape = xtape + this.gamepad2.right_stick_x * .03;
-            if (ytape <= .97 && ytape >= -.97) ytape = ytape + this.gamepad2.right_stick_y * .03;
+            if (gamepad1.dpad_left) {
+                switch1Smoothed = ((1 * .005) + (switch1Prev * .995));
+                switch1Prev = switch1Smoothed;
+                telemetry.addData("speed", switch1Smoothed);
+                telemetry.update();
+                carousel.setPower(switch1Smoothed);
+            } else if (gamepad1.dpad_right) {
+                switch1Smoothed = ((1 * .005) + (switch1Prev * .995));
+                switch1Prev = switch1Smoothed;
+                carousel.setPower(-switch1Smoothed);
+            } else {
+                switch1Smoothed = 0;
+                switch1Prev = 0;
+                carousel.setPower(0);//set ===to while else??
 
-            if (gamepad2.right_bumper)extendpower = pextend;
-            else if (gamepad2.right_bumper)extendpower = -pextend;
-            else extendpower = 0;
-            //hServo.setPosition(ytape);
-            //vServo.setPosition(xtape);
-            //dServo.setPower(extendpower);
+                if (xtape <= .97 && xtape >= -.97)
+                    xtape = xtape + this.gamepad2.right_stick_x * .03;
+                if (ytape <= .97 && ytape >= -.97)
+                    ytape = ytape + this.gamepad2.right_stick_y * .03;
+
+                if (gamepad2.right_bumper) extendpower = pextend;
+                else if (gamepad2.right_bumper) extendpower = -pextend;
+                else extendpower = 0;
+                //hServo.setPosition(ytape);
+                //vServo.setPosition(xtape);
+                //dServo.setPower(extendpower);
+            }
         }
     }
 }
