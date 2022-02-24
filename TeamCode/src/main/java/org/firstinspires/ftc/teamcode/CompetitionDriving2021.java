@@ -96,7 +96,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
 
             if (gamepad1.b) {
-                bucket.setPosition(.05);
+                bucket.setPosition(.1);
                 robot.sleep(1500);
                 bucket.setPosition(.49);
                 telemetry.addData("Position:", .5);
