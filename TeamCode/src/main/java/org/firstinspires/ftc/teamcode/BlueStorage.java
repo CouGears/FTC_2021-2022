@@ -198,7 +198,7 @@ public class BlueStorage extends OpMode {
                 break;
             case 13:
                 robot.drive(2.8 * feet, 0 * feet, .5);//move to park
-                robot.drive(0,1.4*feet,1);
+                robot.drive(0,1.5*feet,1);
                 robot.counter++;
                 break;
             case 14:

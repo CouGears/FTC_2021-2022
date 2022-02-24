@@ -177,7 +177,7 @@ public class RedStorage extends OpMode {
                 } else if (robot.distance() == 2000) {
                     robot.setAmber();
                     robot.setAmber2();
-                    robot.drive(-8*inch,0,1);
+                    robot.drive(-5*inch,0,1);
                     robot.lift(2500);//Middle
                     telemetry.addData("spot - middle", robot.distance());
                     telemetry.update();
@@ -199,7 +199,7 @@ public class RedStorage extends OpMode {
                 break;
             case 15:
                 robot.drive(2.85 * feet, 0, .5);//move to park
-                robot.drive(0,-1.35*feet, 1);
+                robot.drive(0,-1.45*feet, 1);
                 robot.counter++;
                 break;
             case 16:
