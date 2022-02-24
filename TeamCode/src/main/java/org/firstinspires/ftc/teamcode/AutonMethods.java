@@ -348,7 +348,7 @@ public void autonLowerBlue()
 
         bucket.setPosition(.05);
         sleep(2000);
-        bucket.setPosition(.5);
+        bucket.setPosition(.49);
     }
 
     public void setIntake(int pos) {
