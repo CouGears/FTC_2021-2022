@@ -150,7 +150,7 @@ robot.setIntakeServo();
                 robot.counter++;
                 break;
             case 12:
-                robot.drive(0, -2*feet,1);
+                robot.drive(0, -2.5*feet,1);
                 robot.newSleep(1);
                 robot.counter++;
                 break;
