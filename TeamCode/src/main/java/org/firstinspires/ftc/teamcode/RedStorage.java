@@ -120,7 +120,7 @@ public class RedStorage extends OpMode {
                 robot.counter++;
                 break;
             case 4:
-                robot.turn(32);
+                robot.turn(30);
                 robot.counter++;
                 break;
             case 5:
@@ -198,8 +198,8 @@ public class RedStorage extends OpMode {
                 robot.counter++;
                 break;
             case 15:
-                robot.drive(2.85 * feet, 0, .5);//move to park
-                robot.drive(0,-1.45*feet, 1);
+                robot.drive(2.5 * feet, 0, .5);//move to park
+                robot.drive(0,-1.5*feet, 1);
                 robot.counter++;
                 break;
             case 16:

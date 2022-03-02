@@ -165,6 +165,10 @@ public int value() {return 0;}
         distBack = distanceSensorBack.getDistance(DistanceUnit.CM);
         return distBack;
     }
+    public long maps(long x, long in_min, long in_max, long out_min, long out_max)
+    {
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
 public void blockPosBlue()
 {
     if(BlockPosition == 1)
@@ -277,13 +281,18 @@ public void autonLowerBlue()
         if (dist < 25) {
             stuff = 3300;
             crap = 3300;
-
-        } else if (dist >= 25 && dist < 45) {
+            setRed();
+            setRed2();
+        } else if (dist >= 25 && dist < 40) {
             stuff = 2000;
             crap = 2000;
-        } else if (dist >= 45) {
+            setAmber();
+            setAmber2();
+        } else if (dist >= 40) {
             stuff = 1500;
             crap = 1500;
+            setGreen2();
+            setGreen();
         }
         return stuff;
     }
