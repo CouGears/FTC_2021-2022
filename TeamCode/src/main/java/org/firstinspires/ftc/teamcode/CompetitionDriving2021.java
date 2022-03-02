@@ -33,7 +33,6 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
         intake = hardwareMap.get(DcMotor.class, "intake");
         lifter = hardwareMap.get(DcMotor.class, "lifter");
-        lift = hardwareMap.get(DcMotor.class, "lift");
 
         carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
