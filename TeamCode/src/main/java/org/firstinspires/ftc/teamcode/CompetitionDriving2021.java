@@ -11,8 +11,9 @@ import com.qualcomm.robotcore.hardware.CRServo;
 
 public class CompetitionDriving2021 extends LinearOpMode {
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, lift;
-    private Servo bucket, intakeServo, liftyThingy;//, hServo, vServo;
+    private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, lift, capDrive;
+    private Servo bucket, intakeServo, liftyThingy, capServo;
+    private boolean claw = false, bucketButton = false;
     //private CRServo dServo;
     private boolean claw = false, bucketButton = false;
     private double switch1Smoothed, switch1Prev;
@@ -23,6 +24,12 @@ public class CompetitionDriving2021 extends LinearOpMode {
     double ytape = .5;
     double extendpower = 0;
     double pextend = .2;
+    double ticks = 2048; // ticks for cap motor; half rotation of arm
+    double pos = 0; // overall cap position
+    
+    double alpha = .03; //multiplier for cap
+    boolean last = 0; //last state of jopystick button
+    boolean capmode = 0; // 1 for in use, 0 for folded
     // double 
 
     @Override
@@ -34,6 +41,8 @@ public class CompetitionDriving2021 extends LinearOpMode {
         intake = hardwareMap.get(DcMotor.class, "intake");
         lifter = hardwareMap.get(DcMotor.class, "lifter");
         lift = hardwareMap.get(DcMotor.class, "lift");
+        capDrive = hardwareMap.get(DcMotor.class, "capDrive");
+        
 
         carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
@@ -42,6 +51,12 @@ public class CompetitionDriving2021 extends LinearOpMode {
         bucket = hardwareMap.get(Servo.class, "bucket");
         intakeServo = hardwareMap.get(Servo.class, "serv");
         liftyThingy = hardwareMap.get(Servo.class, "liftyThingy");
+        capServo = hardwareMap.get(Servo.class, "capServo");
+
+        capDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        capDrive.setDirection(DcMotorSimple.Direction.FORWARD); //may need to change
+        capDrive.setTargetPosition(0);
+        capDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         // hServo = hardwareMap.get(Servo.class, "hServo");
         // vServo = hardwareMap.get(Servo.class, "vServo");
@@ -94,6 +109,32 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 motorFR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
             }
 
+
+            if (capmode){
+                if (pos <= (1-alpha) && pos >= (0+alpha)){
+                    pos = pos + this.gamepad2.right_stick_y * alpha;
+                }
+                capServo.setPosition(((double)robot.maps(pos, 0, 1, 25, 75)) / (double) 100);
+                capDrive.setTargetPosition((int) robot.maps(pos, 0, 1, 0, ticks));
+                capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            }
+            else {
+                capServo.setPosition((double) 0.0);
+                capDrive.setTargetPosition((int) 0);
+                capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            }
+            if (this.controller2.right_stick_button && last){
+                capmode= !capmode;
+                last = 0;
+
+            } else {
+                last = 1;
+            }
+
+                    
+
+            
 
             if (gamepad1.b) {
                 bucket.setPosition(.1);
