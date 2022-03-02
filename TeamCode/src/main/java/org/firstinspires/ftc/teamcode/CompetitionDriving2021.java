@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 
 public class CompetitionDriving2021 extends LinearOpMode {
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, lift;
+    private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel;
     private Servo bucket, intakeServo, liftyThingy;//, hServo, vServo;
     //private CRServo dServo;
     private boolean claw = false, bucketButton = false;
@@ -33,7 +33,6 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
         intake = hardwareMap.get(DcMotor.class, "intake");
         lifter = hardwareMap.get(DcMotor.class, "lifter");
-        lift = hardwareMap.get(DcMotor.class, "lift");
 
         carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
@@ -120,9 +119,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
             else lifter.setPower(0);
 
 
-            if (gamepad1.y) lift.setPower(.6);
-            else if (gamepad1.a) lift.setPower(-.6);
-            else lift.setPower(0);
+
 
             if (gamepad1.x) {
                 if (SWITCH == 0) {
