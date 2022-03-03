@@ -143,9 +143,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
             if (SWITCH == 1) liftyThingy.setPosition(.66 + (gamepad1.right_trigger * .33));
             //endregion
 
-
-
-//couldn't hide this but it's the carousel
+            //region carouseel mechanism
             if (gamepad1.dpad_left) {
                 switch1Smoothed = ((1 * .005) + (switch1Prev * .995));
                 switch1Prev = switch1Smoothed;
@@ -160,8 +158,10 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 switch1Smoothed = 0;
                 switch1Prev = 0;
                 carousel.setPower(0);
+            }
+            //endregion
 
-                //region other other capping mechanism
+            //region other other capping mechanism
                 if (xtape <= .97 && xtape >= -.97)
                     xtape = xtape + this.gamepad2.right_stick_x * .03;
                 if (ytape <= .97 && ytape >= -.97)
@@ -175,7 +175,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 //dServo.setPower(extendpower);
                 //endregion
 
-                //region capping mechanism
+            //region capping mechanism
                 if (gamepad1.a){
                     capServo.setPower(-1);
                     robot.sleep(500);
@@ -185,7 +185,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 capDrive.setPower(gamepad2.right_stick_y*.75);
                 //endregion
 
-            }
+
         }
     }
 }
