@@ -139,7 +139,7 @@ public class RedStorage extends OpMode {
                 break;
             case 8:
                robot.newSleep(1);
-                robot.distanceSet();//grab distance of block and know how to move arm this is stored and stay same but right leg of robot needs to line up with barcode for this system to work(sorry thatll be change case 4)
+                robot.distanceSet();//grab distance of block and know how to move arm this is stored and stay same but right leg of robot needs to line up with barcode for this system to work(sorry that'll be change case 4)
                 telemetry.addData("spot", robot.distanceSet());
                 telemetry.update();
                 robot.newSleep(1);
@@ -151,7 +151,7 @@ public class RedStorage extends OpMode {
                 break;
             case 10:
                 robot.turn(180);//turn to drop
-                robot.newSleep(2);//wait for completion so we dont drive on angle
+                robot.newSleep(2);//wait for completion so we don't drive on angle
                 robot.counter++;
                 break;
             case 11:
@@ -170,14 +170,14 @@ public class RedStorage extends OpMode {
                 if (robot.distance() == 1500) {//this is all preconfigured and stays the same
                     robot.setRed();
                     robot.setRed2();
-                    robot.drive(-8*inch,0,1);
+                    robot.drive(-5*inch,0,1);
                     robot.lift(3300);//Top of the tower
                     telemetry.addData("spot - top", robot.distance());
                     telemetry.update();
                 } else if (robot.distance() == 2000) {
                     robot.setAmber();
                     robot.setAmber2();
-                    robot.drive(-5*inch,0,1);
+                    robot.drive(-3*inch,0,1);
                     robot.lift(2500);//Middle
                     telemetry.addData("spot - middle", robot.distance());
                     telemetry.update();
