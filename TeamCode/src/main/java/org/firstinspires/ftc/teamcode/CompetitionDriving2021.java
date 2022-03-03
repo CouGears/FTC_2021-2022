@@ -26,13 +26,14 @@ public class CompetitionDriving2021 extends LinearOpMode {
     double degree = 3.9586;
     double liftArmPos = 0;
 
-    double ticks = 1425.1; // ticks for cap motor; half rotation of arm
+    double ticks = 1024; // ticks for cap motor; half rotation of arm
     double pos = 0; // overall cap position
-    double alpha = .03; //multiplier for cap
+    double alpha = .003; //multiplier for cap
     int last = 0; //last state of jopystick button
     int capmode = 0; // 1 for in use, 0 for folded
-    // double
-    // double 
+
+    //eytan's solution
+    double height = 0, arm1 = 0, arm2 = 0;
 
     @Override
     public void runOpMode() {
@@ -108,7 +109,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //endregion
 
             //region dump code
-            if (gamepad1.b) {
+            if (gamepad1.b || gamepad2.left_bumper) {
                 bucket.setPosition(.1);
                 robot.sleep(1500);
                 bucket.setPosition(.49);
@@ -136,6 +137,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
             if (gamepad1.dpad_up) lifter.setPower(.8);
             else if (gamepad1.dpad_down) lifter.setPower(-.8);
             else lifter.setPower(0);
+           /* if (gamepad2.dpad_up) lifter.setPower(.8);
+            else if (gamepad2.dpad_down) lifter.setPower(-.8);
+            else lifter.setPower(0);*/
             //endregion
 
             //region carousel mechanism
@@ -158,22 +162,27 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
             //region capping mechanism
 
-           if (gamepad2.a) capServo.setPosition(.75);
-           else if (gamepad2.b) capServo.setPosition(.5);
-           else if (gamepad2.x) capServo.setPosition(1);
+          /*  if (gamepad2.a) arm2 = .75;
+            else if (gamepad2.y) arm2 = 1;
+            else if (gamepad2.b) arm2 = .85;
+            while (gamepad2.dpad_up){
+                height++;
+                telemetry.addData("height", height);
+                telemetry.update();
+                robot.sleep(10);
+            }
+            while (gamepad2.dpad_down){
+                height--;
+                telemetry.addData("height", height);
+                telemetry.update();
+                robot.sleep(10);
+            }
+            capDrive.setTargetPosition((int)((height*1425.1)/360));
+            capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            capDrive.setPower(.5);
+            capServo.setPosition(arm2 - height/270);*/
 
-           while(gamepad2.dpad_up){
-//               capDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-               capDrive.setTargetPosition((int)(liftArmPos + degree));
-               capServo.setPosition(.75 - .0037 * (liftArmPos/360));
-               capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-               capDrive.setPower(.5);
-               liftArmPos = liftArmPos + degree;
 
-
-
-           }
-            capDrive.setPower(-gamepad2.right_stick_y*.6);
             //endregion
 
             //region other capping mechanism
@@ -193,24 +202,29 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //region other other capping mechanism
 
             if (capmode == 1){
-                if (pos <= (1-alpha) && pos >= (0+alpha)){
-                    pos = pos + gamepad2.right_stick_y * alpha;
-                }
-                capServo.setPosition(((double)robot.maps((long) (100.0* pos), (long) 0, (long) 1, (long) 25, (long) 75)) / (double) 100);
-                capDrive.setTargetPosition((int) robot.maps((long) (100.0* pos), (long) 0, (long) 1, (long) 0, (long) ticks));
+
+                pos = Math.max(Math.min((double) 1, (pos - gamepad2.right_stick_y * alpha)), (double) 0);
+                telemetry.addData("pos:", pos);
+                telemetry.update();
+                capServo.setPosition(((double)robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 750, (long) 360)) / (double) 1000);
+                capDrive.setTargetPosition((int) robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 0, (long) ticks));
                 capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 capDrive.setPower(.5);
             }
             else {
-                capServo.setPosition((double) 0.0);
+                capServo.setPosition((double) 1.0);
                 capDrive.setTargetPosition((int) 0);
                 capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 capDrive.setPower(.5);
+                pos = 0.0;
 
             }
             if (gamepad2.right_stick_button && last==1){
+
                 if (capmode==1) capmode = 0;
                 else capmode = 1;
+                telemetry.addData("capmode:", capmode);
+                telemetry.update();
                 last = 0;
 
             } else {
