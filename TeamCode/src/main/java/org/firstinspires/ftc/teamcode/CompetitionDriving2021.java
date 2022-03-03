@@ -27,6 +27,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
     @Override
     public void runOpMode() {
+        //region hardware map
         motorFL = hardwareMap.get(DcMotor.class, "motorFL");
         motorBL = hardwareMap.get(DcMotor.class, "motorBL");
         motorBR = hardwareMap.get(DcMotor.class, "motorBR");
@@ -64,6 +65,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         lifter.setDirection(DcMotorSimple.Direction.FORWARD);
 
         carousel.setDirection(DcMotorSimple.Direction.FORWARD);
+        //endregion
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -75,6 +77,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
             x = 0;
             intakeServo.setPosition(.45);
 
+            //region drive code
             if (x == 0) {
                 motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x)) * 1);
                 motorBL.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
@@ -93,8 +96,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 motorBR.setPower(-((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
                 motorFR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
             }
+            //endregion
 
-
+            //region dump code
             if (gamepad1.b) {
                 bucket.setPosition(.1);
                 robot.sleep(1500);
@@ -104,6 +108,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
             } else {
                 bucket.setPosition(.5);
             }
+            //endregion
+
+            //region intake code
             int FLIntakePowerR = (int) gamepad1.right_trigger;
             boolean FLIntakePowerL = gamepad1.left_bumper;
 
@@ -114,14 +121,15 @@ public class CompetitionDriving2021 extends LinearOpMode {
             } else {
                 intake.setPower(0);
             }
+            //endregion
 
+            //region lifter
             if (gamepad1.dpad_up) lifter.setPower(.8);
             else if (gamepad1.dpad_down) lifter.setPower(-.8);
             else lifter.setPower(0);
+            //endregion
 
-
-
-
+            //region other capping mechanism
             if (gamepad1.x) {
                 if (SWITCH == 0) {
                     robot.newSleep(.5);
@@ -133,8 +141,11 @@ public class CompetitionDriving2021 extends LinearOpMode {
             }
             if (SWITCH == 0) liftyThingy.setPosition(1 - (gamepad1.right_trigger * .33));
             if (SWITCH == 1) liftyThingy.setPosition(.66 + (gamepad1.right_trigger * .33));
+            //endregion
 
 
+
+//couldn't hide this but it's the carousel
             if (gamepad1.dpad_left) {
                 switch1Smoothed = ((1 * .005) + (switch1Prev * .995));
                 switch1Prev = switch1Smoothed;
@@ -148,8 +159,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
             } else {
                 switch1Smoothed = 0;
                 switch1Prev = 0;
-                carousel.setPower(0);//set ===to while else??
+                carousel.setPower(0);
 
+                //region other other capping mechanism
                 if (xtape <= .97 && xtape >= -.97)
                     xtape = xtape + this.gamepad2.right_stick_x * .03;
                 if (ytape <= .97 && ytape >= -.97)
@@ -161,7 +173,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 //hServo.setPosition(ytape);
                 //vServo.setPosition(xtape);
                 //dServo.setPower(extendpower);
-                //capping mechanism
+                //endregion
+
+                //region capping mechanism
                 if (gamepad1.a){
                     capServo.setPower(-1);
                     robot.sleep(500);
@@ -169,6 +183,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 }
                 capServo.setPower(-gamepad2.right_stick_y*.75);
                 capDrive.setPower(gamepad2.right_stick_y*.75);
+                //endregion
 
             }
         }
