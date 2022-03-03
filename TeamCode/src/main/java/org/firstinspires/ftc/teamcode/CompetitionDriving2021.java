@@ -1,21 +1,18 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.rev.RevTouchSensor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.TouchSensor;
 
 @TeleOp
-
+//Hi Oran
 public class CompetitionDriving2021 extends LinearOpMode {
 
-    private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, lift;
-    private TouchSensor liftTouch;
-    private Servo bucket, intakeServo, liftyThingy;//, hServo, vServo;
+    private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, capDrive;
+    private Servo bucket, intakeServo, liftyThingy, capServo;//, hServo, vServo;
     //private CRServo dServo;
     private boolean claw = false, bucketButton = false;
     private double switch1Smoothed, switch1Prev;
@@ -36,7 +33,6 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
         intake = hardwareMap.get(DcMotor.class, "intake");
         lifter = hardwareMap.get(DcMotor.class, "lifter");
-        lift = hardwareMap.get(DcMotor.class, "lift");
 
         carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
@@ -45,7 +41,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         bucket = hardwareMap.get(Servo.class, "bucket");
         intakeServo = hardwareMap.get(Servo.class, "serv");
         liftyThingy = hardwareMap.get(Servo.class, "liftyThingy");
-        liftTouch = hardwareMap.get(TouchSensor.class, "liftTouch");
+
         // hServo = hardwareMap.get(Servo.class, "hServo");
         // vServo = hardwareMap.get(Servo.class, "vServo");
         //  dServo = hardwareMap.crservo.get("dServo");
@@ -77,7 +73,8 @@ public class CompetitionDriving2021 extends LinearOpMode {
         while (opModeIsActive()) {
             x = 0;
             intakeServo.setPosition(.45);
-           if (x == 0) {
+
+            if (x == 0) {
                 motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x)) * 1);
                 motorBL.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
                 motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
@@ -96,11 +93,6 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 motorFR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
             }
 
-         /*   if(liftTouch.isPressed()){
-                robot.setAmber();
-            } else {
-                robot.setRed();
-            }*/
 
             if (gamepad1.b) {
                 bucket.setPosition(.1);
@@ -127,9 +119,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
             else lifter.setPower(0);
 
 
-            if (gamepad1.y) lift.setPower(.6);
-            else if (gamepad1.a) lift.setPower(-.6);
-            else lift.setPower(0);
+
 
             if (gamepad1.x) {
                 if (SWITCH == 0) {
