@@ -12,8 +12,8 @@ import com.qualcomm.robotcore.hardware.CRServo;
 public class CompetitionDriving2021 extends LinearOpMode {
 
     private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, capDrive;
-    private Servo bucket, intakeServo, liftyThingy, capServo;//, hServo, vServo;
-    //private CRServo dServo;
+    private Servo bucket, intakeServo, liftyThingy;//, hServo, vServo;
+    private CRServo capServo;
     private boolean claw = false, bucketButton = false;
     private double switch1Smoothed, switch1Prev;
     private AutonMethods robot = new AutonMethods();
@@ -33,7 +33,8 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorFR = hardwareMap.get(DcMotor.class, "motorFR");
         intake = hardwareMap.get(DcMotor.class, "intake");
         lifter = hardwareMap.get(DcMotor.class, "lifter");
-
+        capDrive = hardwareMap.get(DcMotor.class, "capDrive");
+        capServo = hardwareMap.get(CRServo.class,"capServo");
         carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
         // claw2 = hardwareMap.get(Servo.class, "claw2");
@@ -160,6 +161,15 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 //hServo.setPosition(ytape);
                 //vServo.setPosition(xtape);
                 //dServo.setPower(extendpower);
+                //capping mechanism
+                if (gamepad1.a){
+                    capServo.setPower(-1);
+                    robot.sleep(500);
+                    capServo.setPower(0);
+                }
+                capServo.setPower(-gamepad2.right_stick_y*.75);
+                capDrive.setPower(gamepad2.right_stick_y*.75);
+
             }
         }
     }
