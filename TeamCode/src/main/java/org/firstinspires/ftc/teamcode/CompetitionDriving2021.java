@@ -193,9 +193,8 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //region other other capping mechanism
 
             if (capmode == 1){
-                if (pos <= (1-alpha) && pos >= (0+alpha)){
-                    pos = pos + gamepad2.right_stick_y * alpha;
-                }
+
+                pos = Math.max(Math.min((double) 1, (pos + gamepad2.right_stick_y * alpha)), (double) 0);
                 capServo.setPosition(((double)robot.maps((long) (100.0* pos), (long) 0, (long) 1, (long) 25, (long) 75)) / (double) 100);
                 capDrive.setTargetPosition((int) robot.maps((long) (100.0* pos), (long) 0, (long) 1, (long) 0, (long) ticks));
                 capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
