@@ -26,6 +26,12 @@ public class CompetitionDriving2021 extends LinearOpMode {
     double degree = 3.9586;
     double liftArmPos = 0;
 
+    double ticks = 1425.1; // ticks for cap motor; half rotation of arm
+    double pos = 0; // overall cap position
+    double alpha = .03; //multiplier for cap
+    int last = 0; //last state of jopystick button
+    int capmode = 0; // 1 for in use, 0 for folded
+    // double
     // double 
 
     @Override
@@ -185,17 +191,30 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //endregion
 
             //region other other capping mechanism
-            if (xtape <= .97 && xtape >= -.97)
-                xtape = xtape + this.gamepad2.right_stick_x * .03;
-            if (ytape <= .97 && ytape >= -.97)
-                ytape = ytape + this.gamepad2.right_stick_y * .03;
 
-            if (gamepad2.right_bumper) extendpower = pextend;
-            else if (gamepad2.right_bumper) extendpower = -pextend;
-            else extendpower = 0;
-            //hServo.setPosition(ytape);
-            //vServo.setPosition(xtape);
-            //dServo.setPower(extendpower);
+            if (capmode == 1){
+                if (pos <= (1-alpha) && pos >= (0+alpha)){
+                    pos = pos + gamepad2.right_stick_y * alpha;
+                }
+                capServo.setPosition(((double)robot.maps((long) (100.0* pos), (long) 0, (long) 1, (long) 25, (long) 75)) / (double) 100);
+                capDrive.setTargetPosition((int) robot.maps((long) (100.0* pos), (long) 0, (long) 1, (long) 0, (long) ticks));
+                capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            }
+            else {
+                capServo.setPosition((double) 0.0);
+                capDrive.setTargetPosition((int) 0);
+                capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            }
+            if (gamepad2.right_stick_button && last==1){
+                if (capmode==1) capmode = 0;
+                else capmode = 1;
+                last = 0;
+
+            } else {
+                last = 1;
+            }
+
             //endregion
 
         }
