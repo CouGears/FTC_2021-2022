@@ -199,11 +199,13 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 capServo.setPosition(((double)robot.maps((long) (100.0* pos), (long) 0, (long) 1, (long) 25, (long) 75)) / (double) 100);
                 capDrive.setTargetPosition((int) robot.maps((long) (100.0* pos), (long) 0, (long) 1, (long) 0, (long) ticks));
                 capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                capDrive.setPower(.5);
             }
             else {
                 capServo.setPosition((double) 0.0);
                 capDrive.setTargetPosition((int) 0);
                 capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                capDrive.setPower(.5);
 
             }
             if (gamepad2.right_stick_button && last==1){
