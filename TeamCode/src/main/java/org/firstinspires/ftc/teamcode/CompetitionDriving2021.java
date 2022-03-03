@@ -129,21 +129,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
             else lifter.setPower(0);
             //endregion
 
-            //region other capping mechanism
-            if (gamepad1.x) {
-                if (SWITCH == 0) {
-                    robot.newSleep(.5);
-                    SWITCH++;
-                } else if (SWITCH == 1) {
-                    robot.newSleep(.5);
-                    SWITCH--;
-                }
-            }
-            if (SWITCH == 0) liftyThingy.setPosition(1 - (gamepad1.right_trigger * .33));
-            if (SWITCH == 1) liftyThingy.setPosition(.66 + (gamepad1.right_trigger * .33));
-            //endregion
-
-            //region carouseel mechanism
+            //region carousel mechanism
             if (gamepad1.dpad_left) {
                 switch1Smoothed = ((1 * .005) + (switch1Prev * .995));
                 switch1Prev = switch1Smoothed;
@@ -161,29 +147,49 @@ public class CompetitionDriving2021 extends LinearOpMode {
             }
             //endregion
 
-            //region other other capping mechanism
-                if (xtape <= .97 && xtape >= -.97)
-                    xtape = xtape + this.gamepad2.right_stick_x * .03;
-                if (ytape <= .97 && ytape >= -.97)
-                    ytape = ytape + this.gamepad2.right_stick_y * .03;
-
-                if (gamepad2.right_bumper) extendpower = pextend;
-                else if (gamepad2.right_bumper) extendpower = -pextend;
-                else extendpower = 0;
-                //hServo.setPosition(ytape);
-                //vServo.setPosition(xtape);
-                //dServo.setPower(extendpower);
-                //endregion
-
             //region capping mechanism
-                if (gamepad1.a){
-                    capServo.setPower(-1);
-                    robot.sleep(500);
-                    capServo.setPower(0);
+            if (gamepad1.a){
+                capServo.setPower(-1);
+                robot.sleep(500);
+                capServo.setPower(0);
+            }
+            capServo.setPower(-gamepad2.right_stick_y*.75);
+            capDrive.setPower(gamepad2.right_stick_y*.75);
+            //endregion
+
+            //region other capping mechanism
+            if (gamepad1.x) {
+                if (SWITCH == 0) {
+                    robot.newSleep(.5);
+                    SWITCH++;
+                } else if (SWITCH == 1) {
+                    robot.newSleep(.5);
+                    SWITCH--;
                 }
-                capServo.setPower(-gamepad2.right_stick_y*.75);
-                capDrive.setPower(gamepad2.right_stick_y*.75);
-                //endregion
+            }
+            if (SWITCH == 0) liftyThingy.setPosition(1 - (gamepad1.right_trigger * .33));
+            if (SWITCH == 1) liftyThingy.setPosition(.66 + (gamepad1.right_trigger * .33));
+            //endregion
+
+            //region other other capping mechanism
+            if (xtape <= .97 && xtape >= -.97)
+                xtape = xtape + this.gamepad2.right_stick_x * .03;
+            if (ytape <= .97 && ytape >= -.97)
+                ytape = ytape + this.gamepad2.right_stick_y * .03;
+
+            if (gamepad2.right_bumper) extendpower = pextend;
+            else if (gamepad2.right_bumper) extendpower = -pextend;
+            else extendpower = 0;
+            //hServo.setPosition(ytape);
+            //vServo.setPosition(xtape);
+            //dServo.setPower(extendpower);
+            //endregion
+
+
+
+
+
+
 
 
         }
