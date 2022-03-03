@@ -219,19 +219,14 @@ public class RedStorage extends OpMode {
                 telemetry.update();//Bottom of the tower
                 robot.counter++;
                 break;
-
-                /*    case 8:
-                robot.drive(1*feet,0,.5);
-                robot.counter++;
-                break;*/
         }
     }
 
     /*
      * Code to run ONCE after the driver hits STOP
      */
+
     @Override
     public void stop() {
     }
-
 }
