@@ -23,6 +23,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
     double ytape = .5;
     double extendpower = 0;
     double pextend = .2;
+    double degree = 3.9586;
+    double liftArmPos = 0;
+
     // double 
 
     @Override
@@ -63,7 +66,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         motorBR.setDirection(DcMotorSimple.Direction.FORWARD);
         intake.setDirection(DcMotorSimple.Direction.FORWARD);
         lifter.setDirection(DcMotorSimple.Direction.FORWARD);
-
+        capDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         carousel.setDirection(DcMotorSimple.Direction.FORWARD);
         //endregion
 
@@ -149,11 +152,21 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
             //region capping mechanism
 
-           if (gamepad2.a){
-               capServo.setPosition(.5);
-           } else if (gamepad2.b) capServo.setPosition(0);
+           if (gamepad2.a) capServo.setPosition(.75);
+           else if (gamepad2.b) capServo.setPosition(.5);
            else if (gamepad2.x) capServo.setPosition(1);
 
+           while(gamepad2.dpad_up){
+//               capDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+               capDrive.setTargetPosition((int)(liftArmPos + degree));
+               capServo.setPosition(.75 - .0037 * (liftArmPos/360));
+               capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+               capDrive.setPower(.5);
+               liftArmPos = liftArmPos + degree;
+
+
+
+           }
             capDrive.setPower(-gamepad2.right_stick_y*.6);
             //endregion
 
