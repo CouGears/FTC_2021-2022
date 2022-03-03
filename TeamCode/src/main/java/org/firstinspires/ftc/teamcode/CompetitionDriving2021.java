@@ -13,7 +13,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
     private DcMotor motorBR, motorBL, motorFL, motorFR, intake, lifter, carousel, capDrive;
     private Servo bucket, intakeServo, liftyThingy;//, hServo, vServo;
-    private CRServo capServo;
+    private Servo capServo;
     private boolean claw = false, bucketButton = false;
     private double switch1Smoothed, switch1Prev;
     private AutonMethods robot = new AutonMethods();
@@ -35,7 +35,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         intake = hardwareMap.get(DcMotor.class, "intake");
         lifter = hardwareMap.get(DcMotor.class, "lifter");
         capDrive = hardwareMap.get(DcMotor.class, "capDrive");
-        capServo = hardwareMap.get(CRServo.class,"capServo");
+        capServo = hardwareMap.get(Servo.class,"capServo");
         carousel = hardwareMap.get(DcMotor.class, "carousel");
         //   claw1 = hardwareMap.get(Servo.class, "claw1");
         // claw2 = hardwareMap.get(Servo.class, "claw2");
@@ -56,7 +56,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         lifter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         carousel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
+        capDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorFL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorBL.setDirection(DcMotorSimple.Direction.FORWARD);
         motorFR.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -148,13 +148,13 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //endregion
 
             //region capping mechanism
-            if (gamepad1.a){
-                capServo.setPower(-1);
-                robot.sleep(500);
-                capServo.setPower(0);
-            }
-            capServo.setPower(-gamepad2.right_stick_y*.75);
-            capDrive.setPower(gamepad2.right_stick_y*.75);
+
+           if (gamepad2.a){
+               capServo.setPosition(.5);
+           } else if (gamepad2.b) capServo.setPosition(0);
+           else if (gamepad2.x) capServo.setPosition(1);
+
+            capDrive.setPower(-gamepad2.right_stick_y*.6);
             //endregion
 
             //region other capping mechanism
