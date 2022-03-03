@@ -185,13 +185,6 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //dServo.setPower(extendpower);
             //endregion
 
-
-
-
-
-
-
-
         }
     }
 }
