@@ -112,7 +112,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //endregion
 
             //region dump code
-            if (gamepad1.b || gamepad2.left_bumper) {
+            if (gamepad1.b || gamepad2.dpad_left) {
                 bucket.setPosition(.1);
                 robot.sleep(1500);
                 bucket.setPosition(.49);
@@ -140,9 +140,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
             if (gamepad1.dpad_up) lifter.setPower(.8);
             else if (gamepad1.dpad_down) lifter.setPower(-.8);
             else lifter.setPower(0);
-           /* if (gamepad2.dpad_up) lifter.setPower(.8);
+            if (gamepad2.dpad_up) lifter.setPower(.8);
             else if (gamepad2.dpad_down) lifter.setPower(-.8);
-            else lifter.setPower(0);*/
+            else lifter.setPower(0);
             //endregion
 
             //region carousel mechanism
