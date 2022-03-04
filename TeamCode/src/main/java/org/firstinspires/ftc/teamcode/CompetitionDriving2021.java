@@ -116,7 +116,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 else x = 1;
                 telemetry.addData("x:", x);
                 telemetry.update();
+                robot.sleep(100);
                 last2 = 0;
+
 
             } else {
                 last2 = 1;
@@ -223,8 +225,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 if (gamepad2.right_bumper) pos = pos + alpha;
                 else if (gamepad2.right_trigger > .5) pos = pos - alpha;
                 pos = Math.max(Math.min((double) 1, (pos)), (double) 0);
-                telemetry.addData("pos:", pos);
-                telemetry.update();
+
                 capServo.setPosition(theta + ((double)robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 660, (long) 260)) / (double) 1000);
                 capDrive.setTargetPosition((int) robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 0, (long) ticks));
                 capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -236,6 +237,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 capDrive.setPower(.5);
                 pos = 0.0;
+
 
             }
             if (gamepad2.right_stick_button && last==1){
