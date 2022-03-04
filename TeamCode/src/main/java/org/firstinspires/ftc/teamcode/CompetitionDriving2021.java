@@ -204,7 +204,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //region Real capping mechanism
             if (gamepad2.right_bumper) {
                 theta = beta;
-            } else if ((int) gamepad2.right_trigger) {
+            } else if (gamepad2.right_trigger>.5) {
                 theta = -beta;
             } else {
                 theta = 0;
