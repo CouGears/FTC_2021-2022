@@ -33,6 +33,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
     int capmode = 0; // 1 for in use, 0 for folded
     double beta = .05;
     double theta = 0;
+    double d2beta = 0.1;
 
     //eytan's solution
     double height = 0, arm1 = 0, arm2 = 0;
@@ -95,12 +96,12 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 motorBL.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
                 motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
                 motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
-                /*
-                 motorFL.setPower(((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.left_stick_x)) * .9);
-                motorBL.setPower(-(-(this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
-                motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
-                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
-                */
+
+                motorFL.setPower(((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.left_stick_x)) * d2beta);
+                motorBL.setPower(-(-(this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * d2beta);
+                motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * d2beta);
+                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * d2beta);
+
 
             } else if (x == 1) {
                 motorFL.setPower(((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
@@ -202,16 +203,17 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //endregion
             //
             //region Real capping mechanism
-            if (gamepad2.right_bumper) {
+            if (gamepad2.left_bumper) {
                 theta = beta;
-            } else if ((int) gamepad2.right_trigger) {
+            } else if ( gamepad2.left_trigger > .5) {
                 theta = -beta;
             } else {
                 theta = 0;
             }
             if (capmode == 1){
-
-                pos = Math.max(Math.min((double) 1, (pos - gamepad2.right_stick_y * alpha)), (double) 0);
+                if (gamepad2.right_bumper) pos = pos - alpha;
+                else if (gamepad2.right_trigger > .5) pos = pos + alpha;
+                pos = Math.max(Math.min((double) 1, (pos)), (double) 0);
                 telemetry.addData("pos:", pos);
                 telemetry.update();
                 capServo.setPosition(theta + ((double)robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 750, (long) 360)) / (double) 1000);
