@@ -136,7 +136,7 @@ public class BlueStorage extends OpMode {
                 robot.distanceSet();//grab distance of block and know how to move arm this is stored and stay same but right leg of robot needs to line up with barcode for this system to work(sorry thatll be change case 4)
                 telemetry.addData("spot", robot.distanceSet());
                 telemetry.update();
-                robot.newSleep(1);
+                robot.newSleep(2);
                 robot.counter++;
                 break;
             case 7:
@@ -145,7 +145,7 @@ public class BlueStorage extends OpMode {
                 break;
             case 8:
                 robot.turn(180);//turn to drop
-                robot.newSleep(2);//wait for completion so we dont drive on angle
+                robot.newSleep(2);//wait for completion so we don't drive on angle
                 robot.counter++;
                 break;
             case 9:

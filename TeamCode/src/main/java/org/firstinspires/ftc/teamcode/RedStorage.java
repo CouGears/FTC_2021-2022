@@ -99,18 +99,18 @@ public class RedStorage extends OpMode {
 
             case 0:
                 robot.setIntakeServo();
-                robot.drive(0 * feet, -.75*feet, .5);//move to carousel
+                robot.drive(0 * feet, -.5*feet, .5);//move to carousel
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
                 robot.counter++;
                 break;
             case 1:
-                robot.drive(-1.5 * feet, 0, .5);//move to carousel
+                robot.drive(-1.71 * feet, 0, .5);//move to carousel
                 robot.sleep(1000);
                 robot.counter++;
                 break;
             case 2:
-                robot.turn(-45);
+                robot.turn(-32);
                 robot.counter++;
                 break;
             case 3:
@@ -120,7 +120,7 @@ public class RedStorage extends OpMode {
                 robot.counter++;
                 break;
             case 4:
-                robot.turn(47);
+                robot.turn(32);
                 robot.counter++;
                 break;
             case 5:
@@ -170,7 +170,7 @@ public class RedStorage extends OpMode {
                 if (robot.distance() == 1500) {//this is all preconfigured and stays the same
                     robot.setRed();
                     robot.setRed2();
-                    robot.drive(-20*inch,0,1);
+                    robot.drive(-2*inch,0,1);
                     robot.lift(3300);//Top of the tower
                     telemetry.addData("spot - top", robot.distance());
                     telemetry.update();
@@ -184,7 +184,7 @@ public class RedStorage extends OpMode {
                 } else if (robot.distance() == 3300) {
                     robot.setGreen();
                     robot.setGreen2();
-                    robot.drive(2*inch,0,1);
+                    robot.drive(8*inch,0,1);
                     robot.lift(2000);//Bottom of the tower
                     telemetry.addData("spot - bottom", robot.distance());
                     telemetry.update();//Bottom of the tower
@@ -198,7 +198,7 @@ public class RedStorage extends OpMode {
                 robot.counter++;
                 break;
             case 15:
-                robot.drive(2.3 * feet, 0, 1);//move to park
+                robot.drive(2.4 * feet, 0, 1);//move to park
                 robot.drive(0,-1.5*feet, 1);
                 robot.counter++;
                 break;
