@@ -191,17 +191,17 @@ public void blockPosBlue()
     {
         if(BlockPosition == 3)
         {
-            drive(-15*inch,0,.5);
+            drive(-10*inch,0,.5);
             lift(1500);
         }
         else if (BlockPosition == 2)
         {
-            drive(-15*inch,0,.5);
+            drive(-10*inch,0,.5);
             lift(2500);
         }
         else if (BlockPosition == 1)
         {
-            drive(-15*inch,0,.5);
+            drive(-11*inch,0,.5);
             lift(3300);
         }
     }
