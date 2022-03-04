@@ -200,11 +200,11 @@ public class CompetitionDriving2021 extends LinearOpMode {
 //            if (SWITCH == 0) liftyThingy.setPosition(1 - (gamepad1.right_trigger * .33));
 //            if (SWITCH == 1) liftyThingy.setPosition(.66 + (gamepad1.right_trigger * .33));
             //endregion
-
+            //
             //region Real capping mechanism
             if (gamepad2.right_bumper) {
                 theta = beta;
-            } else if (gamepad2.right_trigger) {
+            } else if ((int) gamepad2.right_trigger) {
                 theta = -beta;
             } else {
                 theta = 0;
