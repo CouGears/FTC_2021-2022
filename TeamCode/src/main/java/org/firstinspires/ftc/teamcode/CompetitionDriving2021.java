@@ -31,6 +31,8 @@ public class CompetitionDriving2021 extends LinearOpMode {
     double alpha = .003; //multiplier for cap
     int last = 0; //last state of jopystick button
     int capmode = 0; // 1 for in use, 0 for folded
+    double beta = .05;
+    double theta = 0;
 
     //eytan's solution
     double height = 0, arm1 = 0, arm2 = 0;
@@ -186,27 +188,33 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //endregion
 
             //region other capping mechanism
-            if (gamepad1.x) {
-                if (SWITCH == 0) {
-                    robot.newSleep(.5);
-                    SWITCH++;
-                } else if (SWITCH == 1) {
-                    robot.newSleep(.5);
-                    SWITCH--;
-                }
-            }
-            if (SWITCH == 0) liftyThingy.setPosition(1 - (gamepad1.right_trigger * .33));
-            if (SWITCH == 1) liftyThingy.setPosition(.66 + (gamepad1.right_trigger * .33));
+//            if (gamepad1.x) {
+//                if (SWITCH == 0) {
+//                    robot.newSleep(.5);
+//                    SWITCH++;
+//                } else if (SWITCH == 1) {
+//                    robot.newSleep(.5);
+//                    SWITCH--;
+//                }
+//            }
+//            if (SWITCH == 0) liftyThingy.setPosition(1 - (gamepad1.right_trigger * .33));
+//            if (SWITCH == 1) liftyThingy.setPosition(.66 + (gamepad1.right_trigger * .33));
             //endregion
 
-            //region other other capping mechanism
-
+            //region Real capping mechanism
+            if (gamepad2.right_bumper) {
+                theta = beta;
+            } else if (gamepad2.right_trigger) {
+                theta = -beta;
+            } else {
+                theta = 0;
+            }
             if (capmode == 1){
 
                 pos = Math.max(Math.min((double) 1, (pos - gamepad2.right_stick_y * alpha)), (double) 0);
                 telemetry.addData("pos:", pos);
                 telemetry.update();
-                capServo.setPosition(((double)robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 750, (long) 360)) / (double) 1000);
+                capServo.setPosition(theta + ((double)robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 750, (long) 360)) / (double) 1000);
                 capDrive.setTargetPosition((int) robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 0, (long) ticks));
                 capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 capDrive.setPower(.5);
