@@ -26,7 +26,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
     double degree = 3.9586;
     double liftArmPos = 0;
 
-    double ticks = 1024; // ticks for cap motor; half rotation of arm
+    double ticks = 1124; // ticks for cap motor; half rotation of arm
     double pos = 0; // overall cap position
     double alpha = .004; //multiplier for cap
     int last = 0; //last state of jopystick button
@@ -246,6 +246,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 else capmode = 1;
                 telemetry.addData("capmode:", capmode);
                 telemetry.update();
+               // robot.sleep(100);
                 last = 0;
 
             } else {
