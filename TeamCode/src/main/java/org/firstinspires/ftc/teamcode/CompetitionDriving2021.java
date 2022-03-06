@@ -129,6 +129,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
             //region dump code
             if (gamepad1.b || gamepad2.a) {
+                lifter.setPower(0);
                 bucket.setPosition(.1);
                 robot.sleep(1500);
                 bucket.setPosition(.49);
