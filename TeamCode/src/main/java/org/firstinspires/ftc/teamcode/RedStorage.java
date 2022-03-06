@@ -65,7 +65,7 @@ public class RedStorage extends OpMode {
 
         // tele.addData(">", "Gyro Calibrating. Do Not Move!");
         robot.setServo();
-
+        robot.setIntakeServo();
         telemetry.addData("Status", "Initialized");
 
     }
@@ -98,7 +98,7 @@ public class RedStorage extends OpMode {
         switch (robot.counter) {
 
             case 0:
-                robot.setIntakeServo();
+
                 robot.drive(0 * feet, -.5*feet, .5);//move to carousel
 //                robot.turn(180);
 //                    robot.drive(0, -5*feet ,.5); // I use this one to test the robot
