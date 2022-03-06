@@ -283,12 +283,12 @@ public void autonLowerBlue()
             crap = 3300;
             setRed();
             setRed2();
-        } else if (dist >= 25 && dist < 40) {
+        } else if (dist >= 25 && dist < 35) {
             stuff = 2000;
             crap = 2000;
             setAmber();
             setAmber2();
-        } else if (dist >= 40) {
+        } else if (dist >= 35) {
             stuff = 1500;
             crap = 1500;
             setGreen2();

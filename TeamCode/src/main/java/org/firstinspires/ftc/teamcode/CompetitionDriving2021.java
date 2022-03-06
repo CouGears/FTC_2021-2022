@@ -26,13 +26,15 @@ public class CompetitionDriving2021 extends LinearOpMode {
     double degree = 3.9586;
     double liftArmPos = 0;
 
-    double ticks = 1024; // ticks for cap motor; half rotation of arm
+    double ticks = 1124; // ticks for cap motor; half rotation of arm
     double pos = 0; // overall cap position
-    double alpha = .003; //multiplier for cap
+    double alpha = .004; //multiplier for cap
     int last = 0; //last state of jopystick button
+    int last2 =0;
     int capmode = 0; // 1 for in use, 0 for folded
     double beta = .05;
     double theta = 0;
+    double d2beta = 0.4;
 
     //eytan's solution
     double height = 0, arm1 = 0, arm2 = 0;
@@ -81,12 +83,12 @@ public class CompetitionDriving2021 extends LinearOpMode {
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
-
+        x = 0;
 //      intakeServo.setPosition(1);
         waitForStart();
 
         while (opModeIsActive()) {
-            x = 0;
+
             intakeServo.setPosition(.45);
 
             //region drive code
@@ -95,23 +97,34 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 motorBL.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
                 motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
                 motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1);
-                /*
-                 motorFL.setPower(((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.left_stick_x)) * .9);
-                motorBL.setPower(-(-(this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
-                motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
-                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.left_stick_x)) * .9);
-                */
+//               motorFL.setPower(Math.max(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x)) * 1,((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x)) * d2beta));
+//                motorBL.setPower(Math.max((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1,(-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1*d2beta));
+//                motorBR.setPower(Math.max(-((this.gamepad1.right_stick_y) + (-this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1,-((this.gamepad1.right_stick_y) + (-this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * d2beta));
+//                motorFR.setPower(Math.max(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * 1,((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * d2beta));
+
 
             } else if (x == 1) {
-                motorFL.setPower(((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
-                motorBL.setPower(-((this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
-                motorBR.setPower(-((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (-this.gamepad1.left_stick_x)) * .25);
-                motorFR.setPower(((this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x) + (this.gamepad1.left_stick_x)) * .25);
+                motorFL.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (-this.gamepad1.right_stick_x)) * d2beta);
+                motorBL.setPower((-(this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (-this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * d2beta);
+                motorBR.setPower(-((this.gamepad1.right_stick_y) + (-this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * d2beta);
+                motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * d2beta);
             }
             //endregion
+            if (gamepad1.y && last2==1){
 
+                if (x==1) x=0;
+                else x = 1;
+                telemetry.addData("x:", x);
+                telemetry.update();
+                robot.sleep(100);
+                last2 = 0;
+
+
+            } else {
+                last2 = 1;
+            }
             //region dump code
-            if (gamepad1.b || gamepad2.left_bumper) {
+            if (gamepad1.b || gamepad2.a) {
                 bucket.setPosition(.1);
                 robot.sleep(1500);
                 bucket.setPosition(.49);
@@ -138,10 +151,9 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //region lifter
             if (gamepad1.dpad_up) lifter.setPower(.8);
             else if (gamepad1.dpad_down) lifter.setPower(-.8);
-            else lifter.setPower(0);
-           /* if (gamepad2.dpad_up) lifter.setPower(.8);
+           else if (gamepad2.dpad_up) lifter.setPower(.8);
             else if (gamepad2.dpad_down) lifter.setPower(-.8);
-            else lifter.setPower(0);*/
+            else lifter.setPower(0);
             //endregion
 
             //region carousel mechanism
@@ -202,29 +214,30 @@ public class CompetitionDriving2021 extends LinearOpMode {
             //endregion
             //
             //region Real capping mechanism
-            if (gamepad2.right_bumper) {
-                theta = beta;
-            } else if (gamepad2.right_trigger>.5) {
+            if (gamepad2.left_bumper) {
                 theta = -beta;
+            } else if ( gamepad2.left_trigger > .5) {
+                theta = beta;
             } else {
                 theta = 0;
             }
             if (capmode == 1){
+                if (gamepad2.right_bumper) pos = pos + alpha;
+                else if (gamepad2.right_trigger > .5) pos = pos - alpha;
+                pos = Math.max(Math.min((double) 1, (pos)), (double) 0);
 
-                pos = Math.max(Math.min((double) 1, (pos - gamepad2.right_stick_y * alpha)), (double) 0);
-                telemetry.addData("pos:", pos);
-                telemetry.update();
-                capServo.setPosition(theta + ((double)robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 750, (long) 360)) / (double) 1000);
+                capServo.setPosition(theta + ((double)robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 660, (long) 260)) / (double) 1000);
                 capDrive.setTargetPosition((int) robot.maps((long) (10000.0* pos), (long) 0, (long) 10000, (long) 0, (long) ticks));
                 capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 capDrive.setPower(.5);
             }
             else {
-                capServo.setPosition((double) 1.0);
+                capServo.setPosition((double) .95);
                 capDrive.setTargetPosition((int) 0);
                 capDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 capDrive.setPower(.5);
                 pos = 0.0;
+
 
             }
             if (gamepad2.right_stick_button && last==1){
@@ -233,6 +246,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 else capmode = 1;
                 telemetry.addData("capmode:", capmode);
                 telemetry.update();
+               // robot.sleep(100);
                 last = 0;
 
             } else {
