@@ -42,6 +42,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
     @Override
     public void runOpMode() {
         //region hardware map
+        LEDMethods LED = new LEDMethods();
         motorFL = hardwareMap.get(DcMotor.class, "motorFL");
         motorBL = hardwareMap.get(DcMotor.class, "motorBL");
         motorBR = hardwareMap.get(DcMotor.class, "motorBR");
