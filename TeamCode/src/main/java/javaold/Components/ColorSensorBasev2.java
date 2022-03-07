@@ -1,11 +1,11 @@
-
 package javaold.Components;
+
         import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
         import com.qualcomm.robotcore.hardware.ColorSensor;
         import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp
-public class ColorSensorBase extends LinearOpMode {
+public class ColorSensorBasev2 extends LinearOpMode {
     // Define a variable for our color sensor
     ColorSensor color;
 
