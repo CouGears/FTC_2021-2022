@@ -7,7 +7,7 @@ package javaold.Components;
 @TeleOp
 public class ColorSensorBasev3 extends LinearOpMode {
     // Define a variable for our color sensor
-    ColorSensor color;
+    public static ColorSensor color;
 
     @Override
     public void runOpMode() {
