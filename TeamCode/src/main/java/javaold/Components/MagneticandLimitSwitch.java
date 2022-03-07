@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 @TeleOp
-public class LimitSwitch extends LinearOpMode {
+public class MagneticandLimitSwitch extends LinearOpMode {
     // Define variables for our touch sensor and motor
     TouchSensor limit;
     DcMotor motor;
