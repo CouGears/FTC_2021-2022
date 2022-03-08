@@ -168,7 +168,7 @@ public int value() {return 0;}
         distBack = distanceSensorBack.getDistance(DistanceUnit.CM);
         return distBack;
     }
-    public long maps(long x, long in_min, long in_max, long out_min, long out_max)
+    public long Map(long x, long in_min, long in_max, long out_min, long out_max)
     {
         return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
