@@ -69,6 +69,7 @@ public class BlueWarehouse extends OpMode {
         switch (robot.counter) {
             case 0:
                 robot.setIntakeServo();
+                robot.sleep(4000);
                 robot.drive(0, -.46*feet,.5);
                 robot.setRed();
                 robot.setRed2();
@@ -83,7 +84,7 @@ public class BlueWarehouse extends OpMode {
                 break;
             case 2:
                 robot.distanceSetBack();
-
+                robot.sleep(4000);
                 if(robot.distBack <= 20)
                 {
                     robot.setAmber();
@@ -104,7 +105,7 @@ public class BlueWarehouse extends OpMode {
                 break;
             case 4:
                 robot.distanceSetBack();
-
+                robot.sleep(4000);
                 if(robot.distBack <= 20)
                 {
                     robot.setGreen();

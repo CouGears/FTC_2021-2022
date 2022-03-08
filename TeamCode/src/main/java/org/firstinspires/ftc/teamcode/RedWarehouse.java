@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 
@@ -67,7 +67,6 @@ public class RedWarehouse extends OpMode {
 //        int tie = 0;
         switch (robot.counter) {
             case 0:
-
                 //robot.drive(0, .46*feet,.5);
                 robot.setRed();
                 robot.setRed2();
@@ -82,7 +81,6 @@ public class RedWarehouse extends OpMode {
                 break;
             case 2:
                 robot.distanceSetBack();
-
                 if(robot.distBack <= 20)
                 {
                     robot.setAmber();
