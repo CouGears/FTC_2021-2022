@@ -127,6 +127,10 @@ public void setServo()
     liftyThingy.setPosition(1);
 
 }
+    public long maps(long x, long in_min, long in_max, long out_min, long out_max)
+    {
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
     public void setRed2()
     {
         green2.enable(false);
@@ -287,12 +291,12 @@ public void autonLowerBlue()
             crap = 3300;
             setRed();
             setRed2();
-        } else if (dist >= 25 && dist < 35) {
+        } else if (dist >= 25 && dist < 40) {
             stuff = 2000;
             crap = 2000;
             setAmber();
             setAmber2();
-        } else if (dist >= 35) {
+        } else if (dist >= 40) {
             stuff = 1500;
             crap = 1500;
             setGreen2();

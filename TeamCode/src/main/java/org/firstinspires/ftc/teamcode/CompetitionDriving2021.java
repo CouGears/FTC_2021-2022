@@ -112,6 +112,8 @@ public class CompetitionDriving2021 extends LinearOpMode {
                 motorFR.setPower(((this.gamepad1.right_stick_y) + (this.gamepad1.left_stick_x) + (this.gamepad1.left_stick_y) + (this.gamepad1.right_stick_x)) * d2beta);
             }
             //endregion
+
+            //region switch drive mode
             if (gamepad1.y && last2==1){
 
                 if (x==1) x=0;
@@ -125,6 +127,8 @@ public class CompetitionDriving2021 extends LinearOpMode {
             } else {
                 last2 = 1;
             }
+            //endregion
+
             //region dump code
             if (gamepad1.b || gamepad2.a) {
                 lifter.setPower(0);
@@ -215,7 +219,7 @@ public class CompetitionDriving2021 extends LinearOpMode {
 //            if (SWITCH == 0) liftyThingy.setPosition(1 - (gamepad1.right_trigger * .33));
 //            if (SWITCH == 1) liftyThingy.setPosition(.66 + (gamepad1.right_trigger * .33));
             //endregion
-            //
+
             //region Real capping mechanism
             if (gamepad2.left_bumper) {
                 theta = -beta;

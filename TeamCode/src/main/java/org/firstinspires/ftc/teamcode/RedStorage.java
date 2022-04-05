@@ -114,7 +114,7 @@ public class RedStorage extends OpMode {
                 robot.counter++;
                 break;
             case 3:
-                robot.setCarousel(.7);//move carousel
+                robot.setCarousel(.6);//move carousel
                 telemetry.addData("spot: carousel", 1);
                 telemetry.update();
                 robot.counter++;
