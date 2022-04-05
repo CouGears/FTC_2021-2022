@@ -40,7 +40,7 @@ public void LED1(int state)
     }
     public void LED2(int state)
     {
-        if(state==2)setRed2();
+        if(state==1)setRed2();
         if(state==2)setAmber2();
         if(state==3)setGreen2();
     }

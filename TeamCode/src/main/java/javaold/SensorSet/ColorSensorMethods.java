@@ -15,7 +15,7 @@ public class ColorSensorMethods {
     private final ElapsedTime runtime = new ElapsedTime();
     HardwareMap map;
     Telemetry telemetry;
-    public int colorMatch;
+    public int match;
 
     //Initialization
     public void init(HardwareMap map, Telemetry tele, boolean auton) {
@@ -25,13 +25,13 @@ public class ColorSensorMethods {
 
     public int sense(int red, int green, int blue, int marginRed, int marginGreen, int marginBlue) {
         if (color.red() <= red + marginRed && color.red() >= red - marginRed && color.green() <= green + marginGreen && color.green() >= green - marginGreen && color.blue() <= blue + marginBlue && color.blue() >= blue - marginBlue) {
-            colorMatch = 1;
-            return colorMatch;
+            match = 1;
+            return 1;
         }
         else
         {
-            colorMatch=0;
-            return colorMatch;
+            match = 0;
+            return 0;
         }
     }
 }
